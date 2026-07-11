@@ -156,7 +156,7 @@
     </div>
 
     <div class="work-more">
-      <a class="ig-btn" href="https://www.instagram.com/tooample/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> See more on @tooample</a>
+      <a class="ig-btn" id="igBtn" href="https://www.instagram.com/tooamplestudio/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> <span class="igtxt">See more on @tooamplestudio</span></a>
     </div>
   </div>
 </section>
@@ -180,7 +180,7 @@
     </div>
 
     <!-- PHOTOGRAPHY (with sub-menu) -->
-    <div id="photo" class="reveal">
+    <div id="photo">
       <div class="subtabs">
         <button class="subtab active" data-sub="studio" onclick="switchSub('photo','studio')">Studio Photography</button>
         <button class="subtab" data-sub="prewed" onclick="switchSub('photo','prewed')">Pre-Wedding</button>
@@ -443,7 +443,7 @@
     </div>
 
     <!-- CINEMATOGRAPHY (with sub-menu) -->
-    <div id="video" class="reveal" style="display:none">
+    <div id="video" style="display:none">
       <div class="subtabs">
         <button class="subtab active" data-sub="music" onclick="switchSub('video','music')">Music Video Shoot</button>
         <button class="subtab" data-sub="commercial" onclick="switchSub('video','commercial')">Commercial Shoot</button>
@@ -623,17 +623,17 @@
     <div class="foot-inner">
       <div class="foot-brand">
         <img src="Images/tooample-logo.png" alt="TooAmple Studios" class="foot-logo" />
-        <h3 style="font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,36px);line-height:1.05;text-align:center">Ready to be <em style="font-style:italic;color:var(--gold-soft)">seen?</em></h3>
+        <h3 class="foot-cta">Ready to be <em>seen?</em></h3>
+        <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
       </div>
       <div class="foot-grid">
         <div class="fcol">
           <h4>Studio</h4>
           <a href="index.html#services">Services</a>
-      <a href="about.html">About</a>
+          <a href="about.html">About</a>
           <a href="index.html#work">Portfolio</a>
           <a href="index.html#pricing">Packages</a>
           <a href="academy.html">Academy</a>
-          <a href="book.html">Book now</a>
           <a href="terms.html">Terms &amp; Conditions</a>
         </div>
         <div class="fcol">
@@ -644,10 +644,10 @@
           <a href="https://www.instagram.com/tooample/" target="_blank" rel="noopener">@tooample</a>
         </div>
       </div>
-      <div class="foot-bot">
-        <span>© <span id="yr"></span> TOOAMPLE STUDIOS</span>
-        <span>SHOT IN LAGOS · 2.39:1</span>
-      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> TOOAMPLE STUDIOS</span>
+      <span>SHOT IN LAGOS · 2.39:1</span>
     </div>
   </div>
 </footer>
@@ -692,6 +692,8 @@ function switchWork(w){
   document.querySelectorAll('.work-tab').forEach(b=>b.classList.toggle('active',b.dataset.w===w));
   document.getElementById('work-photo').style.display = w==='photo'?'block':'none';
   document.getElementById('work-video').style.display = w==='video'?'block':'none';
+  const ig=document.getElementById('igBtn');
+  if(ig){const handle=w==='video'?'tooample':'tooamplestudio';ig.href='https://www.instagram.com/'+handle+'/';ig.querySelector('.igtxt').textContent='See more on @'+handle;}
 }
 // YouTube facade: show thumbnail, load player only on click
 function initVideoCard(card,id){
