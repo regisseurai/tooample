@@ -54,7 +54,7 @@
         <ul><li>Camera &amp; exposure</li><li>Studio lighting</li><li>Posing &amp; direction</li><li>Editing basics</li></ul>
         <div class="foot">
           <span class="tuition"><span class="cur">₦</span>250,000</span>
-          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Photography')">Apply <span class="arr">→</span></a>
+          <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Photography')">Apply <span class="arr">→</span></a>
         </div>
       </div>
 
@@ -66,7 +66,7 @@
         <ul><li>Camera movement</li><li>Cine lighting</li><li>Directing</li><li>Sound on set</li></ul>
         <div class="foot">
           <span class="tuition"><span class="cur">₦</span>350,000</span>
-          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Cinematography &amp; Video')">Apply <span class="arr">→</span></a>
+          <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Cinematography &amp; Video')">Apply <span class="arr">→</span></a>
         </div>
       </div>
 
@@ -78,7 +78,7 @@
         <ul><li>Lightroom</li><li>Photoshop</li><li>Colour grading</li><li>Skin retouching</li></ul>
         <div class="foot">
           <span class="tuition"><span class="cur">₦</span>150,000</span>
-          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Photo Editing &amp; Retouching')">Apply <span class="arr">→</span></a>
+          <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Photo Editing &amp; Retouching')">Apply <span class="arr">→</span></a>
         </div>
       </div>
 
@@ -90,7 +90,7 @@
         <ul><li>Premiere / Resolve</li><li>Grading</li><li>Sound design</li><li>Delivery specs</li></ul>
         <div class="foot">
           <span class="tuition"><span class="cur">₦</span>200,000</span>
-          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Video Editing &amp; Post')">Apply <span class="arr">→</span></a>
+          <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Video Editing &amp; Post')">Apply <span class="arr">→</span></a>
         </div>
       </div>
     </div>
@@ -98,17 +98,11 @@
     <p class="pane-note" style="margin:0 0 44px">Tuition figures are placeholders — update anytime. Payment plans available.</p>
 
     <!-- APPLICATION -->
-    <div class="apply-panel reveal" id="apply">
-      <aside class="apply-aside">
+    <div class="form-modal" id="applyModal" role="dialog" aria-modal="true" aria-label="Apply to the Academy">
+      <div class="fm-card">
+        <button class="fm-close" onclick="closeApplyModal()" aria-label="Close">✕</button>
         <span class="eyebrow">Enrol</span>
-        <h2>Apply to the Academy.</h2>
-        <p class="note">Tell us where you're starting from. We'll reach out with the next cohort dates and how to secure your spot.</p>
-        <div class="assure">
-          <span>Small, hands-on cohorts</span>
-          <span>Certificate on completion</span>
-        </div>
-      </aside>
-
+        <h3 class="fm-title">Apply to the Academy.</h3>
       <div class="apply-form">
         <div id="applyFormView">
           <div class="field">
@@ -184,6 +178,7 @@
           </div>
         </div>
       </div>
+      </div>
     </div>
   </div>
 </section>
@@ -204,6 +199,7 @@
         <a href="index.html#pricing">Packages</a>
         <a href="academy.html">Academy</a>
         <a href="book.html">Book now</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
       </div>
       <div class="fcol">
         <h4>Reach us</h4>
@@ -228,6 +224,15 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 function applyPreselect(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});}
+function openApplyModal(course){
+  document.getElementById('applyFormView').style.display='block';
+  document.getElementById('applyPayView').style.display='none';
+  document.getElementById('applyConfirmView').style.display='none';
+  if(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});}
+  const m=document.getElementById('applyModal'); m.classList.add('open'); m.scrollTop=0; document.body.style.overflow='hidden';
+}
+function closeApplyModal(){document.getElementById('applyModal').classList.remove('open');document.body.style.overflow='';}
+(function(){const m=document.getElementById('applyModal');m.addEventListener('click',e=>{if(e.target===m)closeApplyModal();});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))closeApplyModal();});})();
 
 /* ===== Paystack — swap pk_test_ for your pk_live_ key to accept real payments ===== */
 const PAYSTACK_KEY='pk_test_124845fbf4c94de263205dce95caf2e6b001dd91';
@@ -246,7 +251,6 @@ function startApply(){
   document.getElementById('payApplyBtn').style.display=amount>0?'inline-flex':'none';
   document.getElementById('applyFormView').style.display='none';
   document.getElementById('applyPayView').style.display='block';
-  document.getElementById('apply').scrollIntoView({behavior:'smooth'});
 }
 function payApply(){
   const email=document.getElementById('a_email').value.trim();
