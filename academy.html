@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TooAmple Academy — Apply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="Images/tooample-badge.png">
+</head>
+<body>
+<div class="grain"></div>
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="index.html#top">
+      <img class="brand-word" src="Images/ta-wordmark.png" alt="TooAmple" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#pricing">Packages</a>
+      <a href="academy.html" class="btn btn-outline" style="padding:11px 20px">Academy</a>
+      <a href="book.html" class="btn btn-gold" style="padding:11px 20px">Book a session <span class="arr">→</span></a>
+    </nav>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').style.display='flex'">Menu</button>
+  </div>
+</header>
+
+<!-- mobile app bottom bar -->
+<div class="mobile-bar">
+  <a href="academy.html" class="btn btn-outline">Academy</a>
+  <a href="book.html" class="btn btn-gold">Book a session</a>
+</div>
+<!-- ACADEMY -->
+<section class="section academy subpage" id="academy">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div>
+        <span class="eyebrow">TooAmple Academy</span>
+        <h2 style="margin-top:20px">Learn the craft.</h2>
+      </div>
+      <p class="lead sub">Hands-on, studio-based training in photography, film and post — taught by the team behind the work above.</p>
+    </div>
+
+    <div class="course-grid reveal">
+      <div class="course">
+        <img class="course-img" src="Images/ta-05.jpg" alt="Photography training">
+        <div class="meta"><span class="lvl">Beginner → Pro</span><span class="dur">6 weeks · in-studio</span></div>
+        <h3>Photography</h3>
+        <p>From camera fundamentals to studio lighting, posing and delivery — shoot with confidence.</p>
+        <ul><li>Camera &amp; exposure</li><li>Studio lighting</li><li>Posing &amp; direction</li><li>Editing basics</li></ul>
+        <div class="foot">
+          <span class="tuition"><span class="cur">₦</span>250,000</span>
+          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Photography')">Apply <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="course">
+        <img class="course-img" src="Images/ta-04.jpg" alt="Cinematography training">
+        <div class="meta"><span class="lvl">Beginner → Pro</span><span class="dur">8 weeks · in-studio</span></div>
+        <h3>Cinematography &amp; Video</h3>
+        <p>Learn to shoot cinematic film — camera movement, lighting, directing and on-set sound.</p>
+        <ul><li>Camera movement</li><li>Cine lighting</li><li>Directing</li><li>Sound on set</li></ul>
+        <div class="foot">
+          <span class="tuition"><span class="cur">₦</span>350,000</span>
+          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Cinematography &amp; Video')">Apply <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="course">
+        <img class="course-img" src="Images/ta-09.jpg" alt="Photo editing training">
+        <div class="meta"><span class="lvl">All levels</span><span class="dur">4 weeks · hybrid</span></div>
+        <h3>Photo Editing &amp; Retouching</h3>
+        <p>Master Lightroom &amp; Photoshop — color grading and clean, natural retouching.</p>
+        <ul><li>Lightroom</li><li>Photoshop</li><li>Colour grading</li><li>Skin retouching</li></ul>
+        <div class="foot">
+          <span class="tuition"><span class="cur">₦</span>150,000</span>
+          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Photo Editing &amp; Retouching')">Apply <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="course">
+        <img class="course-img" src="Images/ta-10.jpg" alt="Video editing training">
+        <div class="meta"><span class="lvl">All levels</span><span class="dur">6 weeks · hybrid</span></div>
+        <h3>Video Editing &amp; Post</h3>
+        <p>Edit like a pro — Premiere or DaVinci Resolve, grading, sound design and delivery.</p>
+        <ul><li>Premiere / Resolve</li><li>Grading</li><li>Sound design</li><li>Delivery specs</li></ul>
+        <div class="foot">
+          <span class="tuition"><span class="cur">₦</span>200,000</span>
+          <a href="#apply" class="btn btn-gold" onclick="applyPreselect('Video Editing &amp; Post')">Apply <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <p class="pane-note" style="margin:0 0 44px">Tuition figures are placeholders — update anytime. Payment plans available.</p>
+
+    <!-- APPLICATION -->
+    <div class="apply-panel reveal" id="apply">
+      <aside class="apply-aside">
+        <span class="eyebrow">Enrol</span>
+        <h2>Apply to the Academy.</h2>
+        <p class="note">Tell us where you're starting from. We'll reach out with the next cohort dates and how to secure your spot.</p>
+        <div class="assure">
+          <span>Small, hands-on cohorts</span>
+          <span>Certificate on completion</span>
+        </div>
+      </aside>
+
+      <div class="apply-form">
+        <div id="applyFormView">
+          <div class="field">
+            <label>Full name</label>
+            <input id="a_name" type="text" placeholder="Your name" />
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label>Email</label>
+              <input id="a_email" type="email" placeholder="you@email.com" />
+            </div>
+            <div class="field">
+              <label>Phone / WhatsApp</label>
+              <input id="a_phone" type="tel" placeholder="+234 ..." />
+            </div>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label>Course</label>
+              <select id="a_course">
+                <option>Photography</option>
+                <option>Cinematography &amp; Video</option>
+                <option>Photo Editing &amp; Retouching</option>
+                <option>Video Editing &amp; Post</option>
+                <option>Not sure yet — advise me</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Experience level</label>
+              <select id="a_level">
+                <option>Complete beginner</option>
+                <option>Some experience</option>
+                <option>Advanced / working</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>What do you want to achieve?</label>
+            <textarea id="a_msg" placeholder="Your goals, the gear you have, anything we should know..."></textarea>
+          </div>
+          <button class="btn btn-gold" onclick="submitApplication()">Submit application <span class="arr">→</span></button>
+        </div>
+
+        <div id="applyConfirmView" style="display:none">
+          <div class="confirm">
+            <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9A24B" stroke-width="1.6"><path d="M5 13l4 4L19 7"/></svg></div>
+            <h3>Application received.</h3>
+            <p>Thank you, <b id="ac_name">friend</b>. We'll be in touch within 48 hours with cohort dates and next steps.</p>
+            <div class="recap">
+              <div><span class="k">Course</span><span class="v" id="ac_course">—</span></div>
+              <div><span class="k">Level</span><span class="v" id="ac_level">—</span></div>
+            </div>
+            <button class="btn btn-ghost" style="margin-top:26px" onclick="resetApplication()">Submit another</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="Images/tooample-logo.png" alt="TooAmple Studios" class="foot-logo" />
+        <h3>Ready to be <em>seen?</em></h3>
+        <a href="book.html" class="btn btn-gold" style="margin-top:24px">Book a session <span class="arr">→</span></a>
+      </div>
+      <div class="fcol">
+        <h4>Studio</h4>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Portfolio</a>
+        <a href="index.html#pricing">Packages</a>
+        <a href="academy.html">Academy</a>
+        <a href="book.html">Book now</a>
+      </div>
+      <div class="fcol">
+        <h4>Reach us</h4>
+        <p>Lagos, Nigeria</p>
+        <a href="mailto:hello@tooample.com">hello@tooample.com</a>
+        <a href="tel:+234">+234 000 000 0000</a>
+        <a href="https://www.instagram.com/tooamplestudio/" target="_blank" rel="noopener">Instagram · Photography ↗</a>
+        <a href="https://www.instagram.com/tooample/" target="_blank" rel="noopener">Instagram · Films ↗</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> TOOAMPLE STUDIOS</span>
+      <span>SHOT IN LAGOS · 2.39:1</span>
+    </div>
+  </div>
+</footer>
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
+document.getElementById('yr').textContent=new Date().getFullYear();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+function applyPreselect(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});}
+function submitApplication(){const name=document.getElementById('a_name').value.trim(),email=document.getElementById('a_email').value.trim();if(!name||!email){alert('Please add your name and email so we can reply.');return;}document.getElementById('ac_name').textContent=name.split(' ')[0];document.getElementById('ac_course').textContent=document.getElementById('a_course').value;document.getElementById('ac_level').textContent=document.getElementById('a_level').value;document.getElementById('applyFormView').style.display='none';document.getElementById('applyConfirmView').style.display='block';}
+function resetApplication(){['a_name','a_phone','a_email','a_msg'].forEach(id=>document.getElementById(id).value='');document.getElementById('applyConfirmView').style.display='none';document.getElementById('applyFormView').style.display='block';}
+</script>
+</body>
+</html>
