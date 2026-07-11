@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="Images/tooample-badge.png">
+<script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 <body>
 <div class="grain"></div>
@@ -521,20 +522,88 @@
             </div>
           </div>
           <div class="field">
+            <label>Package</label>
+            <select id="b_pkg">
+              <option value="" data-amount="0">Select a package…</option>
+              <optgroup label="Photography · Studio">
+              <option value="Studio — Single Look (1 outfit, 4 copies) — ₦100,000" data-amount="100000">Studio — Single Look (1 outfit, 4 copies) — ₦100,000</option>
+              <option value="Studio — Double Look (2 outfits, 8 copies) — ₦200,000" data-amount="200000">Studio — Double Look (2 outfits, 8 copies) — ₦200,000</option>
+              <option value="Studio — Triple Look (3 outfits, 12 copies) — ₦280,000" data-amount="280000">Studio — Triple Look (3 outfits, 12 copies) — ₦280,000</option>
+              </optgroup>
+              <optgroup label="Photography · Pre-Wedding">
+              <option value="Pre-Wedding — Half-Day Story — ₦300,000" data-amount="300000">Pre-Wedding — Half-Day Story — ₦300,000</option>
+              <option value="Pre-Wedding — Full Story — ₦450,000" data-amount="450000">Pre-Wedding — Full Story — ₦450,000</option>
+              <option value="Pre-Wedding — Grand Story — ₦650,000" data-amount="650000">Pre-Wedding — Grand Story — ₦650,000</option>
+              </optgroup>
+              <optgroup label="Photography · Location">
+              <option value="Location — Single Location — ₦150,000" data-amount="150000">Location — Single Location — ₦150,000</option>
+              <option value="Location — Two Locations — ₦250,000" data-amount="250000">Location — Two Locations — ₦250,000</option>
+              <option value="Location — Premium Tour — ₦380,000" data-amount="380000">Location — Premium Tour — ₦380,000</option>
+              </optgroup>
+              <optgroup label="Photography · Wedding (Photo)">
+              <option value="Wedding Photo — Bronze — ₦400,000" data-amount="400000">Wedding Photo — Bronze — ₦400,000</option>
+              <option value="Wedding Photo — Silver — ₦800,000" data-amount="800000">Wedding Photo — Silver — ₦800,000</option>
+              <option value="Wedding Photo — Gold — ₦1,000,000" data-amount="1000000">Wedding Photo — Gold — ₦1,000,000</option>
+              </optgroup>
+              <optgroup label="Photography · Wedding (Photo + Video)">
+              <option value="Wedding Photo+Video — Bronze — ₦800,000" data-amount="800000">Wedding Photo+Video — Bronze — ₦800,000</option>
+              <option value="Wedding Photo+Video — Silver — ₦1,000,000" data-amount="1000000">Wedding Photo+Video — Silver — ₦1,000,000</option>
+              <option value="Wedding Photo+Video — Gold — ₦1,500,000" data-amount="1500000">Wedding Photo+Video — Gold — ₦1,500,000</option>
+              </optgroup>
+              <optgroup label="Cinematography · Music Video">
+              <option value="Music — Viral Video — ₦350,000" data-amount="350000">Music — Viral Video — ₦350,000</option>
+              <option value="Music — Visualizer — ₦250,000" data-amount="250000">Music — Visualizer — ₦250,000</option>
+              <option value="Music — Official Video — ₦1,200,000" data-amount="1200000">Music — Official Video — ₦1,200,000</option>
+              </optgroup>
+              <optgroup label="Cinematography · Commercial">
+              <option value="Commercial — Promo / Event — ₦450,000" data-amount="450000">Commercial — Promo / Event — ₦450,000</option>
+              <option value="Commercial — Brand Commercial — ₦1,200,000" data-amount="1200000">Commercial — Brand Commercial — ₦1,200,000</option>
+              <option value="Commercial — Full Campaign — ₦2,500,000" data-amount="2500000">Commercial — Full Campaign — ₦2,500,000</option>
+              </optgroup>
+              <optgroup label="Cinematography · Wedding Coverage">
+              <option value="Wedding Video — Bronze — ₦500,000" data-amount="500000">Wedding Video — Bronze — ₦500,000</option>
+              <option value="Wedding Video — Silver — ₦900,000" data-amount="900000">Wedding Video — Silver — ₦900,000</option>
+              <option value="Wedding Video — Gold — ₦1,300,000" data-amount="1300000">Wedding Video — Gold — ₦1,300,000</option>
+              </optgroup>
+              <option value="Custom / discuss first" data-amount="0">Custom / discuss first</option>
+            </select>
+          </div>
+          <div class="field">
             <label>Anything we should know?</label>
             <textarea id="b_msg" placeholder="Location, vibe, headcount, the package you're eyeing..."></textarea>
           </div>
-          <button class="btn btn-gold" onclick="submitBooking()">Request this date <span class="arr">→</span></button>
+          <button class="btn btn-gold" onclick="startBooking()">Continue to payment <span class="arr">→</span></button>
         </div>
+
+        <div id="payView" style="display:none">
+          <div class="pay-head">
+            <span class="eyebrow">Secure payment</span>
+            <h3 id="pay_pkg">—</h3>
+            <div class="pay-amt" id="pay_amt">₦0</div>
+          </div>
+          <button class="btn btn-gold" id="payNowBtn" style="width:100%;justify-content:center" onclick="payWithPaystack()">Pay securely — card, transfer or USSD</button>
+          <div class="pay-or"><span>or pay by bank transfer</span></div>
+          <div class="bank-box">
+            <div><span class="k">Bank</span><span class="v">Stanbic IBTC Bank</span></div>
+            <div><span class="k">Account number</span><span class="v">0072762320</span></div>
+            <div><span class="k">Account name</span><span class="v">Temidayo Omoniyi Fredrick</span></div>
+            <div><span class="k">Amount</span><span class="v" id="pay_amt2">₦0</span></div>
+          </div>
+          <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:14px" onclick="confirmTransfer()">I have sent the transfer</button>
+          <button class="btn-link" onclick="backToForm()">← Back to details</button>
+        </div>
+
 
         <div id="confirmView" style="display:none">
           <div class="confirm">
             <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9A24B" stroke-width="1.6"><path d="M5 13l4 4L19 7"/></svg></div>
-            <h3>Request received.</h3>
-            <p>Thank you, <b id="c_name">friend</b>. We've logged your enquiry and will reply within 24 hours with availability and a tailored quote.</p>
+            <h3 id="c_title">Request received.</h3>
+            <p id="c_msg">Thank you. We will reply within 24 hours.</p>
             <div class="recap">
+              <div><span class="k">Package</span><span class="v" id="c_pkg">—</span></div>
               <div><span class="k">Session</span><span class="v" id="c_type">—</span></div>
               <div><span class="k">Date</span><span class="v" id="c_date">—</span></div>
+              <div id="c_ref_row" style="display:none"><span class="k">Reference</span><span class="v" id="c_ref">—</span></div>
             </div>
             <button class="btn btn-ghost" style="margin-top:26px" onclick="resetForm()">Send another request</button>
           </div>
@@ -583,9 +652,69 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-function submitBooking(){const name=document.getElementById('b_name').value.trim(),email=document.getElementById('b_email').value.trim(),date=document.getElementById('b_date').value,type=document.getElementById('b_type').value;if(!name||!email){alert('Please add your name and email so we can reply.');return;}document.getElementById('c_name').textContent=name.split(' ')[0];document.getElementById('c_type').textContent=type;document.getElementById('c_date').textContent=date?new Date(date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'To be confirmed';document.getElementById('formView').style.display='none';document.getElementById('confirmView').style.display='block';}
-function resetForm(){['b_name','b_phone','b_email','b_date','b_msg'].forEach(id=>document.getElementById(id).value='');document.getElementById('confirmView').style.display='none';document.getElementById('formView').style.display='block';}
-(function(){const p=new URLSearchParams(location.search),ty=p.get('type'),pkg=p.get('pkg');if(ty){const s=document.getElementById('b_type');[...s.options].forEach(o=>{if(o.value===ty)s.value=ty;});}if(pkg){document.getElementById('b_msg').value='Interested in: '+pkg;}if(ty||pkg){setTimeout(()=>document.getElementById('book').scrollIntoView({behavior:'smooth'}),200);}})();
+/* ===== Paystack — swap pk_test_ for your pk_live_ key to accept real payments ===== */
+const PAYSTACK_KEY='pk_test_124845fbf4c94de263205dce95caf2e6b001dd91';
+let curAmount=0,curPkg='';
+function startBooking(){
+  const name=document.getElementById('b_name').value.trim();
+  const email=document.getElementById('b_email').value.trim();
+  const sel=document.getElementById('b_pkg');
+  const pkg=sel.value, amount=parseInt(sel.selectedOptions[0].dataset.amount||'0',10);
+  if(!name||!email){alert('Please add your name and email so we can reply.');return;}
+  if(!pkg){alert('Please choose a package.');return;}
+  curAmount=amount; curPkg=pkg;
+  const label=amount>0?('₦'+amount.toLocaleString()):'Custom quote';
+  document.getElementById('pay_pkg').textContent=pkg;
+  document.getElementById('pay_amt').textContent=label;
+  document.getElementById('pay_amt2').textContent=label;
+  document.getElementById('payNowBtn').style.display=amount>0?'inline-flex':'none';
+  document.getElementById('formView').style.display='none';
+  document.getElementById('payView').style.display='block';
+  document.getElementById('book').scrollIntoView({behavior:'smooth'});
+}
+function payWithPaystack(){
+  const email=document.getElementById('b_email').value.trim();
+  const name=document.getElementById('b_name').value.trim();
+  const phone=document.getElementById('b_phone').value.trim();
+  const date=document.getElementById('b_date').value;
+  const handler=PaystackPop.setup({
+    key:PAYSTACK_KEY,email:email,amount:curAmount*100,currency:'NGN',ref:'TA-'+Date.now(),
+    metadata:{custom_fields:[
+      {display_name:'Package',variable_name:'package',value:curPkg},
+      {display_name:'Client',variable_name:'client',value:name},
+      {display_name:'Phone',variable_name:'phone',value:phone},
+      {display_name:'Preferred date',variable_name:'date',value:date||'—'}
+    ]},
+    callback:function(res){showConfirm('paid',res.reference);},
+    onClose:function(){}
+  });
+  handler.openIframe();
+}
+function confirmTransfer(){showConfirm('transfer','');}
+function backToForm(){document.getElementById('payView').style.display='none';document.getElementById('formView').style.display='block';}
+function showConfirm(mode,ref){
+  const name=document.getElementById('b_name').value.trim();
+  const first=name.split(' ')[0]||'there';
+  const date=document.getElementById('b_date').value;
+  document.getElementById('c_pkg').textContent=curPkg||'—';
+  document.getElementById('c_type').textContent=document.getElementById('b_type').value;
+  document.getElementById('c_date').textContent=date?new Date(date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'To be confirmed';
+  if(mode==='paid'){
+    document.getElementById('c_title').textContent='Payment received — you are booked!';
+    document.getElementById('c_msg').innerHTML='Thank you, <b>'+first+'</b>. Your payment was successful and your date is reserved. We will be in touch shortly.';
+    document.getElementById('c_ref').textContent=ref;
+    document.getElementById('c_ref_row').style.display='flex';
+  }else{
+    document.getElementById('c_title').textContent='Almost there — complete your transfer';
+    document.getElementById('c_msg').innerHTML='Thank you, <b>'+first+'</b>. Once your transfer lands we will confirm and lock your date within 24 hours.';
+    document.getElementById('c_ref_row').style.display='none';
+  }
+  document.getElementById('payView').style.display='none';
+  document.getElementById('formView').style.display='none';
+  document.getElementById('confirmView').style.display='block';
+}
+function resetForm(){['b_name','b_phone','b_email','b_date','b_msg'].forEach(id=>document.getElementById(id).value='');document.getElementById('b_pkg').selectedIndex=0;document.getElementById('confirmView').style.display='none';document.getElementById('payView').style.display='none';document.getElementById('formView').style.display='block';}
+(function(){const p=new URLSearchParams(location.search),ty=p.get('type'),pkg=p.get('pkg');if(ty){const s=document.getElementById('b_type');[...s.options].forEach(o=>{if(o.value===ty)s.value=ty;});}if(pkg){const s=document.getElementById('b_pkg');[...s.options].forEach(o=>{if(o.value===pkg)s.value=pkg;});}if(ty||pkg){setTimeout(()=>document.getElementById('book').scrollIntoView({behavior:'smooth'}),200);}})();
 </script>
 </body>
 </html>
