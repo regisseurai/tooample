@@ -9,6 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="Images/tooample-badge.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0A0B0D">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TooAmple">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+
 <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 <body>
@@ -321,6 +330,11 @@ function showApplyConfirm(mode,ref){
   document.getElementById('applyConfirmView').style.display='block';
 }
 function resetApplication(){['a_name','a_phone','a_email','a_msg'].forEach(id=>document.getElementById(id).value='');document.getElementById('a_course').selectedIndex=0;document.getElementById('a_terms').checked=false;document.getElementById('applyConfirmView').style.display='none';document.getElementById('applyPayView').style.display='none';document.getElementById('applyFormView').style.display='block';}
+
+// register service worker (installable app + offline)
+if('serviceWorker' in navigator){
+  addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+}
 </script>
 </body>
 </html>
