@@ -372,7 +372,7 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 @media(max-width:680px){.dual-cta{grid-template-columns:1fr}}
 
 /* course card toppers */
-.course-img{display:block;width:auto;margin:0 -30px 24px;aspect-ratio:16/7;object-fit:cover;object-position:center 45%;border-bottom:1px solid var(--line-soft)}
+.course-img{display:block;width:calc(100% + 60px);max-width:none;margin:0 -30px 24px;aspect-ratio:16/7;object-fit:cover;object-position:center 45%;border-bottom:1px solid var(--line-soft)}
 
 /* recent-work Photography | Video tabs */
 .work-tabs{display:inline-flex;gap:4px;padding:5px;border:1px solid var(--line);border-radius:3px;margin-bottom:34px}
