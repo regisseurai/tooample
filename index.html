@@ -29,8 +29,8 @@
     <nav class="nav-links">
       <a href="#services">Services</a>
       <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About</a>
       <a href="#pricing">Packages</a>
+      <a href="about.html">About</a>
       <div class="nav-cta">
         <a href="academy.html" class="acad">Academy</a>
         <a href="book.html" class="bookings">Book a session <span class="arr">→</span></a>
@@ -207,8 +207,8 @@
     <div id="photo">
       <div class="subtabs">
         <button class="subtab active" data-sub="studio" onclick="switchSub('photo','studio')">Studio Photography</button>
-        <button class="subtab" data-sub="prewed" onclick="switchSub('photo','prewed')">Pre-Wedding</button>
         <button class="subtab" data-sub="location" onclick="switchSub('photo','location')">Location Shoot</button>
+        <button class="subtab" data-sub="prewed" onclick="switchSub('photo','prewed')">Pre-Wedding</button>
         <button class="subtab" data-sub="wedding" onclick="switchSub('photo','wedding')">Wedding</button>
       </div>
 
@@ -266,106 +266,95 @@
       <!-- Pre-Wedding -->
       <div class="price-grid sub-pane" id="prewed" style="display:none">
         <div class="plan">
-          <span class="cat">Pre-Wedding · 1 Location</span>
-          <div class="pname">Half-Day Story</div>
-          <p class="desc">One location, an intimate couple session.</p>
-          <div class="amt"><span class="cur">₦</span>300,000</div>
-          <div class="per">40 edited images</div>
+          <span class="cat">Pre-Wedding · 1 outfit / look</span>
+          <div class="pname">Single Look</div>
+          <p class="desc">One styled look for the two of you.</p>
+          <div class="amt quote-amt">See price</div>
+          <div class="per">20 edited images</div>
           <ul>
-            <li>1 location</li>
-            <li>Up to 3 hours</li>
-            <li>2 outfit changes</li>
-            <li>40 edited images</li>
-            <li>Online gallery</li>
+            <li>1 outfit / look</li>
+            <li>20 edited images</li>
+            <li>Professional lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
           </ul>
-          <div class="pbtn"><a href="book.html?type=Pre-Wedding&pkg=Pre-Wedding%20%E2%80%94%20Half-Day%20Story%20%E2%80%94%20%E2%82%A6300%2C000" class="btn btn-ghost">Select</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Single Look')" class="btn btn-ghost">Book this</a></div>
         </div>
-
         <div class="plan feat">
           <span class="badge">Most booked</span>
-          <span class="cat">Pre-Wedding · 2 Locations</span>
-          <div class="pname">Full Story</div>
-          <p class="desc">Two locations, fully styled and directed.</p>
-          <div class="amt"><span class="cur">₦</span>450,000</div>
+          <span class="cat">Pre-Wedding · 2 outfits / looks</span>
+          <div class="pname">Double Look</div>
+          <p class="desc">Two looks, fully directed.</p>
+          <div class="amt quote-amt">See price</div>
+          <div class="per">40 edited images</div>
+          <ul>
+            <li>2 outfits / looks</li>
+            <li>40 edited images</li>
+            <li>Professional lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Double Look')" class="btn btn-gold">Book this <span class="arr">→</span></a></div>
+        </div>
+        <div class="plan">
+          <span class="cat">Pre-Wedding · 3 outfits / looks</span>
+          <div class="pname">Triple Look</div>
+          <p class="desc">Three looks — the complete love story.</p>
+          <div class="amt quote-amt">See price</div>
           <div class="per">60 edited images</div>
           <ul>
-            <li>2 locations</li>
-            <li>Half-day coverage</li>
-            <li>Styling direction</li>
+            <li>3 outfits / looks</li>
             <li>60 edited images</li>
-            <li>60-sec teaser reel</li>
+            <li>Professional lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
           </ul>
-          <div class="pbtn"><a href="book.html?type=Pre-Wedding&pkg=Pre-Wedding%20%E2%80%94%20Full%20Story%20%E2%80%94%20%E2%82%A6450%2C000" class="btn btn-gold">Select <span class="arr">→</span></a></div>
-        </div>
-
-        <div class="plan">
-          <span class="cat">Pre-Wedding · 3 Locations</span>
-          <div class="pname">Grand Story</div>
-          <p class="desc">A cinematic, full-day love-story production.</p>
-          <div class="amt"><span class="cur">₦</span>650,000</div>
-          <div class="per">100 edited images</div>
-          <ul>
-            <li>3 locations</li>
-            <li>Full-day coverage</li>
-            <li>100 edited images</li>
-            <li>Cinematic teaser film</li>
-            <li>Same-week sneak peek</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Pre-Wedding&pkg=Pre-Wedding%20%E2%80%94%20Grand%20Story%20%E2%80%94%20%E2%82%A6650%2C000" class="btn btn-ghost">Select</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Triple Look')" class="btn btn-ghost">Book this</a></div>
         </div>
       </div>
 
       <!-- Location Shoot (placeholder pricing) -->
       <div class="price-grid sub-pane" id="location" style="display:none">
         <div class="plan">
-          <span class="cat">Location · 1 Spot</span>
-          <div class="pname">Single Location</div>
-          <p class="desc">One outdoor or on-site location.</p>
-          <div class="amt"><span class="cur">₦</span>150,000</div>
+          <span class="cat">Location · 1 outfit / look</span>
+          <div class="pname">Single Look</div>
+          <p class="desc">One outfit, shot on location.</p>
+          <div class="amt quote-amt">See price</div>
           <div class="per">6 edited copies</div>
           <ul>
-            <li>1 location</li>
-            <li>1 outfit</li>
-            <li>Up to 2 hours</li>
+            <li>1 outfit / look</li>
             <li>6 edited copies</li>
-            <li>Online gallery</li>
+            <li>Professional lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
           </ul>
-          <div class="pbtn"><a href="book.html?type=Location%20Shoot&pkg=Location%20%E2%80%94%20Single%20Location%20%E2%80%94%20%E2%82%A6150%2C000" class="btn btn-ghost">Select</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Single Look')" class="btn btn-ghost">Book this</a></div>
         </div>
-
         <div class="plan feat">
           <span class="badge">Most booked</span>
-          <span class="cat">Location · 2 Spots</span>
-          <div class="pname">Two Locations</div>
-          <p class="desc">Two locations in a single session.</p>
-          <div class="amt"><span class="cur">₦</span>250,000</div>
+          <span class="cat">Location · 2 outfits / looks</span>
+          <div class="pname">Double Look</div>
+          <p class="desc">Two outfits for more range.</p>
+          <div class="amt quote-amt">See price</div>
           <div class="per">12 edited copies</div>
           <ul>
-            <li>2 locations</li>
-            <li>2 outfits</li>
-            <li>Half-day</li>
+            <li>2 outfits / looks</li>
             <li>12 edited copies</li>
-            <li>Travel within Lagos</li>
+            <li>Professional lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
           </ul>
-          <div class="pbtn"><a href="book.html?type=Location%20Shoot&pkg=Location%20%E2%80%94%20Two%20Locations%20%E2%80%94%20%E2%82%A6250%2C000" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Double Look')" class="btn btn-gold">Book this <span class="arr">→</span></a></div>
         </div>
-
         <div class="plan">
-          <span class="cat">Location · 3 Spots</span>
-          <div class="pname">Premium Tour</div>
-          <p class="desc">A multi-location editorial day.</p>
-          <div class="amt"><span class="cur">₦</span>380,000</div>
+          <span class="cat">Location · 3 outfits / looks</span>
+          <div class="pname">Triple Look</div>
+          <p class="desc">Three outfits — the full location session.</p>
+          <div class="amt quote-amt">See price</div>
           <div class="per">20 edited copies</div>
           <ul>
-            <li>3 locations</li>
-            <li>3 outfits</li>
-            <li>Full-day</li>
+            <li>3 outfits / looks</li>
             <li>20 edited copies</li>
-            <li>Priority retouching</li>
+            <li>Professional lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
           </ul>
-          <div class="pbtn"><a href="book.html?type=Location%20Shoot&pkg=Location%20%E2%80%94%20Premium%20Tour%20%E2%80%94%20%E2%82%A6380%2C000" class="btn btn-ghost">Select</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Triple Look')" class="btn btn-ghost">Book this</a></div>
         </div>
-        <p class="pane-note">Location prices are placeholders — update anytime.</p>
       </div>
 
       <!-- Wedding (Photography) -->
@@ -646,7 +635,6 @@
   <div class="wrap">
     <div class="foot-inner">
       <div class="foot-brand">
-        <img src="Images/tooample-logo.png" alt="TooAmple Studios" class="foot-logo" />
         <h3 class="foot-cta">Ready to be <em>seen?</em></h3>
         <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
       </div>
@@ -671,7 +659,7 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span>© <span id="yr"></span> TOOAMPLE STUDIOS</span>
+      <span class="foot-copy"><img src="Images/tooample-badge.png" alt="" class="foot-badge" />© <span id="yr"></span> TOOAMPLE STUDIOS</span>
       <span>SHOT IN LAGOS · 2.39:1</span>
     </div>
   </div>

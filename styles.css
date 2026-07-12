@@ -303,7 +303,8 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(--bg)}
 .foot-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:60px;flex-wrap:wrap;margin-bottom:56px}
 .foot-brand{display:flex;flex-direction:column;align-items:flex-start;gap:16px;max-width:340px}
-.foot-logo{width:180px;height:auto;opacity:.88}
+.foot-badge{width:20px;height:20px;object-fit:contain;opacity:.75;vertical-align:middle;margin-right:9px}
+.foot-copy{display:inline-flex;align-items:center}
 .foot-cta{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.05;max-width:14ch}
 .foot-cta em{font-style:italic;color:var(--gold-soft)}
 .foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
@@ -356,10 +357,10 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
   .svc p{font-size:12.5px}
   .svc .ic{width:34px;height:34px}
   .frow{grid-template-columns:1fr}
-  .foot-inner{flex-direction:column;align-items:center;text-align:center;gap:38px}
+  .foot-inner{flex-direction:column;align-items:center;text-align:center;gap:34px}
   .foot-brand{align-items:center;max-width:100%}
   .foot-cta{text-align:center}
-  .foot-grid{grid-template-columns:1fr 1fr;gap:28px;text-align:center;width:100%;max-width:360px}
+  .foot-grid{grid-template-columns:1fr;gap:30px;text-align:center;width:100%;max-width:100%}
   .fcol{text-align:center}
   .foot-bot{flex-direction:column;gap:12px;text-align:center;justify-content:center}
   .gallery{grid-template-columns:repeat(2,1fr);gap:6px}
