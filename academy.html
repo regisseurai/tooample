@@ -66,49 +66,45 @@
 
     <div class="course-grid reveal">
       <div class="course">
-        <img class="course-img" src="Images/ta-05.jpg" alt="Photography training">
+        <img class="course-img" src="Images/course-photography.jpg" alt="Photography training">
         <div class="meta"><span class="lvl">Beginner → Pro</span><span class="dur">6 weeks · in-studio</span></div>
         <h3>Photography</h3>
         <p>From camera fundamentals to studio lighting, posing and delivery — shoot with confidence.</p>
         <ul><li>Camera &amp; exposure</li><li>Studio lighting</li><li>Posing &amp; direction</li><li>Editing basics</li></ul>
         <div class="foot">
-          <span class="tuition"><span class="cur">₦</span>250,000</span>
           <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Photography')">Apply <span class="arr">→</span></a>
         </div>
       </div>
 
       <div class="course">
-        <img class="course-img" src="Images/ta-04.jpg" alt="Cinematography training">
+        <img class="course-img" src="Images/course-cinematography.jpg" alt="Cinematography training">
         <div class="meta"><span class="lvl">Beginner → Pro</span><span class="dur">8 weeks · in-studio</span></div>
         <h3>Cinematography &amp; Video</h3>
         <p>Learn to shoot cinematic film — camera movement, lighting, directing and on-set sound.</p>
         <ul><li>Camera movement</li><li>Cine lighting</li><li>Directing</li><li>Sound on set</li></ul>
         <div class="foot">
-          <span class="tuition"><span class="cur">₦</span>350,000</span>
           <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Cinematography &amp; Video')">Apply <span class="arr">→</span></a>
         </div>
       </div>
 
       <div class="course">
-        <img class="course-img" src="Images/ta-09.jpg" alt="Photo editing training">
+        <img class="course-img" src="Images/course-photo-editing.jpg" alt="Photo editing training">
         <div class="meta"><span class="lvl">All levels</span><span class="dur">4 weeks · hybrid</span></div>
         <h3>Photo Editing &amp; Retouching</h3>
         <p>Master Lightroom &amp; Photoshop — color grading and clean, natural retouching.</p>
         <ul><li>Lightroom</li><li>Photoshop</li><li>Colour grading</li><li>Skin retouching</li></ul>
         <div class="foot">
-          <span class="tuition"><span class="cur">₦</span>150,000</span>
           <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Photo Editing &amp; Retouching')">Apply <span class="arr">→</span></a>
         </div>
       </div>
 
       <div class="course">
-        <img class="course-img" src="Images/ta-10.jpg" alt="Video editing training">
+        <img class="course-img" src="Images/course-video-editing.jpg" alt="Video editing training">
         <div class="meta"><span class="lvl">All levels</span><span class="dur">6 weeks · hybrid</span></div>
         <h3>Video Editing &amp; Post</h3>
         <p>Edit like a pro — Premiere or DaVinci Resolve, grading, sound design and delivery.</p>
         <ul><li>Premiere / Resolve</li><li>Grading</li><li>Sound design</li><li>Delivery specs</li></ul>
         <div class="foot">
-          <span class="tuition"><span class="cur">₦</span>200,000</span>
           <a href="javascript:void(0)" class="btn btn-gold" onclick="openApplyModal('Video Editing &amp; Post')">Apply <span class="arr">→</span></a>
         </div>
       </div>
@@ -124,6 +120,10 @@
         <h3 class="fm-title">Apply to the Academy.</h3>
       <div class="apply-form">
         <div id="applyFormView">
+          <div class="tuition-banner">
+            <span class="tb-label">Tuition</span>
+            <span class="tb-amt" id="tuitionAmt">₦250,000</span>
+          </div>
           <div class="field">
             <label>Full name</label>
             <input id="a_name" type="text" placeholder="Your name" />
@@ -141,7 +141,7 @@
           <div class="frow">
             <div class="field">
               <label>Course</label>
-              <select id="a_course">
+              <select id="a_course" onchange="updateTuition()">
                 <option data-amount="250000">Photography</option>
                 <option data-amount="350000">Cinematography &amp; Video</option>
                 <option data-amount="150000">Photo Editing &amp; Retouching</option>
@@ -231,6 +231,7 @@
           <a href="mailto:tooample@gmail.com">tooample@gmail.com</a>
           <a href="https://www.instagram.com/tooamplestudio/" target="_blank" rel="noopener">@tooamplestudio</a>
           <a href="https://www.instagram.com/tooample/" target="_blank" rel="noopener">@tooample</a>
+          <a href="https://regxvisuals.com" target="_blank" rel="noopener">Learn AI ↗</a>
         </div>
       </div>
     </div>
@@ -247,12 +248,19 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-function applyPreselect(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});}
+function applyPreselect(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});updateTuition();}
+function updateTuition(){
+  const s=document.getElementById('a_course');
+  const amt=parseInt(s.selectedOptions[0].dataset.amount||'0',10);
+  const el=document.getElementById('tuitionAmt');
+  if(el) el.textContent = amt>0 ? ('\u20a6'+amt.toLocaleString()) : 'We will advise';
+}
 function openApplyModal(course){
   document.getElementById('applyFormView').style.display='block';
   document.getElementById('applyPayView').style.display='none';
   document.getElementById('applyConfirmView').style.display='none';
   if(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});}
+  updateTuition();
   const m=document.getElementById('applyModal'); m.classList.add('open'); m.scrollTop=0; document.body.style.overflow='hidden';
 }
 function closeApplyModal(){document.getElementById('applyModal').classList.remove('open');document.body.style.overflow='';}
