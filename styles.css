@@ -62,6 +62,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacin
 .btn-ghost{border:1px solid var(--line);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 .nav-links a.btn-gold,.nav-links a.btn-gold:hover{color:#13110B}
+/* desktop segmented Academy | Book CTA */
+.nav-cta{display:inline-flex;align-items:stretch;border:1.5px solid var(--gold);border-radius:4px;overflow:hidden;margin-left:6px}
+.nav-cta a{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:13px 22px;text-decoration:none;transition:.25s;white-space:nowrap}
+.nav-cta a.acad{background:transparent;color:var(--gold)}
+.nav-cta a.acad:hover{background:rgba(217,162,75,.14)}
+.nav-cta a.bookings{background:var(--gold);color:#13110B}
+.nav-cta a.bookings:hover{background:var(--gold-soft)}
+.nav-cta a.bookings .arr{margin-left:8px;transition:transform .3s}
+.nav-cta a.bookings:hover .arr{transform:translateX(3px)}
 .btn .arr{transition:transform .35s}
 .btn:hover .arr{transform:translateX(4px)}
 
