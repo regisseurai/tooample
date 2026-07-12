@@ -63,13 +63,13 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacin
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 .nav-links a.btn-gold,.nav-links a.btn-gold:hover{color:#13110B}
 /* desktop segmented Academy | Book CTA */
-.nav-cta{display:inline-flex;align-items:stretch;border:1.5px solid var(--gold);border-radius:4px;overflow:hidden;margin-left:6px}
-.nav-cta a{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:13px 22px;text-decoration:none;transition:.25s;white-space:nowrap}
+.nav-cta{display:inline-flex;align-items:stretch;border:1px solid var(--gold);border-radius:4px;overflow:hidden;margin-left:4px}
+.nav-cta a{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:10px 15px;text-decoration:none;transition:.25s;white-space:nowrap}
 .nav-cta a.acad{background:transparent;color:var(--gold)}
 .nav-cta a.acad:hover{background:rgba(217,162,75,.14)}
 .nav-cta a.bookings{background:var(--gold);color:#13110B}
 .nav-cta a.bookings:hover{background:var(--gold-soft)}
-.nav-cta a.bookings .arr{margin-left:8px;transition:transform .3s}
+.nav-cta a.bookings .arr{margin-left:6px;transition:transform .3s}
 .nav-cta a.bookings:hover .arr{transform:translateX(3px)}
 .btn .arr{transition:transform .35s}
 .btn:hover .arr{transform:translateX(4px)}
@@ -87,7 +87,13 @@ header.scrolled{background:rgba(10,11,13,0.82);backdrop-filter:blur(14px);border
 .brand-text{display:flex;flex-direction:column;gap:5px;line-height:1}
 .brand .mark{font-family:var(--serif);font-size:21px;letter-spacing:0.05em}
 .brand .sub{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:var(--muted-2);text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links{display:flex;align-items:center;gap:22px}
+.nav-links a:not(.acad):not(.bookings){font-size:13.5px}
+@media(max-width:1080px){
+  .nav-links{gap:14px}
+  .nav-links a:not(.acad):not(.bookings){font-size:12.5px}
+  .nav-cta a{padding:9px 12px;font-size:9.5px}
+}
 .nav-links a{font-size:13.5px;color:var(--muted);transition:.25s;font-weight:500}
 .nav-links a:hover{color:var(--ink)}
 .menu-btn{display:none;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold)}
@@ -103,6 +109,7 @@ header.scrolled{background:rgba(10,11,13,0.82);backdrop-filter:blur(14px);border
 .hero-vignette{position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 40%,transparent 40%,rgba(0,0,0,0.78) 100%)}
 /* hero background photo slideshow */
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;animation:slowzoom 34s ease-in-out infinite alternate;transform-origin:60% 40%}
+.hero-bg-mobile{display:none}
 .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;opacity:0;animation:heroFade 28s infinite}
 .hero-bg img:nth-child(1){animation-delay:0s}
 .hero-bg img:nth-child(2){animation-delay:7s}
@@ -330,6 +337,11 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
   .brand{width:100%;justify-content:center}
   .brand-word{height:15px}
   .hero{min-height:86vh;text-align:center}
+  .hero-bg-desktop{display:none}
+  .hero-bg-mobile{display:block}
+  .hero-bg-mobile img{object-position:center top}
+  .hero-bg-mobile::after{background:linear-gradient(180deg,rgba(10,11,13,.55) 0%,rgba(10,11,13,.35) 30%,rgba(10,11,13,.82) 65%,rgba(10,11,13,.96) 100%)}
+  .hero-content{margin-top:auto}
   .hero h1{font-size:32px;max-width:100%;margin:16px auto 20px}
   .hero .eyebrow{justify-content:center}
   .hero-actions{flex-direction:column;align-items:stretch;gap:12px}
@@ -356,6 +368,29 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
   .lb{padding:10vh 14px}
   .dual-cta{grid-template-columns:1fr}
   .price-grid{max-width:100%}
+  /* --- mobile polish --- */
+  html,body{overflow-x:hidden;max-width:100%}
+  .wrap{padding:0 18px}
+  .btn{padding:14px 20px;min-height:46px}
+  .shead h2{font-size:30px}
+  .lead{font-size:15.5px}
+  .plan{padding:28px 22px}
+  .plan .amt{font-size:34px}
+  .plan .pname{font-size:23px}
+  .tabs{width:100%}
+  .tab{flex:1;padding:11px 8px;font-size:10.5px;text-align:center}
+  .work-tabs{width:100%}
+  .work-tab{flex:1;padding:10px 8px;font-size:10.5px}
+  .course{padding:0 20px 26px}
+  .course-img{width:calc(100% + 40px);margin:0 -20px 20px}
+  .course h3{font-size:22px}
+  .dual-card{padding:34px 24px;min-height:auto}
+  .dual-card h3{font-size:27px}
+  .clients{padding:44px 0}
+  .logo-chip{height:52px;padding:0 22px}
+  .logo-chip img{height:34px}
+  .lb-cap{font-size:10.5px}
+  .lb-foot{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto}
@@ -475,16 +510,24 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .fm-close:hover{border-color:var(--gold);color:var(--gold)}
 .fm-title{font-family:var(--serif);font-size:28px;font-weight:400;margin:6px 0 24px;line-height:1.1}
 @media(max-width:680px){
-  .form-modal{padding:16px 14px 90px;align-items:flex-start}
-  .fm-card{max-width:100%;min-height:0;border-radius:16px;border:1px solid var(--line);padding:34px 22px 30px;margin:0 0 20px}
-  .fm-title{font-size:23px;margin:6px 0 20px}
-  .fm-close{top:12px;right:12px;width:32px;height:32px}
-  .fm-card .field{margin-bottom:16px}
-  .fm-card .field label{font-size:9.5px;margin-bottom:6px}
-  .fm-card .field input,.fm-card .field select,.fm-card .field textarea{padding:11px 13px;font-size:14px}
-  .fm-card .field textarea{min-height:64px}
-  .fm-card .terms-check{margin:12px 0 14px;padding:12px}
-  .fm-card .terms-check label{font-size:12.5px}
+  .form-modal{padding:14px 12px 86px;align-items:flex-start}
+  .fm-card{max-width:100%;min-height:0;border-radius:14px;border:1px solid var(--line);padding:26px 18px 24px;margin:0 0 20px}
+  .fm-title{font-size:20px;margin:4px 0 14px}
+  .fm-close{top:10px;right:10px;width:28px;height:28px;font-size:13px}
+  .fm-card .eyebrow{font-size:9.5px}
+  .fm-card .field{margin-bottom:12px}
+  .fm-card .field label{font-size:9px;letter-spacing:.12em;margin-bottom:5px}
+  .fm-card .field input,.fm-card .field select,.fm-card .field textarea{padding:10px 12px;font-size:14px}
+  .fm-card .field textarea{min-height:56px}
+  .fm-card .terms-check{margin:10px 0 12px;padding:10px 12px;gap:9px}
+  .fm-card .terms-check label{font-size:12px}
+  .fm-card .btn{padding:13px 20px;font-size:11px}
+  .fm-card .tuition-banner{padding:11px 14px;margin-bottom:16px}
+  .fm-card .tb-amt{font-size:21px}
+  .fm-card .tb-label{font-size:9.5px}
+  .fm-card .pay-amt{font-size:30px}
+  .fm-card .bank-box{padding:12px 14px}
+  .fm-card .bank-box div{font-size:13px;padding:7px 0}
 }
 
 /* view-more-on-instagram button */
