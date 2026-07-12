@@ -1,6 +1,6 @@
 /* TooAmple Studios — service worker
    Bump CACHE_VERSION whenever you push new files, so visitors get the update. */
-const CACHE_VERSION = 'tooample-v1';
+const CACHE_VERSION = 'tooample-v2';
 
 const CORE_ASSETS = [
   '/',
@@ -8,6 +8,8 @@ const CORE_ASSETS = [
   '/book.html',
   '/academy.html',
   '/portfolio.html',
+  '/services.html',
+  '/packages.html',
   '/about.html',
   '/terms.html',
   '/styles.css',

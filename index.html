@@ -27,10 +27,11 @@
       <img class="brand-word" src="Images/ta-wordmark.png" alt="TooAmple" />
     </a>
     <nav class="nav-links">
-      <a href="#services">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="#pricing">Packages</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="packages.html">Packages</a>
       <div class="nav-cta">
         <a href="academy.html" class="acad">Academy</a>
         <a href="book.html" class="bookings">Book a session <span class="arr">→</span></a>
@@ -107,7 +108,7 @@
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES TEASER -->
 <section class="section" id="services">
   <div class="wrap">
     <div class="shead reveal">
@@ -142,6 +143,9 @@
         <h3>Video Coverage</h3>
         <p>Cinematic films for events, launches &amp; brands — scripted, shot &amp; edited.</p>
       </div>
+    </div>
+    <div class="work-more">
+      <a href="services.html" class="btn btn-ghost">All services <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -185,7 +189,7 @@
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- PACKAGES TEASER -->
 <section class="section pricing" id="pricing">
   <div class="wrap">
     <div class="shead reveal">
@@ -193,420 +197,10 @@
         <span class="eyebrow">Investment</span>
         <h2 style="margin-top:20px">Packages &amp; pricing.</h2>
       </div>
-      <p class="lead sub">Transparent, all-inclusive packages. Custom quotes available for multi-day productions.</p>
+      <p class="lead sub">Transparent photography packages, and custom quotes for film and weddings.</p>
     </div>
-
-    <div class="reveal">
-      <div class="tabs">
-        <button class="tab active" data-tab="photo" onclick="switchTab('photo')">Photography</button>
-        <button class="tab" data-tab="video" onclick="switchTab('video')">Cinematography</button>
-      </div>
-    </div>
-
-    <!-- PHOTOGRAPHY (with sub-menu) -->
-    <div id="photo">
-      <div class="subtabs">
-        <button class="subtab active" data-sub="studio" onclick="switchSub('photo','studio')">Studio Photography</button>
-        <button class="subtab" data-sub="location" onclick="switchSub('photo','location')">Location Shoot</button>
-        <button class="subtab" data-sub="prewed" onclick="switchSub('photo','prewed')">Pre-Wedding</button>
-        <button class="subtab" data-sub="wedding" onclick="switchSub('photo','wedding')">Wedding</button>
-      </div>
-
-      <!-- Studio Photography -->
-      <div class="price-grid sub-pane" id="studio">
-        <div class="plan">
-          <span class="cat">Studio · 1 Outfit</span>
-          <div class="pname">Single Look</div>
-          <p class="desc">One styled outfit, studio-lit and directed.</p>
-          <div class="amt"><span class="cur">₦</span>100,000</div>
-          <div class="per">4 edited copies</div>
-          <ul>
-            <li>1 outfit / look</li>
-            <li>4 fully-edited high-res copies</li>
-            <li>Studio lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Studio%20Session&pkg=Studio%20%E2%80%94%20Single%20Look%20%281%20outfit%2C%204%20copies%29%20%E2%80%94%20%E2%82%A6100%2C000" class="btn btn-ghost">Select</a></div>
-        </div>
-
-        <div class="plan feat">
-          <span class="badge">Most booked</span>
-          <span class="cat">Studio · 2 Outfits</span>
-          <div class="pname">Double Look</div>
-          <p class="desc">Two outfits for more range and variety.</p>
-          <div class="amt"><span class="cur">₦</span>200,000</div>
-          <div class="per">8 edited copies</div>
-          <ul>
-            <li>2 outfits / looks</li>
-            <li>8 fully-edited high-res copies</li>
-            <li>Multiple backdrops</li>
-            <li>Studio lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Studio%20Session&pkg=Studio%20%E2%80%94%20Double%20Look%20%282%20outfits%2C%208%20copies%29%20%E2%80%94%20%E2%82%A6200%2C000" class="btn btn-gold">Select <span class="arr">→</span></a></div>
-        </div>
-
-        <div class="plan">
-          <span class="cat">Studio · 3 Outfits</span>
-          <div class="pname">Triple Look</div>
-          <p class="desc">Three outfits — the full studio session.</p>
-          <div class="amt"><span class="cur">₦</span>280,000</div>
-          <div class="per">12 edited copies</div>
-          <ul>
-            <li>3 outfits / looks</li>
-            <li>12 fully-edited high-res copies</li>
-            <li>Multiple backdrops &amp; setups</li>
-            <li>Priority retouching</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Studio%20Session&pkg=Studio%20%E2%80%94%20Triple%20Look%20%283%20outfits%2C%2012%20copies%29%20%E2%80%94%20%E2%82%A6280%2C000" class="btn btn-ghost">Select</a></div>
-        </div>
-      </div>
-
-      <!-- Pre-Wedding -->
-      <div class="price-grid sub-pane" id="prewed" style="display:none">
-        <div class="plan">
-          <span class="cat">Pre-Wedding · 1 outfit / look</span>
-          <div class="pname">Single Look</div>
-          <p class="desc">One styled look for the two of you.</p>
-          <div class="amt quote-amt">See price</div>
-          <div class="per">20 edited images</div>
-          <ul>
-            <li>1 outfit / look</li>
-            <li>20 edited images</li>
-            <li>Professional lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Single Look')" class="btn btn-ghost">Book this</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Most booked</span>
-          <span class="cat">Pre-Wedding · 2 outfits / looks</span>
-          <div class="pname">Double Look</div>
-          <p class="desc">Two looks, fully directed.</p>
-          <div class="amt quote-amt">See price</div>
-          <div class="per">40 edited images</div>
-          <ul>
-            <li>2 outfits / looks</li>
-            <li>40 edited images</li>
-            <li>Professional lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Double Look')" class="btn btn-gold">Book this <span class="arr">→</span></a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Pre-Wedding · 3 outfits / looks</span>
-          <div class="pname">Triple Look</div>
-          <p class="desc">Three looks — the complete love story.</p>
-          <div class="amt quote-amt">See price</div>
-          <div class="per">60 edited images</div>
-          <ul>
-            <li>3 outfits / looks</li>
-            <li>60 edited images</li>
-            <li>Professional lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Triple Look')" class="btn btn-ghost">Book this</a></div>
-        </div>
-      </div>
-
-      <!-- Location Shoot (placeholder pricing) -->
-      <div class="price-grid sub-pane" id="location" style="display:none">
-        <div class="plan">
-          <span class="cat">Location · 1 outfit / look</span>
-          <div class="pname">Single Look</div>
-          <p class="desc">One outfit, shot on location.</p>
-          <div class="amt quote-amt">See price</div>
-          <div class="per">6 edited copies</div>
-          <ul>
-            <li>1 outfit / look</li>
-            <li>6 edited copies</li>
-            <li>Professional lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Single Look')" class="btn btn-ghost">Book this</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Most booked</span>
-          <span class="cat">Location · 2 outfits / looks</span>
-          <div class="pname">Double Look</div>
-          <p class="desc">Two outfits for more range.</p>
-          <div class="amt quote-amt">See price</div>
-          <div class="per">12 edited copies</div>
-          <ul>
-            <li>2 outfits / looks</li>
-            <li>12 edited copies</li>
-            <li>Professional lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Double Look')" class="btn btn-gold">Book this <span class="arr">→</span></a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Location · 3 outfits / looks</span>
-          <div class="pname">Triple Look</div>
-          <p class="desc">Three outfits — the full location session.</p>
-          <div class="amt quote-amt">See price</div>
-          <div class="per">20 edited copies</div>
-          <ul>
-            <li>3 outfits / looks</li>
-            <li>20 edited copies</li>
-            <li>Professional lighting &amp; direction</li>
-            <li>Online gallery delivery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Triple Look')" class="btn btn-ghost">Book this</a></div>
-        </div>
-      </div>
-
-      <!-- Wedding (Photography) -->
-      <div class="price-grid sub-pane" id="wedding" style="display:none">
-        <p class="group-head">Photography only</p>
-        <div class="plan">
-          <span class="cat">Wedding · Bronze</span>
-          <div class="pname">Bronze</div>
-          <p class="desc">Essential wedding-day photography.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo coverage</div>
-          <ul>
-            <li>1 photographer</li>
-            <li>Up to 6 hours coverage</li>
-            <li>150 edited high-res images</li>
-            <li>Private online gallery</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Photography&pkg=Wedding%20Photo%20%E2%80%94%20Bronze%20%E2%80%94%20%E2%82%A6400%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Most booked</span>
-          <span class="cat">Wedding · Silver</span>
-          <div class="pname">Silver</div>
-          <p class="desc">Two shooters for fuller coverage.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo coverage</div>
-          <ul>
-            <li>2 photographers</li>
-            <li>Up to 10 hours coverage</li>
-            <li>300 edited high-res images</li>
-            <li>Premium printed album</li>
-            <li>Private online gallery</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Photography&pkg=Wedding%20Photo%20%E2%80%94%20Silver%20%E2%80%94%20%E2%82%A6800%2C000" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Wedding · Gold</span>
-          <div class="pname">Gold</div>
-          <p class="desc">The complete photography experience.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo coverage</div>
-          <ul>
-            <li>2 photographers + assistant</li>
-            <li>Full-day coverage</li>
-            <li>500+ edited high-res images</li>
-            <li>Premium album + framed prints</li>
-            <li>Next-day sneak peek</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Photography&pkg=Wedding%20Photo%20%E2%80%94%20Gold%20%E2%80%94%20%E2%82%A61%2C000%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-
-        <p class="group-head divider">Photo + Video — complete coverage</p>
-        <div class="plan">
-          <span class="cat">Complete · Bronze</span>
-          <div class="pname">Bronze</div>
-          <p class="desc">Photo &amp; film, the essentials.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo + Video</div>
-          <ul>
-            <li>1 photographer + 1 cinematographer</li>
-            <li>Up to 6 hours coverage</li>
-            <li>150 edited images</li>
-            <li>3-min highlight film</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Photo%20%2B%20Video&pkg=Wedding%20Photo%2BVideo%20%E2%80%94%20Bronze%20%E2%80%94%20%E2%82%A6800%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Best value</span>
-          <span class="cat">Complete · Silver</span>
-          <div class="pname">Silver</div>
-          <p class="desc">Fuller photo &amp; film coverage.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo + Video</div>
-          <ul>
-            <li>2 photographers + 1 cinematographer</li>
-            <li>Up to 10 hours coverage</li>
-            <li>300 edited images</li>
-            <li>5-min film + teaser</li>
-            <li>Premium album</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Photo%20%2B%20Video&pkg=Wedding%20Photo%2BVideo%20%E2%80%94%20Silver%20%E2%80%94%20%E2%82%A61%2C000%2C000" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Complete · Gold</span>
-          <div class="pname">Gold</div>
-          <p class="desc">Full crew, the signature package.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo + Video</div>
-          <ul>
-            <li>2 photographers + 2 cinematographers</li>
-            <li>Full-day coverage</li>
-            <li>500+ edited images</li>
-            <li>7-min feature film + teaser</li>
-            <li>Drone coverage + premium album</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Photo%20%2B%20Video&pkg=Wedding%20Photo%2BVideo%20%E2%80%94%20Gold%20%E2%80%94%20%E2%82%A61%2C500%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CINEMATOGRAPHY (with sub-menu) -->
-    <div id="video" style="display:none">
-      <div class="subtabs">
-        <button class="subtab active" data-sub="music" onclick="switchSub('video','music')">Music Video Shoot</button>
-        <button class="subtab" data-sub="commercial" onclick="switchSub('video','commercial')">Commercial Shoot</button>
-        <button class="subtab" data-sub="weddingcov" onclick="switchSub('video','weddingcov')">Wedding Coverage</button>
-      </div>
-
-      <!-- Music Video Shoot -->
-      <div class="price-grid sub-pane" id="music">
-        <div class="plan">
-          <span class="cat">Music · Viral</span>
-          <div class="pname">Viral Video</div>
-          <p class="desc">Short-form vertical built to travel.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Per video</div>
-          <ul>
-            <li>1 location, single setup</li>
-            <li>Vertical / short-form edit</li>
-            <li>Fast turnaround</li>
-            <li>Colour grade</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Music%20Video&pkg=Music%20%E2%80%94%20Viral%20Video%20%E2%80%94%20%E2%82%A6350%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Music · Visualizer</span>
-          <div class="pname">Visualizer</div>
-          <p class="desc">Looping, lyric-friendly visual piece.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Per video</div>
-          <ul>
-            <li>Single concept / setup</li>
-            <li>Looped or animated visual</li>
-            <li>Lyric-ready</li>
-            <li>Colour grade</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Music%20Video&pkg=Music%20%E2%80%94%20Visualizer%20%E2%80%94%20%E2%82%A6250%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Signature</span>
-          <span class="cat">Music · Official</span>
-          <div class="pname">Official Music Video</div>
-          <p class="desc">Full-concept, multi-scene production.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Per video</div>
-          <ul>
-            <li>Concept, treatment &amp; storyboard</li>
-            <li>Full crew &amp; multiple locations</li>
-            <li>Talent &amp; styling direction</li>
-            <li>Edit, grade &amp; sound design</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Music%20Video&pkg=Music%20%E2%80%94%20Official%20Video%20%E2%80%94%20%E2%82%A61%2C200%2C000" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
-        </div>
-        <p class="pane-note">Music video prices are placeholders — update anytime.</p>
-      </div>
-
-      <!-- Commercial Shoot -->
-      <div class="price-grid sub-pane" id="commercial" style="display:none">
-        <div class="plan">
-          <span class="cat">Commercial · Promo</span>
-          <div class="pname">Promo / Event Film</div>
-          <p class="desc">Cinematic film for launches &amp; events.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Per shoot · up to 6 hrs</div>
-          <ul>
-            <li>Single cinematographer</li>
-            <li>Up to 6 hours coverage</li>
-            <li>60–90 sec film</li>
-            <li>Licensed track &amp; grade</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Commercial&pkg=Commercial%20%E2%80%94%20Promo%20/%20Event%20%E2%80%94%20%E2%82%A6450%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Most booked</span>
-          <span class="cat">Commercial · Brand</span>
-          <div class="pname">Brand Commercial</div>
-          <p class="desc">Concept-led commercial for brands.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">1–2 day shoot</div>
-          <ul>
-            <li>Concept &amp; production crew</li>
-            <li>1–2 day shoot</li>
-            <li>30–60 sec hero + cutdowns</li>
-            <li>Grade &amp; sound design</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Commercial&pkg=Commercial%20%E2%80%94%20Brand%20Commercial%20%E2%80%94%20%E2%82%A61%2C200%2C000" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Commercial · Campaign</span>
-          <div class="pname">Full Campaign</div>
-          <p class="desc">End-to-end campaign production.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Per production · custom</div>
-          <ul>
-            <li>Script, storyboard &amp; direction</li>
-            <li>Full crew, talent &amp; locations</li>
-            <li>Multi-deliverable suite</li>
-            <li>Usage &amp; licensing included</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Commercial&pkg=Commercial%20%E2%80%94%20Full%20Campaign%20%E2%80%94%20%E2%82%A62%2C500%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <p class="pane-note">Commercial prices are placeholders — update anytime.</p>
-      </div>
-
-      <!-- Wedding Coverage (Video) -->
-      <div class="price-grid sub-pane" id="weddingcov" style="display:none">
-        <div class="plan">
-          <span class="cat">Coverage · Bronze</span>
-          <div class="pname">Bronze</div>
-          <p class="desc">Essential wedding film coverage.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Video coverage</div>
-          <ul>
-            <li>1 cinematographer</li>
-            <li>Up to 6 hours coverage</li>
-            <li>3-min highlight film</li>
-            <li>Licensed track &amp; grade</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Video%20Coverage&pkg=Wedding%20Video%20%E2%80%94%20Bronze%20%E2%80%94%20%E2%82%A6500%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Most booked</span>
-          <span class="cat">Coverage · Silver</span>
-          <div class="pname">Silver</div>
-          <p class="desc">Two-person crew, fuller film.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Video coverage</div>
-          <ul>
-            <li>2-person film crew</li>
-            <li>Up to 10 hours coverage</li>
-            <li>5-min film + teaser</li>
-            <li>Gimbal coverage &amp; grade</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Video%20Coverage&pkg=Wedding%20Video%20%E2%80%94%20Silver%20%E2%80%94%20%E2%82%A6900%2C000" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Coverage · Gold</span>
-          <div class="pname">Gold</div>
-          <p class="desc">The full cinematic wedding film.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Video coverage</div>
-          <ul>
-            <li>Full film crew</li>
-            <li>Full-day coverage</li>
-            <li>7-min feature film + teaser</li>
-            <li>Drone &amp; gimbal</li>
-            <li>Grade &amp; sound design</li>
-          </ul>
-          <div class="pbtn"><a href="book.html?type=Wedding%20%E2%80%94%20Video%20Coverage&pkg=Wedding%20Video%20%E2%80%94%20Gold%20%E2%80%94%20%E2%82%A61%2C300%2C000" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <p class="pane-note">Wedding video prices are placeholders — update anytime.</p>
-      </div>
+    <div class="work-more" style="margin-top:0">
+      <a href="packages.html" class="btn btn-gold">View all packages <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -641,10 +235,10 @@
       <div class="foot-grid">
         <div class="fcol">
           <h4>Studio</h4>
-          <a href="index.html#services">Services</a>
+          <a href="services.html">Services</a>
           <a href="about.html">About</a>
           <a href="portfolio.html">Portfolio</a>
-          <a href="index.html#pricing">Packages</a>
+          <a href="packages.html">Packages</a>
           <a href="academy.html">Academy</a>
           <a href="terms.html">Terms &amp; Conditions</a>
         </div>
@@ -751,9 +345,6 @@ function openReel(id){
   addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))close();});
 })();
 
-// pricing
-function switchTab(t){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));document.getElementById('photo').style.display=t==='photo'?'block':'none';document.getElementById('video').style.display=t==='video'?'block':'none';}
-function switchSub(scope,s){const r=document.getElementById(scope);r.querySelectorAll('.subtab').forEach(b=>b.classList.toggle('active',b.dataset.sub===s));r.querySelectorAll('.sub-pane').forEach(p=>p.style.display=p.id===s?'grid':'none');}
 // lightbox
 const tiles=[...document.querySelectorAll('#gallery .tile')];
 const lb=document.getElementById('lb'),lbMedia=document.getElementById('lbMedia'),lbCap=document.getElementById('lbCap'),lbIg=document.getElementById('lbIg'),lbCount=document.getElementById('lbCount');

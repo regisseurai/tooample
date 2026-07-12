@@ -363,6 +363,8 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
   .foot-grid{grid-template-columns:1fr;gap:30px;text-align:center;width:100%;max-width:100%}
   .fcol{text-align:center}
   .foot-bot{flex-direction:column;gap:12px;text-align:center;justify-content:center}
+  .foot-badge{width:14px;height:14px;margin-right:7px}
+  .foot-copy{font-size:10px}
   .gallery{grid-template-columns:repeat(2,1fr);gap:6px}
   .lb-prev{left:6px}
   .lb-next{right:6px}
