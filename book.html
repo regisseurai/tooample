@@ -85,7 +85,7 @@
         <button class="subtab active" data-sub="studio" onclick="switchSub('photo','studio')">Studio Photography</button>
         <button class="subtab" data-sub="location" onclick="switchSub('photo','location')">Location Shoot</button>
         <button class="subtab" data-sub="prewed" onclick="switchSub('photo','prewed')">Pre-Wedding</button>
-        <button class="subtab" data-sub="wedding" onclick="switchSub('photo','wedding')">Wedding</button>
+        <button class="subtab" data-sub="wedding" onclick="switchSub('photo','wedding')">Wedding Coverage</button>
       </div>
 
       <!-- Studio Photography -->
@@ -235,58 +235,10 @@
 
       <!-- Wedding (Photography) -->
       <div class="price-grid sub-pane" id="wedding" style="display:none">
-        <p class="group-head">Photography only</p>
-        <div class="plan">
-          <span class="cat">Wedding · Bronze</span>
-          <div class="pname">Bronze</div>
-          <p class="desc">Essential wedding-day photography.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo coverage</div>
-          <ul>
-            <li>1 photographer</li>
-            <li>Up to 6 hours coverage</li>
-            <li>150 edited high-res images</li>
-            <li>Private online gallery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Photo — Bronze — ₦400,000')" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-        <div class="plan feat">
-          <span class="badge">Most booked</span>
-          <span class="cat">Wedding · Silver</span>
-          <div class="pname">Silver</div>
-          <p class="desc">Two shooters for fuller coverage.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo coverage</div>
-          <ul>
-            <li>2 photographers</li>
-            <li>Up to 10 hours coverage</li>
-            <li>300 edited high-res images</li>
-            <li>Premium printed album</li>
-            <li>Private online gallery</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Photo — Silver — ₦800,000')" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
-        </div>
-        <div class="plan">
-          <span class="cat">Wedding · Gold</span>
-          <div class="pname">Gold</div>
-          <p class="desc">The complete photography experience.</p>
-          <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Photo coverage</div>
-          <ul>
-            <li>2 photographers + assistant</li>
-            <li>Full-day coverage</li>
-            <li>500+ edited high-res images</li>
-            <li>Premium album + framed prints</li>
-            <li>Next-day sneak peek</li>
-          </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Photo — Gold — ₦1,000,000')" class="btn btn-ghost">Request a quote</a></div>
-        </div>
-
-        <p class="group-head divider">Photo + Video — complete coverage</p>
         <div class="plan">
           <span class="cat">Complete · Bronze</span>
           <div class="pname">Bronze</div>
-          <p class="desc">Photo &amp; film, the essentials.</p>
+          <p class="desc">Photo &amp; film coverage — the essentials.</p>
           <div class="amt quote-amt">Request a quote</div>
           <div class="per">Photo + Video</div>
           <ul>
@@ -294,14 +246,15 @@
             <li>Up to 6 hours coverage</li>
             <li>150 edited images</li>
             <li>3-min highlight film</li>
+            <li>Private online gallery</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Photo+Video — Bronze — ₦800,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="book.html?quote=Wedding%20Coverage%20%E2%80%94%20Bronze" class="btn btn-ghost">Request a quote</a></div>
         </div>
         <div class="plan feat">
-          <span class="badge">Best value</span>
+          <span class="badge">Most booked</span>
           <span class="cat">Complete · Silver</span>
           <div class="pname">Silver</div>
-          <p class="desc">Fuller photo &amp; film coverage.</p>
+          <p class="desc">Fuller photo &amp; film coverage of the day.</p>
           <div class="amt quote-amt">Request a quote</div>
           <div class="per">Photo + Video</div>
           <ul>
@@ -309,14 +262,14 @@
             <li>Up to 10 hours coverage</li>
             <li>300 edited images</li>
             <li>5-min film + teaser</li>
-            <li>Premium album</li>
+            <li>Premium printed album</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Photo+Video — Silver — ₦1,000,000')" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
+          <div class="pbtn"><a href="book.html?quote=Wedding%20Coverage%20%E2%80%94%20Silver" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
         </div>
         <div class="plan">
           <span class="cat">Complete · Gold</span>
           <div class="pname">Gold</div>
-          <p class="desc">Full crew, the signature package.</p>
+          <p class="desc">Full crew — the signature wedding package.</p>
           <div class="amt quote-amt">Request a quote</div>
           <div class="per">Photo + Video</div>
           <ul>
@@ -326,8 +279,9 @@
             <li>7-min feature film + teaser</li>
             <li>Drone coverage + premium album</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Photo+Video — Gold — ₦1,500,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="book.html?quote=Wedding%20Coverage%20%E2%80%94%20Gold" class="btn btn-ghost">Request a quote</a></div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -438,50 +392,50 @@
       <!-- Wedding Coverage (Video) -->
       <div class="price-grid sub-pane" id="weddingcov" style="display:none">
         <div class="plan">
-          <span class="cat">Coverage · Bronze</span>
+          <span class="cat">Complete · Bronze</span>
           <div class="pname">Bronze</div>
-          <p class="desc">Essential wedding film coverage.</p>
+          <p class="desc">Photo &amp; film coverage — the essentials.</p>
           <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Video coverage</div>
+          <div class="per">Photo + Video</div>
           <ul>
-            <li>1 cinematographer</li>
+            <li>1 photographer + 1 cinematographer</li>
             <li>Up to 6 hours coverage</li>
+            <li>150 edited images</li>
             <li>3-min highlight film</li>
-            <li>Licensed track &amp; grade</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Video — Bronze — ₦500,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="book.html?quote=Wedding%20Coverage%20%E2%80%94%20Bronze" class="btn btn-ghost">Request a quote</a></div>
         </div>
         <div class="plan feat">
           <span class="badge">Most booked</span>
-          <span class="cat">Coverage · Silver</span>
+          <span class="cat">Complete · Silver</span>
           <div class="pname">Silver</div>
-          <p class="desc">Two-person crew, fuller film.</p>
+          <p class="desc">Fuller photo &amp; film coverage of the day.</p>
           <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Video coverage</div>
+          <div class="per">Photo + Video</div>
           <ul>
-            <li>2-person film crew</li>
+            <li>2 photographers + 1 cinematographer</li>
             <li>Up to 10 hours coverage</li>
+            <li>300 edited images</li>
             <li>5-min film + teaser</li>
-            <li>Gimbal coverage &amp; grade</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Video — Silver — ₦900,000')" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
+          <div class="pbtn"><a href="book.html?quote=Wedding%20Coverage%20%E2%80%94%20Silver" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
         </div>
         <div class="plan">
-          <span class="cat">Coverage · Gold</span>
+          <span class="cat">Complete · Gold</span>
           <div class="pname">Gold</div>
-          <p class="desc">The full cinematic wedding film.</p>
+          <p class="desc">Full crew — the signature wedding package.</p>
           <div class="amt quote-amt">Request a quote</div>
-          <div class="per">Video coverage</div>
+          <div class="per">Photo + Video</div>
           <ul>
-            <li>Full film crew</li>
+            <li>2 photographers + 2 cinematographers</li>
             <li>Full-day coverage</li>
+            <li>500+ edited images</li>
             <li>7-min feature film + teaser</li>
-            <li>Drone &amp; gimbal</li>
-            <li>Grade &amp; sound design</li>
+            <li>Drone &amp; gimbal coverage</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Wedding Video — Gold — ₦1,300,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="book.html?quote=Wedding%20Coverage%20%E2%80%94%20Gold" class="btn btn-ghost">Request a quote</a></div>
         </div>
-        <p class="pane-note">Wedding video prices are placeholders — update anytime.</p>
+      </div>
       </div>
     </div>
   </div>
