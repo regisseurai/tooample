@@ -187,7 +187,7 @@
           <div class="pay-or"><span>or pay by bank transfer</span></div>
           <div class="bank-box">
             <div><span class="k">Bank</span><span class="v">Stanbic IBTC Bank</span></div>
-            <div><span class="k">Account number</span><span class="v">0072762320</span></div>
+            <div><span class="k">Account number</span><span class="v acct"><span class="acct-no">0072762320</span><button class="copy-btn" onclick="copyVal(this,'0072762320')" aria-label="Copy account number" title="Copy account number"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h8"/></svg><span class="copied">Copied</span></button></span></div>
             <div><span class="k">Account name</span><span class="v">Temidayo Omoniyi Fredrick</span></div>
             <div><span class="k">Amount</span><span class="v" id="pay_amt_a2">₦0</span></div>
           </div>
@@ -395,7 +395,7 @@ document.addEventListener('change',e=>{if(e.target.type==='checkbox')clearErr(e.
    2. Create a new form -> copy its ID (looks like: xdkoqwer)
    3. Paste it between the quotes:
    ============================================================ */
-const FORMSPREE_ID = '';   // <-- paste your Formspree form ID here
+const FORMSPREE_ID = 'xvzeoden';
 
 function sendMail(subject, data){
   if(!FORMSPREE_ID){console.warn('Formspree ID not set — email not sent');return Promise.resolve();}
@@ -404,6 +404,21 @@ function sendMail(subject, data){
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify(Object.assign({_subject:subject}, data))
   }).catch(e=>console.warn('Email failed',e));
+}
+
+// copy-to-clipboard (account number)
+function copyVal(btn,val){
+  const done=()=>{btn.classList.add('ok');setTimeout(()=>btn.classList.remove('ok'),1600);};
+  if(navigator.clipboard&&window.isSecureContext){
+    navigator.clipboard.writeText(val).then(done).catch(()=>fallback());
+  } else { fallback(); }
+  function fallback(){
+    const t=document.createElement('textarea');
+    t.value=val; t.style.position='fixed'; t.style.opacity='0';
+    document.body.appendChild(t); t.select();
+    try{document.execCommand('copy');done();}catch(e){}
+    document.body.removeChild(t);
+  }
 }
 </script>
 </body>

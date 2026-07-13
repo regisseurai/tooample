@@ -452,6 +452,15 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .bank-box div:last-child{border:none}
 .bank-box .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
 .bank-box .v{color:var(--ink);text-align:right}
+/* copy-to-clipboard (account number) */
+.bank-box .acct{display:inline-flex;align-items:center;gap:9px;justify-content:flex-end}
+.acct-no{font-family:var(--mono);letter-spacing:.06em}
+.copy-btn{position:relative;display:inline-grid;place-items:center;width:28px;height:28px;flex:none;border:1px solid var(--line);border-radius:5px;background:none;color:var(--muted);cursor:pointer;transition:.2s;padding:0}
+.copy-btn svg{width:14px;height:14px}
+.copy-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(217,162,75,.08)}
+.copy-btn.ok{border-color:var(--gold);color:var(--gold);background:rgba(217,162,75,.14)}
+.copy-btn .copied{position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%) translateX(4px);white-space:nowrap;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--bg);border:1px solid var(--gold);padding:4px 8px;border-radius:4px;opacity:0;pointer-events:none;transition:.25s}
+.copy-btn.ok .copied{opacity:1;transform:translateY(-50%) translateX(0)}
 .btn-link{display:block;width:100%;text-align:center;margin-top:16px;background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.25s}
 .btn-link:hover{color:var(--gold)}
 
