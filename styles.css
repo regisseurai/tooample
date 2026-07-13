@@ -363,7 +363,7 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
   .foot-grid{grid-template-columns:1fr;gap:30px;text-align:center;width:100%;max-width:100%}
   .fcol{text-align:center}
   .foot-bot{flex-direction:column;gap:12px;text-align:center;justify-content:center}
-  .foot-badge{width:14px;height:14px;margin-right:7px}
+  .foot-badge{display:none}
   .foot-copy{font-size:10px}
   .gallery{grid-template-columns:repeat(2,1fr);gap:6px}
   .lb-prev{left:6px}
@@ -466,6 +466,12 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .quote-amt{font-family:var(--serif);font-size:26px;color:var(--gold-soft);font-style:italic;line-height:1.1}
 .from-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-top:20px}
 .from-label + .amt{margin-top:2px}
+
+/* quote request modal */
+.quote-pkg{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;margin-bottom:20px;border:1px solid var(--line);background:var(--bg);border-radius:6px}
+.quote-pkg .qp-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
+.quote-pkg .qp-name{font-family:var(--serif);font-size:17px;color:var(--gold-soft);text-align:right;line-height:1.2}
+.quote-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted-2);margin-top:14px;text-align:center;line-height:1.6}
 
 /* T&C checkbox */
 .terms-check{display:flex;align-items:flex-start;gap:12px;margin:18px 0 20px;padding:16px;background:rgba(217,162,75,.05);border:1px solid rgba(217,162,75,.2);border-radius:4px}

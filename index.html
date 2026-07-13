@@ -87,7 +87,6 @@
     <div class="hero-actions">
       <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
       <a href="academy.html" class="btn btn-outline">Apply to Academy</a>
-      <button id="reelBtn" class="btn btn-ghost" style="display:none">▶ Watch the reel</button>
     </div>
   </div>
   <div class="scroll-cue">Scroll</div>
@@ -329,8 +328,6 @@ const REEL_ID = 'z0d95Mfuy88';
 if(REEL_ID){
   const first=document.querySelector('#videoGrid .vcard');
   if(first && !first.dataset.yt) initVideoCard(first, REEL_ID);
-  const btn=document.getElementById('reelBtn');
-  if(btn){btn.style.display='inline-flex';btn.addEventListener('click',e=>{e.preventDefault();openReel(REEL_ID);});}
 }
 function openReel(id){
   const m=document.getElementById('reelModal'),f=document.getElementById('reelFrame');
