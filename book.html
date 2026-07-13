@@ -725,12 +725,37 @@ function payWithPaystack(){
       {display_name:'Phone',variable_name:'phone',value:phone},
       {display_name:'Preferred date',variable_name:'date',value:date||'—'}
     ]},
-    callback:function(res){showConfirm('paid',res.reference);},
+    callback:function(res){
+      sendMail('PAID via Paystack — '+curPkg, {
+        type:'PAYSTACK PAYMENT (confirmed)',
+        package:curPkg,
+        amount:'\u20a6'+curAmount.toLocaleString(),
+        reference:res.reference,
+        name:name, email:email, phone:phone,
+        session_type:document.getElementById('b_type').value,
+        preferred_date:document.getElementById('b_date').value||'Not specified'
+      });
+      showConfirm('paid',res.reference);
+    },
     onClose:function(){}
   });
   handler.openIframe();
 }
-function confirmTransfer(){showConfirm('transfer','');}
+function confirmTransfer(){
+  sendMail('BANK TRANSFER declared — '+curPkg, {
+    type:'BANK TRANSFER (awaiting confirmation)',
+    package:curPkg,
+    amount:'\u20a6'+curAmount.toLocaleString(),
+    name:document.getElementById('b_name').value.trim(),
+    email:document.getElementById('b_email').value.trim(),
+    phone:document.getElementById('b_phone').value.trim(),
+    session_type:document.getElementById('b_type').value,
+    preferred_date:document.getElementById('b_date').value||'Not specified',
+    message:document.getElementById('b_msg').value.trim(),
+    ACTION_REQUIRED:'Check your Stanbic account for this transfer, then confirm the booking with the client.'
+  });
+  showConfirm('transfer','');
+}
 function backToForm(){document.getElementById('payView').style.display='none';document.getElementById('formView').style.display='block';}
 function showConfirm(mode,ref){
   const name=document.getElementById('b_name').value.trim();
@@ -803,6 +828,15 @@ function submitQuote(){
     ['q_email','Please enter a valid email address', v=>v&&isEmail(v)],
     ['q_phone','Please enter your phone number']
   ])) return;
+  sendMail('New quote request — '+document.getElementById('q_pkgName').textContent, {
+    type:'QUOTE REQUEST',
+    package:document.getElementById('q_pkgName').textContent,
+    name:name, email:email,
+    phone:document.getElementById('q_phone').value.trim(),
+    date:date||'Not specified',
+    budget:document.getElementById('q_budget').value,
+    message:document.getElementById('q_msg').value.trim()
+  });
   document.getElementById('qc_name').textContent=name.split(' ')[0];
   document.getElementById('qc_pkg').textContent=document.getElementById('q_pkgName').textContent;
   document.getElementById('qc_date').textContent=date?new Date(date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'To be confirmed';
@@ -843,6 +877,23 @@ const isEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 // clear the error as soon as the user starts fixing it
 document.addEventListener('input',e=>{if(e.target.matches('.field input,.field select,.field textarea'))clearErr(e.target);});
 document.addEventListener('change',e=>{if(e.target.type==='checkbox')clearErr(e.target);});
+
+/* ============================================================
+   EMAIL NOTIFICATIONS  —  set your Formspree form ID below.
+   1. Go to formspree.io -> sign up (free) with tooample@gmail.com
+   2. Create a new form -> copy its ID (looks like: xdkoqwer)
+   3. Paste it between the quotes:
+   ============================================================ */
+const FORMSPREE_ID = '';   // <-- paste your Formspree form ID here
+
+function sendMail(subject, data){
+  if(!FORMSPREE_ID){console.warn('Formspree ID not set — email not sent');return Promise.resolve();}
+  return fetch('https://formspree.io/f/'+FORMSPREE_ID,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(Object.assign({_subject:subject}, data))
+  }).catch(e=>console.warn('Email failed',e));
+}
 </script>
 </body>
 </html>

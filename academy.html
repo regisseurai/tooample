@@ -309,12 +309,35 @@ function payApply(){
       {display_name:'Phone',variable_name:'phone',value:phone},
       {display_name:'Level',variable_name:'level',value:level}
     ]},
-    callback:function(res){showApplyConfirm('paid',res.reference);},
+    callback:function(res){
+      sendMail('ACADEMY — PAID via Paystack — '+aCourse, {
+        type:'ACADEMY ENROLMENT (paid)',
+        course:aCourse,
+        tuition:'\u20a6'+aAmount.toLocaleString(),
+        reference:res.reference,
+        name:name, email:email, phone:phone,
+        level:level
+      });
+      showApplyConfirm('paid',res.reference);
+    },
     onClose:function(){}
   });
   handler.openIframe();
 }
-function confirmApplyTransfer(){showApplyConfirm('transfer','');}
+function confirmApplyTransfer(){
+  sendMail('ACADEMY — bank transfer declared — '+aCourse, {
+    type:'ACADEMY APPLICATION — BANK TRANSFER (awaiting confirmation)',
+    course:aCourse,
+    tuition:'\u20a6'+aAmount.toLocaleString(),
+    name:document.getElementById('a_name').value.trim(),
+    email:document.getElementById('a_email').value.trim(),
+    phone:document.getElementById('a_phone').value.trim(),
+    level:document.getElementById('a_level').value,
+    goals:document.getElementById('a_msg').value.trim(),
+    ACTION_REQUIRED:'Check your Stanbic account for this transfer, then confirm enrolment.'
+  });
+  showApplyConfirm('transfer','');
+}
 function backToApply(){document.getElementById('applyPayView').style.display='none';document.getElementById('applyFormView').style.display='block';}
 function showApplyConfirm(mode,ref){
   const name=document.getElementById('a_name').value.trim();const first=name.split(' ')[0]||'there';
@@ -365,6 +388,23 @@ const isEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 // clear the error as soon as the user starts fixing it
 document.addEventListener('input',e=>{if(e.target.matches('.field input,.field select,.field textarea'))clearErr(e.target);});
 document.addEventListener('change',e=>{if(e.target.type==='checkbox')clearErr(e.target);});
+
+/* ============================================================
+   EMAIL NOTIFICATIONS  —  set your Formspree form ID below.
+   1. Go to formspree.io -> sign up (free) with tooample@gmail.com
+   2. Create a new form -> copy its ID (looks like: xdkoqwer)
+   3. Paste it between the quotes:
+   ============================================================ */
+const FORMSPREE_ID = '';   // <-- paste your Formspree form ID here
+
+function sendMail(subject, data){
+  if(!FORMSPREE_ID){console.warn('Formspree ID not set — email not sent');return Promise.resolve();}
+  return fetch('https://formspree.io/f/'+FORMSPREE_ID,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(Object.assign({_subject:subject}, data))
+  }).catch(e=>console.warn('Email failed',e));
+}
 </script>
 </body>
 </html>
