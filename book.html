@@ -110,7 +110,7 @@
           <span class="cat">Studio · 2 Outfits</span>
           <div class="pname">Double Look</div>
           <p class="desc">Two outfits for more range and variety.</p>
-          <div class="amt"><span class="cur">₦</span>200,000</div>
+          <div class="amt"><span class="cur">₦</span>180,000</div>
           <div class="per">8 edited copies</div>
           <ul>
             <li>2 outfits / looks</li>
@@ -119,7 +119,7 @@
             <li>Studio lighting &amp; direction</li>
             <li>Online gallery delivery</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Studio — Double Look (2 outfits, 8 copies) — ₦200,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Studio — Double Look (2 outfits, 8 copies) — ₦180,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
         </div>
 
         <div class="plan">
@@ -307,7 +307,7 @@
             <li>Fast turnaround</li>
             <li>Colour grade</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Music — Viral Video — ₦350,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Music — Viral Video')" class="btn btn-ghost">Request a quote</a></div>
         </div>
         <div class="plan">
           <span class="cat">Music · Visualizer</span>
@@ -321,7 +321,7 @@
             <li>Lyric-ready</li>
             <li>Colour grade</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Music — Visualizer — ₦250,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Music — Visualizer')" class="btn btn-ghost">Request a quote</a></div>
         </div>
         <div class="plan feat">
           <span class="badge">Signature</span>
@@ -336,7 +336,7 @@
             <li>Talent &amp; styling direction</li>
             <li>Edit, grade &amp; sound design</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Music — Official Video — ₦1,200,000')" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Music — Official Video')" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
         </div>
         <p class="pane-note">Music video prices are placeholders — update anytime.</p>
       </div>
@@ -355,7 +355,7 @@
             <li>60–90 sec film</li>
             <li>Licensed track &amp; grade</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Commercial — Promo / Event — ₦450,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Commercial — Promo / Event')" class="btn btn-ghost">Request a quote</a></div>
         </div>
         <div class="plan feat">
           <span class="badge">Most booked</span>
@@ -370,7 +370,7 @@
             <li>30–60 sec hero + cutdowns</li>
             <li>Grade &amp; sound design</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Commercial — Brand Commercial — ₦1,200,000')" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Commercial — Brand Commercial')" class="btn btn-gold">Request a quote <span class="arr">→</span></a></div>
         </div>
         <div class="plan">
           <span class="cat">Commercial · Campaign</span>
@@ -384,7 +384,7 @@
             <li>Multi-deliverable suite</li>
             <li>Usage &amp; licensing included</li>
           </ul>
-          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Commercial — Full Campaign — ₦2,500,000')" class="btn btn-ghost">Request a quote</a></div>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openQuoteModal('Commercial — Full Campaign')" class="btn btn-ghost">Request a quote</a></div>
         </div>
         <p class="pane-note">Commercial prices are placeholders — update anytime.</p>
       </div>
@@ -436,9 +436,7 @@
           <div class="pbtn"><a href="book.html?quote=Wedding%20Coverage%20%E2%80%94%20Gold" class="btn btn-ghost">Request a quote</a></div>
         </div>
       </div>
-      </div>
     </div>
-  </div>
 </section>
 
 
@@ -560,7 +558,7 @@
               <option value="" data-amount="0">Select a package…</option>
               <optgroup label="Photography · Studio">
               <option value="Studio — Single Look (1 outfit, 4 copies) — ₦100,000" data-amount="100000">Studio — Single Look (1 outfit, 4 copies) — ₦100,000</option>
-              <option value="Studio — Double Look (2 outfits, 8 copies) — ₦200,000" data-amount="200000">Studio — Double Look (2 outfits, 8 copies) — ₦200,000</option>
+              <option value="Studio — Double Look (2 outfits, 8 copies) — ₦180,000" data-amount="180000">Studio — Double Look (2 outfits, 8 copies) — ₦180,000</option>
               <option value="Studio — Triple Look (3 outfits, 12 copies) — ₦280,000" data-amount="280000">Studio — Triple Look (3 outfits, 12 copies) — ₦280,000</option>
               </optgroup>
               <optgroup label="Photography · Pre-Wedding">
@@ -698,9 +696,13 @@ function startBooking(){
   const email=document.getElementById('b_email').value.trim();
   const sel=document.getElementById('b_pkg');
   const pkg=sel.value, amount=parseInt(sel.selectedOptions[0].dataset.amount||'0',10);
-  if(!name||!email){alert('Please add your name and email so we can reply.');return;}
-  if(!document.getElementById('b_terms').checked){alert('Please accept the Terms & Conditions to proceed.');return;}
-  if(!pkg){alert('Please choose a package.');return;}
+  if(!validate([
+    ['b_name','Please enter your full name'],
+    ['b_email','Please enter a valid email address', v=>v&&isEmail(v)],
+    ['b_phone','Please enter your phone number'],
+    ['b_terms','Please accept the Terms & Conditions']
+  ])) return;
+  if(!validate([['b_pkg','Please choose a package']])) return;
   curAmount=amount; curPkg=pkg;
   const label=amount>0?('₦'+amount.toLocaleString()):'Custom quote';
   document.getElementById('pay_pkg').textContent=pkg;
@@ -796,7 +798,11 @@ function submitQuote(){
   const name=document.getElementById('q_name').value.trim();
   const email=document.getElementById('q_email').value.trim();
   const date=document.getElementById('q_date').value;
-  if(!name||!email){alert('Please add your name and email so we can reply.');return;}
+  if(!validate([
+    ['q_name','Please enter your full name'],
+    ['q_email','Please enter a valid email address', v=>v&&isEmail(v)],
+    ['q_phone','Please enter your phone number']
+  ])) return;
   document.getElementById('qc_name').textContent=name.split(' ')[0];
   document.getElementById('qc_pkg').textContent=document.getElementById('q_pkgName').textContent;
   document.getElementById('qc_date').textContent=date?new Date(date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'To be confirmed';
@@ -811,6 +817,32 @@ function submitQuote(){
   const p=new URLSearchParams(location.search), q=p.get('quote');
   if(q) openQuoteModal(q);
 })();
+
+// ---- inline field validation (replaces alert popups) ----
+function fieldWrap(el){return el.closest('.field')||el.closest('.terms-check');}
+function setErr(el,msg){
+  const w=fieldWrap(el); if(!w)return;
+  w.classList.add('err');
+  let e=w.querySelector('.field-err');
+  if(!e && w.classList.contains('field')){e=document.createElement('div');e.className='field-err';w.appendChild(e);}
+  if(e)e.textContent=msg;
+}
+function clearErr(el){const w=fieldWrap(el); if(w)w.classList.remove('err');}
+function validate(rules){
+  let firstBad=null;
+  rules.forEach(([id,msg,test])=>{
+    const el=document.getElementById(id); if(!el)return;
+    const val=el.type==='checkbox'?el.checked:el.value.trim();
+    const ok = test ? test(val) : !!val;
+    if(!ok){setErr(el,msg); if(!firstBad)firstBad=el;} else {clearErr(el);}
+  });
+  if(firstBad){firstBad.scrollIntoView({behavior:'smooth',block:'center'}); if(firstBad.focus)firstBad.focus();}
+  return !firstBad;
+}
+const isEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+// clear the error as soon as the user starts fixing it
+document.addEventListener('input',e=>{if(e.target.matches('.field input,.field select,.field textarea'))clearErr(e.target);});
+document.addEventListener('change',e=>{if(e.target.type==='checkbox')clearErr(e.target);});
 </script>
 </body>
 </html>

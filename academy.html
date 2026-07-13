@@ -281,8 +281,12 @@ function startApply(){
   const email=document.getElementById('a_email').value.trim();
   const sel=document.getElementById('a_course');
   const course=sel.value, amount=parseInt(sel.selectedOptions[0].dataset.amount||'0',10);
-  if(!name||!email){alert('Please add your name and email so we can reply.');return;}
-  if(!document.getElementById('a_terms').checked){alert('Please accept the Terms & Conditions to proceed.');return;}
+  if(!validate([
+    ['a_name','Please enter your full name'],
+    ['a_email','Please enter a valid email address', v=>v&&isEmail(v)],
+    ['a_phone','Please enter your phone number'],
+    ['a_terms','Please accept the Terms & Conditions']
+  ])) return;
   aAmount=amount; aCourse=course;
   const label=amount>0?('₦'+amount.toLocaleString()):'To be advised';
   document.getElementById('pay_course').textContent=course;
@@ -335,6 +339,32 @@ function resetApplication(){['a_name','a_phone','a_email','a_msg'].forEach(id=>d
 if('serviceWorker' in navigator){
   addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
 }
+
+// ---- inline field validation (replaces alert popups) ----
+function fieldWrap(el){return el.closest('.field')||el.closest('.terms-check');}
+function setErr(el,msg){
+  const w=fieldWrap(el); if(!w)return;
+  w.classList.add('err');
+  let e=w.querySelector('.field-err');
+  if(!e && w.classList.contains('field')){e=document.createElement('div');e.className='field-err';w.appendChild(e);}
+  if(e)e.textContent=msg;
+}
+function clearErr(el){const w=fieldWrap(el); if(w)w.classList.remove('err');}
+function validate(rules){
+  let firstBad=null;
+  rules.forEach(([id,msg,test])=>{
+    const el=document.getElementById(id); if(!el)return;
+    const val=el.type==='checkbox'?el.checked:el.value.trim();
+    const ok = test ? test(val) : !!val;
+    if(!ok){setErr(el,msg); if(!firstBad)firstBad=el;} else {clearErr(el);}
+  });
+  if(firstBad){firstBad.scrollIntoView({behavior:'smooth',block:'center'}); if(firstBad.focus)firstBad.focus();}
+  return !firstBad;
+}
+const isEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+// clear the error as soon as the user starts fixing it
+document.addEventListener('input',e=>{if(e.target.matches('.field input,.field select,.field textarea'))clearErr(e.target);});
+document.addEventListener('change',e=>{if(e.target.type==='checkbox')clearErr(e.target);});
 </script>
 </body>
 </html>

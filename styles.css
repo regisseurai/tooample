@@ -473,6 +473,13 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .quote-pkg .qp-name{font-family:var(--serif);font-size:17px;color:var(--gold-soft);text-align:right;line-height:1.2}
 .quote-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted-2);margin-top:14px;text-align:center;line-height:1.6}
 
+/* inline field validation */
+.field.err input,.field.err select,.field.err textarea{border-color:#E0533F;background:rgba(224,83,63,.06)}
+.field-err{display:none;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:#E0533F;margin-top:6px}
+.field.err .field-err{display:block}
+.terms-check.err{border-color:#E0533F;background:rgba(224,83,63,.06)}
+.terms-check.err label{color:#E0533F}
+
 /* T&C checkbox */
 .terms-check{display:flex;align-items:flex-start;gap:12px;margin:18px 0 20px;padding:16px;background:rgba(217,162,75,.05);border:1px solid rgba(217,162,75,.2);border-radius:4px}
 .terms-check input[type="checkbox"]{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--gold);cursor:pointer}
@@ -536,24 +543,27 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .fm-close:hover{border-color:var(--gold);color:var(--gold)}
 .fm-title{font-family:var(--serif);font-size:27px;font-weight:400;margin:6px 0 22px;line-height:1.15}
 @media(max-width:680px){
-  .form-modal{padding:24px 16px 96px;align-items:flex-start}
-  .fm-card{max-width:100%;min-height:0;border-radius:14px;border:1px solid var(--line);padding:30px 20px 26px;margin:0 0 24px}
-  .fm-title{font-size:22px;margin:5px 0 18px}
-  .fm-close{top:12px;right:12px;width:30px;height:30px;font-size:13px}
-  .fm-card .eyebrow{font-size:9.5px}
-  .fm-card .field{margin-bottom:16px}
-  .fm-card .field label{font-size:9.5px;letter-spacing:.12em;margin-bottom:6px}
-  .fm-card .field input,.fm-card .field select,.fm-card .field textarea{padding:12px 13px;font-size:15px}
-  .fm-card .field textarea{min-height:66px}
-  .fm-card .terms-check{margin:14px 0 16px;padding:12px 13px;gap:10px}
-  .fm-card .terms-check label{font-size:12.5px}
-  .fm-card .btn{padding:14px 20px;font-size:11.5px}
-  .fm-card .tuition-banner{padding:13px 15px;margin-bottom:18px}
-  .fm-card .tb-amt{font-size:23px}
-  .fm-card .tb-label{font-size:9.5px}
-  .fm-card .pay-amt{font-size:32px}
-  .fm-card .bank-box{padding:13px 15px}
-  .fm-card .bank-box div{font-size:13.5px;padding:8px 0}
+  .form-modal{padding:16px 12px 90px;align-items:flex-start}
+  .fm-card{max-width:100%;min-height:0;border-radius:14px;border:1px solid var(--line);padding:24px 16px 22px;margin:0 0 20px}
+  .fm-title{font-size:19px;margin:4px 0 14px}
+  .fm-close{top:10px;right:10px;width:28px;height:28px;font-size:12px}
+  .fm-card .eyebrow{font-size:9px}
+  .fm-card .field{margin-bottom:12px}
+  .fm-card .field label{font-size:8.5px;letter-spacing:.12em;margin-bottom:5px}
+  .fm-card .field input,.fm-card .field select,.fm-card .field textarea{padding:10px 11px;font-size:14px}
+  .fm-card .field textarea{min-height:54px}
+  .fm-card .terms-check{margin:10px 0 12px;padding:10px 11px;gap:9px}
+  .fm-card .terms-check label{font-size:11.5px}
+  .fm-card .btn{padding:13px 18px;font-size:10.5px}
+  .fm-card .tuition-banner{padding:10px 13px;margin-bottom:14px}
+  .fm-card .tb-amt{font-size:19px}
+  .fm-card .tb-label{font-size:9px}
+  .fm-card .pay-amt{font-size:27px}
+  .fm-card .pay-head h3{font-size:21px}
+  .fm-card .bank-box{padding:11px 13px}
+  .fm-card .bank-box div{font-size:12.5px;padding:6px 0}
+  .fm-card .quote-pkg{padding:10px 13px;margin-bottom:14px}
+  .fm-card .quote-pkg .qp-name{font-size:14px}
 }
 
 /* view-more-on-instagram button */
