@@ -586,3 +586,103 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .ig-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line);padding:14px 24px;border-radius:3px;transition:.3s}
 .ig-btn:hover{border-color:var(--gold);color:var(--gold)}
 .ig-btn svg{width:16px;height:16px}
+
+/* ============================================================
+   ACADEMY v2 — intro, FAQ
+   ============================================================ */
+.acad-intro{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center}
+.acad-h1{font-family:var(--serif);font-size:clamp(36px,5.4vw,64px);font-weight:400;line-height:1.05;margin:18px 0 20px}
+.acad-h1 em{font-style:italic;color:var(--gold-soft)}
+.acad-intro-actions{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.acad-intro-media{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;max-width:420px;width:100%;justify-self:end;border:1px solid var(--line);background:#0d1012}
+.acad-intro-media img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.acad-intro-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.62));pointer-events:none}
+.acad-intro-media.playing{aspect-ratio:16/9;max-width:100%}
+.acad-intro-media.playing::after{display:none}
+.acad-intro-media iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.acad-play{position:absolute;inset:0;z-index:3;display:grid;place-items:center;background:rgba(8,9,11,.22);transition:.35s;cursor:pointer}
+.acad-play:hover{background:rgba(8,9,11,.08)}
+.acad-play span{width:66px;height:66px;border-radius:50%;background:rgba(217,162,75,.94);display:grid;place-items:center;box-shadow:0 10px 34px rgba(0,0,0,.55);transition:.3s}
+.acad-play:hover span{transform:scale(1.06)}
+.acad-play svg{width:24px;height:24px;color:#13110B;margin-left:3px}
+.acad-intro-cap{position:absolute;left:18px;bottom:16px;z-index:2;display:flex;flex-direction:column;gap:3px;pointer-events:none}
+.acad-intro-cap .cap-name{font-family:var(--serif);font-size:19px;color:var(--ink)}
+.acad-intro-cap .cap-role{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.acad-stats{margin-top:56px;max-width:640px}
+@media(max-width:900px){
+  .acad-intro{grid-template-columns:1fr;gap:36px}
+  .acad-intro-media{justify-self:center;max-width:340px}
+  .acad-intro-text{text-align:center}
+  .acad-intro-text .eyebrow{justify-content:center}
+  .acad-intro-actions{justify-content:center}
+  .acad-intro-actions .btn{flex:1;justify-content:center;min-width:200px}
+  .acad-stats{margin:44px auto 0}
+}
+@media(max-width:680px){
+  .acad-intro-media{max-width:280px}
+  .acad-intro-actions{flex-direction:column;align-items:stretch}
+}
+
+/* FAQ */
+.faq{max-width:760px}
+.faq details{border:1px solid var(--line);border-radius:6px;background:var(--bg-2);margin-bottom:12px;overflow:hidden;transition:.3s}
+.faq details[open]{border-color:rgba(217,162,75,.4)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 52px 20px 22px;font-family:var(--serif);font-size:17.5px;position:relative;transition:.25s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:18px;color:var(--gold);transition:.3s}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 22px 20px;color:var(--muted);font-size:14.5px;font-weight:300;line-height:1.7;max-width:60ch}
+.acad-cta{margin-top:52px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.acad-cta p{font-family:var(--serif);font-size:22px;color:var(--ink)}
+@media(max-width:680px){
+  .faq summary{font-size:15.5px;padding:16px 46px 16px 16px}
+  .faq details p{padding:0 16px 16px}
+  .acad-cta{align-items:center;text-align:center}
+  .acad-cta .btn{width:100%;justify-content:center}
+}
+
+/* ============================================================
+   ACADEMY STORE — Selar-style product grid
+   ============================================================ */
+.store-tabs{flex-wrap:wrap;margin-bottom:30px}
+.store-tabs .work-tab{padding:10px 18px}
+.store-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.prod-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:8px;background:var(--bg);overflow:hidden;transition:.35s}
+.prod-card:hover{border-color:rgba(217,162,75,.4);transform:translateY(-4px);box-shadow:var(--shadow)}
+.prod-media{position:relative;display:block;width:100%;aspect-ratio:1/1;overflow:hidden;background:#0d1012;cursor:pointer;padding:0;border:none;border-bottom:1px solid var(--line-soft)}
+.prod-media img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.prod-card:hover .prod-media img{transform:scale(1.05)}
+.prod-tag{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(10,11,13,.82);border:1px solid rgba(217,162,75,.35);padding:5px 9px;border-radius:3px;backdrop-filter:blur(6px)}
+.prod-info{display:flex;flex-direction:column;gap:8px;padding:16px 16px 18px;flex:1}
+.prod-name{font-family:var(--sans);font-weight:600;font-size:14.5px;line-height:1.35;color:var(--ink);margin:0}
+.prod-price-row{display:flex;align-items:baseline;gap:10px}
+.prod-price{font-family:var(--serif);font-size:20px;color:var(--gold-soft)}
+.prod-old{font-family:var(--sans);font-size:13.5px;color:var(--muted-2);text-decoration:line-through}
+.prod-btn{margin-top:auto;width:100%;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:13px 10px;border-radius:5px;background:var(--bg-3);border:1px solid var(--line);color:var(--ink);transition:.3s;cursor:pointer}
+.prod-btn:hover{background:var(--gold);border-color:var(--gold);color:#13110B}
+@media(max-width:1080px){.store-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.store-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){
+  /* Selar-style mobile: 2-up grid, tight */
+  .store-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .prod-info{padding:12px 12px 14px;gap:6px}
+  .prod-name{font-size:13px}
+  .prod-price{font-size:17px}
+  .prod-old{font-size:12px}
+  .prod-btn{padding:12px 8px;font-size:10px}
+  .store-tabs{gap:3px;padding:4px}
+  .store-tabs .work-tab{padding:9px 10px;font-size:9.5px}
+}
+
+/* product modal */
+.prod-hero{width:calc(100% + 72px);max-width:none;margin:-40px -36px 20px;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid var(--line-soft);border-radius:14px 14px 0 0}
+.prod-cat{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+#prodDetailView .prod-price{font-size:28px}
+#prodDetailView .prod-old{font-size:15px}
+.prod-desc{color:var(--muted);font-size:14.5px;font-weight:300;line-height:1.7;margin:14px 0 16px}
+.prod-includes{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0}
+.prod-includes li{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-soft);padding:6px 10px;border-radius:2px}
+@media(max-width:680px){
+  .prod-hero{width:calc(100% + 32px);margin:-24px -16px 16px;border-radius:14px 14px 0 0}
+  #prodDetailView .prod-price{font-size:23px}
+}
