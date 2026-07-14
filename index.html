@@ -62,12 +62,7 @@
 </div>
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-bg hero-bg-desktop">
-    <img src="Images/hero-1.jpg" alt="">
-    <img src="Images/hero-2.jpg" alt="">
-    <img src="Images/hero-3.jpg" alt="">
-    <img src="Images/hero-4.jpg" alt="">
-  </div>
+  <div class="hero-frame hero-bg-desktop"></div>
   <div class="hero-bg hero-bg-mobile">
     <img src="Images/hero-m-1.jpg" alt="">
     <img src="Images/hero-m-2.jpg" alt="">
@@ -82,11 +77,37 @@
   </div>
   <div class="rec"><span class="dot"></span> REC · 24FPS · 2.39:1</div>
   <div class="wrap hero-content">
-    <span class="eyebrow">Lagos · Photography &amp; Film</span>
-    <h1>Your story, shot like <em>cinema.</em></h1>
-    <div class="hero-actions">
-      <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
-      <a href="academy.html" class="btn btn-outline">Apply to Academy</a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Lagos · Photography &amp; Film</span>
+        <h1>Your story, shot like <em>cinema.</em></h1>
+        <div class="hero-actions">
+          <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
+          <a href="academy.html" class="btn btn-outline">Apply to Academy</a>
+        </div>
+      </div>
+      <!-- film-frame triptych: each frame crossfades its own 4 portraits,
+           staggered so only one frame changes at a time -->
+      <div class="hero-strip hero-bg-desktop" aria-hidden="true">
+        <div class="hframe f1">
+          <img src="Images/hero-m-1.jpg" alt="">
+          <img src="Images/ta-03.jpg" alt="">
+          <img src="Images/ta-06.jpg" alt="">
+          <img src="Images/ta-09.jpg" alt="">
+        </div>
+        <div class="hframe f2">
+          <img src="Images/hero-m-2.jpg" alt="">
+          <img src="Images/ta-04.jpg" alt="">
+          <img src="Images/ta-07.jpg" alt="">
+          <img src="Images/ta-10.jpg" alt="">
+        </div>
+        <div class="hframe f3">
+          <img src="Images/hero-m-3.jpg" alt="">
+          <img src="Images/ta-05.jpg" alt="">
+          <img src="Images/ta-08.jpg" alt="">
+          <img src="Images/hero-m-4.jpg" alt="">
+        </div>
+      </div>
     </div>
   </div>
   <div class="scroll-cue">Scroll</div>

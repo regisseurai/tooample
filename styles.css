@@ -686,3 +686,61 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
   .prod-hero{width:calc(100% + 32px);margin:-24px -16px 16px;border-radius:14px 14px 0 0}
   #prodDetailView .prod-price{font-size:23px}
 }
+
+/* ============================================================
+   HERO v2 — portrait film-frame triptych (desktop)
+   ============================================================ */
+.hero-frame.hero-bg-desktop{animation:none}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.05fr) auto;gap:56px;align-items:center;width:100%}
+.hero-copy h1{font-size:clamp(44px,5.4vw,86px)}
+.hero-strip{display:grid;grid-template-columns:repeat(3,minmax(150px,185px));gap:16px;align-items:start;padding-right:6px}
+.hframe{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:#0d1012;box-shadow:0 24px 60px -18px rgba(0,0,0,.65)}
+.hframe.f1{margin-top:44px}
+.hframe.f2{margin-top:0}
+.hframe.f3{margin-top:88px}
+/* gold viewfinder ticks — echo the REC overlay */
+.hframe::before,.hframe::after{content:"";position:absolute;width:16px;height:16px;z-index:3;pointer-events:none;border:1.5px solid rgba(217,162,75,.65)}
+.hframe::before{top:8px;left:8px;border-right:none;border-bottom:none}
+.hframe::after{bottom:8px;right:8px;border-left:none;border-top:none}
+.hframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:frameFade 32s infinite}
+/* stagger: within a frame each image holds 8s of a 32s cycle;
+   frames offset by ~2.7s so only one frame changes at a time */
+.hframe.f1 img:nth-child(1){animation-delay:-1s}
+.hframe.f1 img:nth-child(2){animation-delay:7s}
+.hframe.f1 img:nth-child(3){animation-delay:15s}
+.hframe.f1 img:nth-child(4){animation-delay:23s}
+.hframe.f2 img:nth-child(1){animation-delay:-3.7s}
+.hframe.f2 img:nth-child(2){animation-delay:4.3s}
+.hframe.f2 img:nth-child(3){animation-delay:12.3s}
+.hframe.f2 img:nth-child(4){animation-delay:20.3s}
+.hframe.f3 img:nth-child(1){animation-delay:-6.3s}
+.hframe.f3 img:nth-child(2){animation-delay:1.7s}
+.hframe.f3 img:nth-child(3){animation-delay:9.7s}
+.hframe.f3 img:nth-child(4){animation-delay:17.7s}
+@keyframes frameFade{
+  0%{opacity:0}
+  4%{opacity:1}
+  25%{opacity:1}
+  30%{opacity:0}
+  100%{opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .hframe img{animation:none;opacity:0}
+  .hframe img:first-child{opacity:1}
+}
+@media(max-width:1180px){
+  .hero-strip{grid-template-columns:repeat(3,minmax(130px,150px))}
+  .hframe.f1{margin-top:34px}.hframe.f3{margin-top:66px}
+}
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-copy{text-align:left}
+  .hero-strip{grid-template-columns:repeat(3,1fr);max-width:560px;padding-right:0}
+  .hframe.f1{margin-top:26px}.hframe.f2{margin-top:0}.hframe.f3{margin-top:52px}
+}
+@media(max-width:680px){
+  /* mobile keeps its own hero design */
+  .hero-strip{display:none}
+  .hero-inner{display:block}
+  .hero-copy h1{font-size:32px}
+}
