@@ -141,55 +141,73 @@
 
     <div class="store-grid class-grid reveal">
       <div class="prod-card">
-        <button class="prod-media" onclick="openApplyModal('Photography')" aria-label="Apply — Photography">
+        <button class="prod-media" onclick="openCourse('photography')" aria-label="View Photography course">
           <img src="Images/course-photography.jpg" alt="Photography training" loading="lazy">
           <span class="prod-tag">6 weeks · In-studio</span>
         </button>
         <div class="prod-info">
           <h3 class="prod-name">Photography</h3>
           <div class="prod-price-row"><span class="prod-price">₦250,000</span></div>
-          <button class="prod-btn" onclick="openApplyModal('Photography')">Apply Now</button>
+          <button class="prod-btn" onclick="openCourse('photography')">View Details</button>
         </div>
       </div>
 
       <div class="prod-card">
-        <button class="prod-media" onclick="openApplyModal('Cinematography &amp; Video')" aria-label="Apply — Cinematography and Video">
+        <button class="prod-media" onclick="openCourse('cinema')" aria-label="View Cinematography course">
           <img src="Images/course-cinematography.jpg" alt="Cinematography training" loading="lazy">
           <span class="prod-tag">8 weeks · In-studio</span>
         </button>
         <div class="prod-info">
           <h3 class="prod-name">Cinematography &amp; Video</h3>
           <div class="prod-price-row"><span class="prod-price">₦350,000</span></div>
-          <button class="prod-btn" onclick="openApplyModal('Cinematography &amp; Video')">Apply Now</button>
+          <button class="prod-btn" onclick="openCourse('cinema')">View Details</button>
         </div>
       </div>
 
       <div class="prod-card">
-        <button class="prod-media" onclick="openApplyModal('Photo Editing &amp; Retouching')" aria-label="Apply — Photo Editing and Retouching">
+        <button class="prod-media" onclick="openCourse('photoedit')" aria-label="View Photo Editing course">
           <img src="Images/course-photo-editing.jpg" alt="Photo editing training" loading="lazy">
           <span class="prod-tag">4 weeks · Hybrid</span>
         </button>
         <div class="prod-info">
           <h3 class="prod-name">Photo Editing &amp; Retouching</h3>
           <div class="prod-price-row"><span class="prod-price">₦150,000</span></div>
-          <button class="prod-btn" onclick="openApplyModal('Photo Editing &amp; Retouching')">Apply Now</button>
+          <button class="prod-btn" onclick="openCourse('photoedit')">View Details</button>
         </div>
       </div>
 
       <div class="prod-card">
-        <button class="prod-media" onclick="openApplyModal('Video Editing &amp; Post')" aria-label="Apply — Video Editing and Post">
+        <button class="prod-media" onclick="openCourse('videoedit')" aria-label="View Video Editing course">
           <img src="Images/course-video-editing.jpg" alt="Video editing training" loading="lazy">
           <span class="prod-tag">6 weeks · Hybrid</span>
         </button>
         <div class="prod-info">
           <h3 class="prod-name">Video Editing &amp; Post</h3>
           <div class="prod-price-row"><span class="prod-price">₦200,000</span></div>
-          <button class="prod-btn" onclick="openApplyModal('Video Editing &amp; Post')">Apply Now</button>
+          <button class="prod-btn" onclick="openCourse('videoedit')">View Details</button>
         </div>
       </div>
     </div>
 
     <p class="pane-note" style="margin:0 0 44px">Tuition figures are placeholders — update anytime. Payment plans available.</p>
+
+    <!-- COURSE DETAILS (store-style) -->
+    <div class="form-modal" id="courseModal" role="dialog" aria-modal="true" aria-label="Course details">
+      <div class="fm-card">
+        <button class="fm-close" onclick="closeCourseModal()" aria-label="Close">✕</button>
+        <img class="prod-hero" id="cd_img" src="" alt="">
+        <div class="prod-cat" id="cd_tag">—</div>
+        <h3 class="fm-title" id="cd_title" style="margin-bottom:8px">—</h3>
+        <div class="prod-price-row">
+          <span class="prod-price" id="cd_price">₦0</span>
+          <span class="prod-level" id="cd_level">—</span>
+        </div>
+        <p class="prod-desc" id="cd_desc">—</p>
+        <ul class="prod-includes" id="cd_includes"></ul>
+        <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="applyFromCourse()">Apply now <span class="arr">→</span></button>
+        <p class="quote-note">Card · Bank transfer (auto-verified) · USSD · Payment plans available</p>
+      </div>
+    </div>
 
     <!-- APPLICATION -->
     <div class="form-modal" id="applyModal" role="dialog" aria-modal="true" aria-label="Apply to the Academy">
@@ -415,6 +433,61 @@ const INTRO_VIDEO_ID = '';
 })();
 
 function applyPreselect(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});updateTuition();}
+
+/* ===== Course details (store-style) =====
+   Edit descriptions, durations and curricula here. Titles must
+   match the course names in the apply form's dropdown exactly. */
+const COURSES={
+  photography:{
+    title:'Photography', price:250000,
+    tag:'6 weeks · In-studio', level:'Beginner → Pro',
+    img:'Images/course-photography.jpg',
+    desc:'From camera fundamentals to studio lighting, posing and delivery — shoot with confidence. Small cohorts inside a working Lagos studio, with real sets and real client work from week one.',
+    includes:['Camera & exposure','Studio lighting','Posing & direction','Editing basics','Certificate of completion']
+  },
+  cinema:{
+    title:'Cinematography & Video', price:350000,
+    tag:'8 weeks · In-studio', level:'Beginner → Pro',
+    img:'Images/course-cinematography.jpg',
+    desc:'Learn to shoot cinematic film — camera movement, lighting, directing and on-set sound. You leave with finished, graded work on your reel, shot on real productions.',
+    includes:['Camera movement','Cine lighting','Directing','Sound on set','Reel-ready projects']
+  },
+  photoedit:{
+    title:'Photo Editing & Retouching', price:150000,
+    tag:'4 weeks · Hybrid', level:'All levels',
+    img:'Images/course-photo-editing.jpg',
+    desc:'Master Lightroom and Photoshop — colour grading and clean, natural retouching. Hybrid format: in-studio sessions plus guided practice you complete from home.',
+    includes:['Lightroom','Photoshop','Colour grading','Skin retouching']
+  },
+  videoedit:{
+    title:'Video Editing & Post', price:200000,
+    tag:'6 weeks · Hybrid', level:'All levels',
+    img:'Images/course-video-editing.jpg',
+    desc:'Edit like a pro — Premiere Pro or DaVinci Resolve, grading, sound design and client delivery specs. Cut real footage from our productions, not stock clips.',
+    includes:['Premiere / Resolve','Grading','Sound design','Delivery specs']
+  }
+};
+let curCourse=null;
+function openCourse(id){
+  curCourse=COURSES[id]; if(!curCourse)return;
+  document.getElementById('cd_img').src=curCourse.img;
+  document.getElementById('cd_img').alt=curCourse.title;
+  document.getElementById('cd_tag').textContent=curCourse.tag;
+  document.getElementById('cd_title').textContent=curCourse.title;
+  document.getElementById('cd_price').textContent='\u20a6'+curCourse.price.toLocaleString();
+  document.getElementById('cd_level').textContent=curCourse.level;
+  document.getElementById('cd_desc').textContent=curCourse.desc;
+  document.getElementById('cd_includes').innerHTML=curCourse.includes.map(i=>'<li>'+i+'</li>').join('');
+  const m=document.getElementById('courseModal'); m.classList.add('open'); m.scrollTop=0; document.body.style.overflow='hidden';
+}
+function closeCourseModal(){document.getElementById('courseModal').classList.remove('open');document.body.style.overflow='';}
+function applyFromCourse(){
+  const title=curCourse?curCourse.title:'';
+  closeCourseModal();
+  openApplyModal(title);
+}
+(function(){const m=document.getElementById('courseModal');m.addEventListener('click',e=>{if(e.target===m)closeCourseModal();});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))closeCourseModal();});})();
+
 function updateTuition(){
   const s=document.getElementById('a_course');
   const amt=parseInt(s.selectedOptions[0].dataset.amount||'0',10);

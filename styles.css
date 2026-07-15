@@ -775,3 +775,4 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 /* physical classes — store-style cards (academy.html) */
 .class-grid{margin-bottom:56px}
 .class-grid .prod-media{aspect-ratio:4/3} /* course covers are landscape */
+.prod-level{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);border:1px solid var(--line-soft);padding:5px 10px;border-radius:2px}
