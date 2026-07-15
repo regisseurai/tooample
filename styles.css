@@ -771,3 +771,7 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
   /* primary CTA stays high; Apply to Academy sits lower */
   .hero-actions .btn-outline{margin-top:6px}
 }
+
+/* physical classes — store-style cards (academy.html) */
+.class-grid{margin-bottom:56px}
+.class-grid .prod-media{aspect-ratio:4/3} /* course covers are landscape */
