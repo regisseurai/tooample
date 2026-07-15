@@ -746,39 +746,28 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 }
 
 /* ============================================================
-   HERO v2.1 — bigger desktop frames + mobile fold fix
+   HERO v2.1 — desktop frames at original size + mobile fixes
    ============================================================ */
-/* Desktop: larger portrait frames */
-.hero-inner{grid-template-columns:minmax(0,0.95fr) auto;gap:48px}
-.hero-strip{grid-template-columns:repeat(3,minmax(190px,240px));gap:18px}
-.hframe.f1{margin-top:54px}
-.hframe.f3{margin-top:104px}
-@media(max-width:1280px){
-  .hero-strip{grid-template-columns:repeat(3,minmax(165px,200px))}
-  .hframe.f1{margin-top:44px}.hframe.f3{margin-top:84px}
-}
-@media(max-width:1080px){
-  .hero-strip{grid-template-columns:repeat(3,minmax(140px,165px))}
-  .hframe.f1{margin-top:36px}.hframe.f3{margin-top:68px}
-}
-
-/* Mobile: hero fits one screen — image flexes, buttons always visible.
-   svh = real visible viewport (accounts for browser address bar). */
+/* Mobile: photo gets its space back; container width fix
+   (align-items:center on .hero was collapsing it to 0 width). */
 @media(max-width:680px){
   .hero{
-    display:flex;flex-direction:column;
+    display:flex;flex-direction:column;align-items:stretch;
     min-height:calc(100vh - 72px);
     min-height:calc(100svh - 72px);
     padding:78px 0 16px;
   }
   .hero-bg-mobile{
     flex:1 1 auto;
+    width:100%;
     height:auto;
-    min-height:200px;
-    max-height:58vh;
+    min-height:340px;
+    max-height:60vh;
   }
   .hero-content{margin-top:-40px;padding-bottom:0;flex:0 0 auto}
   .hero h1{margin:12px auto 18px}
-  .hero-actions{margin-top:0;gap:10px}
+  .hero-actions{margin-top:0;gap:12px}
   .hero-actions .btn{padding:14px 20px}
+  /* primary CTA stays high; Apply to Academy sits lower */
+  .hero-actions .btn-outline{margin-top:6px}
 }
