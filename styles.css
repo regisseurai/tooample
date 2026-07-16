@@ -77,9 +77,13 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacin
 /* ---------- nav ---------- */
 header{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:.4s;border-bottom:1px solid transparent;
+  transition:.4s;
+  background:rgba(10,11,13,0.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
 }
-header.scrolled{background:rgba(10,11,13,0.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+header.scrolled{background:rgba(10,11,13,0.98)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
 .brand{display:flex;align-items:center;gap:13px}
 .brand-word{height:22px;width:auto;display:block;opacity:.95}
