@@ -123,6 +123,12 @@
   </div>
 </div>
 
+<!-- video popup player -->
+<div class="vlb" id="vlb" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="vlb-close" onclick="closeVideoLb()" aria-label="Close video">✕</button>
+  <div class="vlb-box" id="vlbBox"></div>
+</div>
+
 <footer>
   <div class="wrap">
     <div class="foot-inner">
@@ -175,19 +181,31 @@ function switchWork(w){
 // YouTube facade
 function initVideoCard(card,id){
   const img=document.createElement('img');
-  img.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'; img.alt='';
+  // try sharpest thumbnail first; YouTube serves a 120px grey stub if maxres doesn't exist
+  img.src='https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg';
+  img.alt='';
+  img.addEventListener('load',()=>{if(img.naturalWidth<=120)img.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';});
   card.insertBefore(img, card.firstChild);
   const ph=card.querySelector('.vph'); if(ph) ph.remove();
-  card.addEventListener('click',()=>{
-    if(card.classList.contains('playing'))return;
-    card.classList.add('playing');
-    const f=document.createElement('iframe');
-    f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
-    f.allow='autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen=true;
-    card.appendChild(f);
-  });
+  card.addEventListener('click',()=>openVideoLb(id));
 }
 document.querySelectorAll('#videoGrid .vcard').forEach(c=>{if(c.dataset.yt) initVideoCard(c,c.dataset.yt);});
+
+// video popup player
+const vlb=document.getElementById('vlb'), vlbBox=document.getElementById('vlbBox');
+function openVideoLb(id){
+  vlbBox.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+  vlb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeVideoLb(){
+  vlb.classList.remove('open');
+  vlbBox.innerHTML=''; // stops playback/audio
+  document.body.style.overflow='';
+}
+vlb.addEventListener('click',e=>{if(e.target===vlb)closeVideoLb();});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&vlb.classList.contains('open'))closeVideoLb();});
+
 
 // lightbox
 const tiles=[...document.querySelectorAll('#gallery .tile')];
