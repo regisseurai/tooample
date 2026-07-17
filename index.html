@@ -198,8 +198,8 @@
 
     <div class="work-pane" id="work-video" style="display:none">
       <div class="video-grid" id="videoGrid">
-        <div class="vcard" data-yt=""><div class="vph">[ Add YouTube link ]</div><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Music Video</span></div>
-        <div class="vcard" data-yt=""><div class="vph">[ Add YouTube link ]</div><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Commercial</span></div>
+        <div class="vcard" data-yt="mRAsGrjC_C0"><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Music Video</span></div>
+        <div class="vcard" data-yt="0bDZeD8MZGs"><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Music Video</span></div>
         <div class="vcard" data-yt=""><div class="vph">[ Add YouTube link ]</div><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Wedding Film</span></div>
       </div>
       <p class="pane-note">Send your YouTube links and these fill in automatically.</p>
@@ -327,17 +327,11 @@ function switchWork(w){
 // YouTube facade: show thumbnail, load player only on click
 function initVideoCard(card,id){
   const img=document.createElement('img');
-  img.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg'; img.alt='';
+  img.src='https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg'; img.alt='';
+  img.addEventListener('load',()=>{if(img.naturalWidth<=120)img.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';});
   card.insertBefore(img, card.firstChild);
   const ph=card.querySelector('.vph'); if(ph) ph.remove();
-  card.addEventListener('click',()=>{
-    if(card.classList.contains('playing'))return;
-    card.classList.add('playing');
-    const f=document.createElement('iframe');
-    f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
-    f.allow='autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen=true;
-    card.appendChild(f);
-  });
+  card.addEventListener('click',()=>openReel(id)); // popup player
 }
 document.querySelectorAll('#videoGrid .vcard').forEach(c=>{if(c.dataset.yt) initVideoCard(c,c.dataset.yt);});
 
