@@ -790,3 +790,10 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .vlb-close{position:absolute;top:16px;right:20px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(10,11,13,.7);color:var(--ink);font-size:16px;cursor:pointer;transition:.3s}
 .vlb-close:hover{border-color:var(--gold);color:var(--gold)}
 @media(max-width:680px){.vlb{padding:12px}.vlb-close{top:10px;right:12px}}
+
+/* portfolio tag filters */
+.sub-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.sub-tags button{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.3s}
+.sub-tags button:hover{color:var(--ink);border-color:var(--ink)}
+.sub-tags button.active{background:var(--gold);border-color:var(--gold);color:#13110B}
+.hid{display:none!important}
