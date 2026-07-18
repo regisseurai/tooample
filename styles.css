@@ -77,14 +77,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacin
 /* ---------- nav ---------- */
 header{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:.4s;
-  background:rgba(10,11,13,0.94);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line-soft);
+  transition:.4s;border-bottom:1px solid transparent;
 }
-header.scrolled{background:rgba(10,11,13,0.98)}
-.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px}
+header.scrolled{background:rgba(10,11,13,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;align-items:center;justify-content:flex-start;height:78px}
 .nav .brand{justify-self:start}
 .nav .nav-links{justify-self:center}
 .nav > .nav-cta{justify-self:end}
@@ -823,16 +819,10 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 /* ============================================================
    HERO v3 — full-bleed banner, centered content + centered nav
    ============================================================ */
-/* centered header: brand | menu | cta */
-.nav{display:grid;grid-template-columns:1fr auto 1fr}
-.nav .brand{justify-self:start}
-.nav .nav-links{justify-self:center}
-.nav .nav-cta{justify-self:end;margin-left:0}
-
-/* centered hero content over full-bleed slideshow */
-.hero-content{display:flex;flex-direction:column;align-items:center;text-align:center}
-.hero h1{font-size:clamp(48px,7.2vw,112px);max-width:1000px}
-.hero-actions{justify-content:center}
+/* header: brand left, menu + cta together on the right */
+.nav{justify-content:flex-start}
+.nav .brand{margin-right:auto}
+.nav .nav-cta{margin-left:18px}
 
 @media(max-width:680px){
   .nav{display:flex;justify-content:center}
@@ -853,3 +843,13 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 .hero-social a:hover{opacity:1;color:var(--gold);transform:translateY(-2px)}
 .hero-social svg{width:16px;height:16px}
 @media(max-width:680px){.hero-social{display:none}}
+
+
+/* HERO v3.2 — mobile back to left-aligned title + stacked buttons */
+@media(max-width:680px){
+  .hero{text-align:left}
+  .hero-content{text-align:left}
+  .hero h1{margin:12px 0 18px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn{justify-content:center}
+}
