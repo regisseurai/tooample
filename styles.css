@@ -837,12 +837,19 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 @media(max-width:680px){
   .nav{display:flex;justify-content:center}
   .nav .nav-cta{display:none}
-  /* full-bleed portrait banner with centered overlay text */
-  .hero{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:stretch;
-    min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);padding:78px 0 24px}
-  .hero-bg-mobile{position:absolute;inset:0;width:100%;height:100%;min-height:0;max-height:none;flex:none;display:block}
-  .hero-bg-mobile::after{content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(180deg,rgba(10,11,13,.62) 0%,rgba(10,11,13,.22) 42%,rgba(10,11,13,.9) 100%)}
-  .hero-content{position:relative;z-index:2;margin-top:0}
-  .hero h1{font-size:40px;margin:12px auto 20px}
 }
+
+
+/* ============================================================
+   HERO v3.1 — true full-screen banner (desktop) + social rail
+   ============================================================ */
+.hero .bar{display:none} /* letterbox bars removed so image fills screen */
+.hero-social{position:absolute;left:28px;top:50%;transform:translateY(-50%);z-index:5;
+  display:flex;flex-direction:column;align-items:center;gap:18px}
+.hs-label{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);
+  font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.hs-line{width:1px;height:46px;background:var(--line)}
+.hero-social a{color:var(--ink);opacity:.72;transition:.3s;display:grid;place-items:center}
+.hero-social a:hover{opacity:1;color:var(--gold);transform:translateY(-2px)}
+.hero-social svg{width:16px;height:16px}
+@media(max-width:680px){.hero-social{display:none}}
