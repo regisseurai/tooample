@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=17">
+<link rel="stylesheet" href="styles.css?v=18">
 <link rel="icon" href="Images/tooample-badge.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#0A0B0D">
@@ -31,11 +31,11 @@
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="portfolio.html">Portfolio</a>
-      <div class="nav-cta">
-        <a href="academy.html" class="acad">Academy</a>
-        <a href="packages.html" class="bookings">Packages</a>
-      </div>
     </nav>
+    <div class="nav-cta">
+        <a href="academy.html" class="acad">Academy</a>
+        <a href="packages.html" class="bookings">Package</a>
+      </div>
     <button class="menu-btn" onclick="document.querySelector('.nav-links').style.display='flex'">Menu</button>
   </div>
 </header>
@@ -50,7 +50,7 @@
   </a>
   <div class="mob-cta">
     <a href="academy.html" class="acad">Academy</a>
-    <a href="packages.html" class="bookings">Packages</a>
+    <a href="packages.html" class="bookings">Package</a>
   </div>
   <a href="portfolio.html" class="mob-ico" aria-label="Portfolio" title="Portfolio">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-5 5-2-2-5 5"/></svg>
@@ -61,7 +61,12 @@
 </div>
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-frame hero-bg-desktop"></div>
+  <div class="hero-bg hero-bg-desktop">
+    <img src="Images/hero-1.jpg" alt="">
+    <img src="Images/hero-2.jpg" alt="">
+    <img src="Images/hero-3.jpg" alt="">
+    <img src="Images/hero-4.jpg" alt="">
+  </div>
   <div class="hero-bg hero-bg-mobile">
     <img src="Images/hero-m-1.jpg" alt="">
     <img src="Images/hero-m-2.jpg" alt="">
@@ -76,37 +81,11 @@
   </div>
   <div class="rec"><span class="dot"></span> REC · 24FPS · 2.39:1</div>
   <div class="wrap hero-content">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow">Lagos · Photography &amp; Film</span>
-        <h1>Your story, shot like <em>cinema.</em></h1>
-        <div class="hero-actions">
-          <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
-          <a href="academy.html" class="btn btn-outline">Apply to Academy</a>
-        </div>
-      </div>
-      <!-- film-frame triptych: each frame crossfades its own 4 portraits,
-           staggered so only one frame changes at a time -->
-      <div class="hero-strip hero-bg-desktop" aria-hidden="true">
-        <div class="hframe f1">
-          <img src="Images/hero-m-1.jpg" alt="">
-          <img src="Images/ta-03.jpg" alt="">
-          <img src="Images/ta-06.jpg" alt="">
-          <img src="Images/ta-09.jpg" alt="">
-        </div>
-        <div class="hframe f2">
-          <img src="Images/hero-m-2.jpg" alt="">
-          <img src="Images/ta-04.jpg" alt="">
-          <img src="Images/ta-07.jpg" alt="">
-          <img src="Images/ta-10.jpg" alt="">
-        </div>
-        <div class="hframe f3">
-          <img src="Images/hero-m-3.jpg" alt="">
-          <img src="Images/ta-05.jpg" alt="">
-          <img src="Images/ta-08.jpg" alt="">
-          <img src="Images/hero-m-4.jpg" alt="">
-        </div>
-      </div>
+    <span class="eyebrow">Lagos · Photography &amp; Film</span>
+    <h1>Your story, shot like <em>cinema.</em></h1>
+    <div class="hero-actions">
+      <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
+      <a href="academy.html" class="btn btn-outline">Apply to Academy</a>
     </div>
   </div>
   <div class="scroll-cue">Scroll</div>
