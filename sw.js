@@ -1,6 +1,6 @@
 /* TooAmple Studios — service worker
    Bump CACHE_VERSION whenever you push new files, so visitors get the update. */
-const CACHE_VERSION = 'tooample-v24';
+const CACHE_VERSION = 'tooample-v25';
 
 const CORE_ASSETS = [
   '/',
@@ -20,7 +20,7 @@ const CORE_ASSETS = [
   '/data/gallery.json',
   '/data/settings.json',
   '/data/hero.json',
-  '/TooAmple-Rate-Card.pdf',
+  '/data/hero.json',
   '/manifest.webmanifest',
   '/icon-192.png',
   '/icon-512.png'
@@ -64,7 +64,7 @@ self.addEventListener('fetch', event => {
       fetch(req)
         .then(res => {
           const copy = res.clone();
-          caches.open(CACHE_VERSION).then(c => c.put(req, copy)).catch(() => {});
+          caches.open(CACHE_VERSION).then(c => c.put(req.url, copy)).catch(() => { try { copy.body && copy.body.cancel(); } catch (e) {} });
           return res;
         })
         .catch(() => caches.match(req).then(r => r || caches.match('/index.html')))
@@ -78,7 +78,7 @@ self.addEventListener('fetch', event => {
       return fetch(req).then(res => {
         if (res && res.status === 200 && res.type === 'basic') {
           const copy = res.clone();
-          caches.open(CACHE_VERSION).then(c => c.put(req, copy)).catch(() => {});
+          caches.open(CACHE_VERSION).then(c => c.put(req.url, copy)).catch(() => { try { copy.body && copy.body.cancel(); } catch (e) {} });
         }
         return res;
       }).catch(() => cached);

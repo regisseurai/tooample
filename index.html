@@ -331,12 +331,18 @@ let HERO={
   mobile:['Images/hero-m-1.jpg','Images/hero-m-2.jpg','Images/hero-m-3.jpg','Images/hero-m-4.jpg']
 };
 function renderHero(){
-  [['heroDesk','desktop'],['heroMob','mobile']].forEach(([id,key])=>{
+  let st=document.getElementById('heroKF');
+  if(!st){st=document.createElement('style');st.id='heroKF';document.head.appendChild(st);}
+  const kf=(name,n)=>{const hold=Math.max(100/n,12);
+    return '@keyframes '+name+'{0%{opacity:0}4%{opacity:1}'+hold.toFixed(1)+'%{opacity:1}'+Math.min(hold+5,99).toFixed(1)+'%{opacity:0}100%{opacity:0}}';};
+  st.textContent=kf('hfD',Math.max((HERO.desktop||[]).length,1))+kf('hfM',Math.max((HERO.mobile||[]).length,1));
+  [['heroDesk','desktop','hfD'],['heroMob','mobile','hfM']].forEach(([id,key,kfn])=>{
     const el=document.getElementById(id); if(!el)return;
     const list=HERO[key]||[]; if(!list.length)return;
+    if(list.length===1){el.innerHTML='<img src="'+list[0]+'" alt="" style="opacity:1;animation:none">';return;}
     el.innerHTML=list.map((src,i)=>
       '<img src="'+src+'" alt="" '+(i?'loading="lazy" ':'')+
-      'style="animation-duration:'+(list.length*7)+'s;animation-delay:'+(i*7)+'s">').join('');
+      'style="animation:'+kfn+' '+(list.length*7)+'s infinite;animation-delay:'+(i*7)+'s">').join('');
   });
 }
 renderHero();
@@ -393,7 +399,7 @@ addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key
 
 // register service worker (installable app + offline)
 if('serviceWorker' in navigator){
-  addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+  addEventListener('load',()=>setTimeout(()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}),3500));
 }
 </script>
 </body>

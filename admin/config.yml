@@ -1,12 +1,7 @@
 # TooAmple CMS configuration (Sveltia CMS)
-# ------------------------------------------------------------
-# FILL IN THESE TWO LINES (see CMS-SETUP.md):
-#   repo:     your GitHub username/repo for this site
-#   base_url: your OAuth worker URL — the SAME one regxvisuals.com/admin uses
-# ------------------------------------------------------------
 backend:
   name: github
-  repo: regisseurai/tooample   # e.g. dayo/tooample-site
+  repo: regisseurai/tooample
   branch: main
   base_url: https://regx-cms-login.regisseurai.workers.dev
 
@@ -120,24 +115,20 @@ collections:
                 field: {name: tag, label: Tag, widget: string}
 
   - name: hero
-    label: "🖼 Home Slider"
+    label: "🖼️ Home Slider"
     files:
       - name: hero
         label: "Slider images"
         file: "data/hero.json"
         fields:
           - name: desktop
-            label: "Desktop slider (landscape images)"
-            label_singular: "Image"
+            label: "Desktop slider (landscape images, in order)"
             widget: list
-            fields:
-              - {name: img, label: Image, widget: image}
+            field: {name: img, label: Image, widget: image}
           - name: mobile
-            label: "Mobile slider (portrait images)"
-            label_singular: "Image"
+            label: "Mobile slider (portrait images, in order)"
             widget: list
-            fields:
-              - {name: img, label: Image, widget: image}
+            field: {name: img, label: Image, widget: image}
 
   - name: settings
     label: "⚙️ Site Settings"
