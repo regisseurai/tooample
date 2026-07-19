@@ -807,11 +807,6 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
    ============================================================ */
 @media(min-width:681px){
   .hero-bg-desktop::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,8,.52),rgba(5,6,8,.38) 45%,rgba(5,6,8,.72));z-index:1}
-  .hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0}
-  .hero-copy{display:flex;flex-direction:column;align-items:center}
-  .hero-copy .eyebrow{justify-content:center}
-  .hero-copy h1{font-size:clamp(56px,7.4vw,118px);line-height:1.02;max-width:13ch;margin:26px 0 38px;text-shadow:0 4px 40px rgba(0,0,0,.55)}
-  .hero-actions{justify-content:center}
 }
 
 
@@ -856,5 +851,21 @@ footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);background:var(
 
 /* modal centering + footer terms link */
 .form-modal .fm-card{margin:auto}
-.foot-terms{color:inherit;text-decoration:none;transition:.3s}
+.foot-terms{color:inherit;text-decoration:none;transition:.3s;text-transform:uppercase;letter-spacing:.08em}
 .foot-terms:hover{color:var(--gold)}
+
+
+/* compact modals on mobile (desktop unchanged) */
+@media(max-width:680px){
+  .fm-title{font-size:18px;margin:4px 0 12px}
+  .fm-card .btn{padding:13px 18px;font-size:11px}
+  .fm-card .tuition-banner{padding:11px 14px;margin-bottom:14px}
+  .fm-card .tb-amt{font-size:21px}
+  .prod-hero{aspect-ratio:1.9/1}
+  .prod-desc{font-size:13.5px;line-height:1.6;margin:10px 0 12px}
+  .prod-includes{gap:6px;margin-bottom:16px}
+  .prod-includes li{font-size:9.5px;padding:5px 8px}
+  #prodDetailView .prod-price{font-size:20px}
+  .quote-note{font-size:10px;margin-top:10px}
+  .pay-head h3{font-size:19px}
+}
