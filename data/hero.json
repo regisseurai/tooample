@@ -1,0 +1,30 @@
+{
+  "desktop": [
+    {
+      "img": "Images/hero-1.jpg"
+    },
+    {
+      "img": "Images/hero-2.jpg"
+    },
+    {
+      "img": "Images/hero-3.jpg"
+    },
+    {
+      "img": "Images/hero-4.jpg"
+    }
+  ],
+  "mobile": [
+    {
+      "img": "Images/hero-m-1.jpg"
+    },
+    {
+      "img": "Images/hero-m-2.jpg"
+    },
+    {
+      "img": "Images/hero-m-3.jpg"
+    },
+    {
+      "img": "Images/hero-m-4.jpg"
+    }
+  ]
+}

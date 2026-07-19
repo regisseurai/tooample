@@ -6,9 +6,9 @@
 # ------------------------------------------------------------
 backend:
   name: github
-  repo: regisseurai/tooample   # e.g. dayo/tooample-site
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME   # e.g. dayo/tooample-site
   branch: main
-  base_url: https://regx-cms-login.regisseurai.workers.dev
+  base_url: https://YOUR-AUTH-WORKER.workers.dev
 
 site_url: https://tooample.com
 media_folder: "Images"
@@ -118,6 +118,26 @@ collections:
                 label: "Tags (beauty, fashion, editorial, portrait, studio, branding, boudoir)"
                 widget: list
                 field: {name: tag, label: Tag, widget: string}
+
+  - name: hero
+    label: "🖼 Home Slider"
+    files:
+      - name: hero
+        label: "Slider images"
+        file: "data/hero.json"
+        fields:
+          - name: desktop
+            label: "Desktop slider (landscape images)"
+            label_singular: "Image"
+            widget: list
+            fields:
+              - {name: img, label: Image, widget: image}
+          - name: mobile
+            label: "Mobile slider (portrait images)"
+            label_singular: "Image"
+            widget: list
+            fields:
+              - {name: img, label: Image, widget: image}
 
   - name: settings
     label: "⚙️ Site Settings"
