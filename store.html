@@ -206,7 +206,7 @@ if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWo
          Cloudflare R2, etc). If set, buyer gets an instant
          "Download now" button after payment, in addition to email.
    ============================================================ */
-const PRODUCTS=[
+let PRODUCTS=[
   {
     id:'course-photo-master', cat:'course',
     title:'Photography Masterclass (Online)',
@@ -311,14 +311,22 @@ function renderGrid(cat){
     grid.appendChild(card);
   });
 }
-renderGrid('all');
+let curCat='all';
+renderGrid(curCat);
 
 /* ---- category tabs ---- */
 document.getElementById('storeTabs').addEventListener('click',e=>{
   const b=e.target.closest('.work-tab'); if(!b)return;
   document.querySelectorAll('#storeTabs .work-tab').forEach(t=>t.classList.remove('active'));
   b.classList.add('active');
-  renderGrid(b.dataset.cat);
+  curCat=b.dataset.cat;
+  renderGrid(curCat);
+});
+
+/* ---- CMS: load products from data/products.json ---- */
+async function loadData(path,fb){try{const r=await fetch(path,{cache:'no-store'});if(r.ok)return await r.json();}catch(e){}return fb;}
+loadData('data/products.json',null).then(d=>{
+  if(d && Array.isArray(d.products) && d.products.length){PRODUCTS=d.products;renderGrid(curCat);}
 });
 
 /* ---- product modal ---- */

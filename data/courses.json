@@ -1,0 +1,66 @@
+{
+  "courses": [
+    {
+      "id": "photography",
+      "title": "Photography",
+      "price": 250000,
+      "tag": "6 weeks · In-studio",
+      "level": "Beginner → Pro",
+      "img": "Images/course-photography.jpg",
+      "desc": "From camera fundamentals to studio lighting, posing and delivery — shoot with confidence. Small cohorts inside a working Lagos studio, with real sets and real client work from week one.",
+      "includes": [
+        "Camera & exposure",
+        "Studio lighting",
+        "Posing & direction",
+        "Editing basics",
+        "Certificate of completion"
+      ]
+    },
+    {
+      "id": "cinema",
+      "title": "Cinematography & Video",
+      "price": 350000,
+      "tag": "8 weeks · In-studio",
+      "level": "Beginner → Pro",
+      "img": "Images/course-cinematography.jpg",
+      "desc": "Learn to shoot cinematic film — camera movement, lighting, directing and on-set sound. You leave with finished, graded work on your reel, shot on real productions.",
+      "includes": [
+        "Camera movement",
+        "Cine lighting",
+        "Directing",
+        "Sound on set",
+        "Reel-ready projects"
+      ]
+    },
+    {
+      "id": "photoedit",
+      "title": "Photo Editing & Retouching",
+      "price": 150000,
+      "tag": "4 weeks · Hybrid",
+      "level": "All levels",
+      "img": "Images/course-photo-editing.jpg",
+      "desc": "Master Lightroom and Photoshop — colour grading and clean, natural retouching. Hybrid format: in-studio sessions plus guided practice you complete from home.",
+      "includes": [
+        "Lightroom",
+        "Photoshop",
+        "Colour grading",
+        "Skin retouching"
+      ]
+    },
+    {
+      "id": "videoedit",
+      "title": "Video Editing & Post",
+      "price": 200000,
+      "tag": "6 weeks · Hybrid",
+      "level": "All levels",
+      "img": "Images/course-video-editing.jpg",
+      "desc": "Edit like a pro — Premiere Pro or DaVinci Resolve, grading, sound design and client delivery specs. Cut real footage from our productions, not stock clips.",
+      "includes": [
+        "Premiere / Resolve",
+        "Grading",
+        "Sound design",
+        "Delivery specs"
+      ]
+    }
+  ]
+}

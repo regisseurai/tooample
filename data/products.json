@@ -1,0 +1,120 @@
+{
+  "products": [
+    {
+      "id": "course-photo-master",
+      "cat": "course",
+      "title": "Photography Masterclass (Online)",
+      "price": 25000,
+      "img": "Images/course-photography.jpg",
+      "desc": "The full TooAmple photography programme, recorded — camera fundamentals, studio lighting, posing, direction and delivery. Learn at your own pace, lifetime access.",
+      "includes": [
+        "6+ hours of video",
+        "Lighting diagrams",
+        "Practice assignments",
+        "Lifetime access"
+      ],
+      "file": ""
+    },
+    {
+      "id": "course-video-edit",
+      "cat": "course",
+      "title": "Video Editing Crash Course",
+      "price": 20000,
+      "img": "Images/course-video-editing.jpg",
+      "desc": "Edit like a working professional — Premiere Pro and DaVinci Resolve workflows, grading, sound design and delivery specs for clients and social.",
+      "includes": [
+        "4+ hours of video",
+        "Project files",
+        "Grading walkthroughs",
+        "Lifetime access"
+      ],
+      "file": ""
+    },
+    {
+      "id": "preset-signature",
+      "cat": "preset",
+      "title": "Signature Lightroom Presets",
+      "price": 7000,
+      "oldPrice": 10000,
+      "img": "Images/ta-01.jpg",
+      "desc": "The exact looks from the TooAmple portfolio — warm skin tones, deep cinematic shadows, built for Nigerian light. Desktop and mobile versions included.",
+      "includes": [
+        "12 presets (.xmp)",
+        "Desktop + mobile",
+        "Install guide",
+        "Free updates"
+      ],
+      "file": ""
+    },
+    {
+      "id": "preset-outdoor",
+      "cat": "preset",
+      "title": "Outdoor Presets for Photoshop",
+      "price": 7000,
+      "img": "Images/ta-04.jpg",
+      "desc": "Golden-hour warmth, clean greens and rich skin tones for outdoor sessions — camera raw presets that work in Photoshop and Lightroom.",
+      "includes": [
+        "10 presets",
+        "Camera Raw + LR",
+        "Before/after guide"
+      ],
+      "file": ""
+    },
+    {
+      "id": "grade-cinematic",
+      "cat": "grade",
+      "title": "Cinematic Colour Grade Pack (LUTs)",
+      "price": 10000,
+      "img": "Images/ta-07.jpg",
+      "desc": "Feature-film colour in one click — teal & amber, moody Lagos night, clean commercial. Works in Premiere, Resolve, Final Cut and CapCut.",
+      "includes": [
+        "15 LUTs (.cube)",
+        "Rec.709 + Log",
+        "Usage guide"
+      ],
+      "file": ""
+    },
+    {
+      "id": "guide-lighting",
+      "cat": "guide",
+      "title": "Studio Lighting Guide (PDF)",
+      "price": 5000,
+      "img": "Images/ta-03.jpg",
+      "desc": "Every core studio setup we use, diagrammed — one-light portraits to full commercial rigs, with power settings, modifiers and positioning.",
+      "includes": [
+        "40+ page PDF",
+        "Setup diagrams",
+        "Gear list on a budget"
+      ],
+      "file": ""
+    },
+    {
+      "id": "guide-wealth",
+      "cat": "guide",
+      "title": "A Photographer's Guide to Building Wealth",
+      "price": 20000,
+      "img": "Images/ta-09.jpg",
+      "desc": "Pricing, packaging, client pipelines and retainers — the business systems behind a profitable studio in the Nigerian market.",
+      "includes": [
+        "E-book",
+        "Pricing templates",
+        "Client scripts"
+      ],
+      "file": ""
+    },
+    {
+      "id": "template-epk",
+      "cat": "template",
+      "title": "Electronic Press Kit Template",
+      "price": 2000,
+      "img": "Images/ta-06.jpg",
+      "desc": "A clean, editable press kit template for creatives — present your work, rates and contact professionally to brands and clients.",
+      "includes": [
+        "Editable template",
+        "Canva + PDF",
+        "How-to guide"
+      ],
+      "file": ""
+    }
+  ]
+}

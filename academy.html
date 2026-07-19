@@ -138,51 +138,7 @@
       <p class="lead sub">Hands-on, studio-based training in photography, film and post — small cohorts, taught in Lagos.</p>
     </div>
 
-    <div class="store-grid class-grid reveal">
-      <div class="prod-card">
-        <button class="prod-media" onclick="openCourse('photography')" aria-label="View Photography course">
-          <img src="Images/course-photography.jpg" alt="Photography training" loading="lazy">
-          <span class="prod-tag">6 weeks · In-studio</span>
-        </button>
-        <div class="prod-info">
-          <h3 class="prod-name">Photography</h3>
-          <button class="prod-btn" onclick="openCourse('photography')">View Details</button>
-        </div>
-      </div>
-
-      <div class="prod-card">
-        <button class="prod-media" onclick="openCourse('cinema')" aria-label="View Cinematography course">
-          <img src="Images/course-cinematography.jpg" alt="Cinematography training" loading="lazy">
-          <span class="prod-tag">8 weeks · In-studio</span>
-        </button>
-        <div class="prod-info">
-          <h3 class="prod-name">Cinematography &amp; Video</h3>
-          <button class="prod-btn" onclick="openCourse('cinema')">View Details</button>
-        </div>
-      </div>
-
-      <div class="prod-card">
-        <button class="prod-media" onclick="openCourse('photoedit')" aria-label="View Photo Editing course">
-          <img src="Images/course-photo-editing.jpg" alt="Photo editing training" loading="lazy">
-          <span class="prod-tag">4 weeks · Hybrid</span>
-        </button>
-        <div class="prod-info">
-          <h3 class="prod-name">Photo Editing &amp; Retouching</h3>
-          <button class="prod-btn" onclick="openCourse('photoedit')">View Details</button>
-        </div>
-      </div>
-
-      <div class="prod-card">
-        <button class="prod-media" onclick="openCourse('videoedit')" aria-label="View Video Editing course">
-          <img src="Images/course-video-editing.jpg" alt="Video editing training" loading="lazy">
-          <span class="prod-tag">6 weeks · Hybrid</span>
-        </button>
-        <div class="prod-info">
-          <h3 class="prod-name">Video Editing &amp; Post</h3>
-          <button class="prod-btn" onclick="openCourse('videoedit')">View Details</button>
-        </div>
-      </div>
-    </div>
+    <div class="store-grid class-grid reveal" id="classGrid"></div>
 
     <p class="pane-note" style="margin:0 0 44px">Tuition figures are placeholders — update anytime. Payment plans available.</p>
 
@@ -414,56 +370,67 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
    Paste your YouTube video ID below (the part after v= in the URL).
    Example: const INTRO_VIDEO_ID = 'aBcD1234xyz';
    Leave empty to show just your photo. */
-const INTRO_VIDEO_ID = '';
-(function(){
+let INTRO_VIDEO_ID = '';
+function initIntroVideo(){
   if(!INTRO_VIDEO_ID) return;
   const btn=document.getElementById('introPlay');
+  if(!btn) return;
   btn.style.display='grid';
   btn.addEventListener('click',()=>{
     const wrap=document.getElementById('introMedia');
     wrap.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+INTRO_VIDEO_ID+'?autoplay=1&rel=0" title="TooAmple Academy intro" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
     wrap.classList.add('playing');
   });
-})();
+}
+initIntroVideo();
 
 function applyPreselect(course){const s=document.getElementById('a_course');[...s.options].forEach(o=>{if(o.value===course)s.value=course;});updateTuition();}
 
 /* ===== Course details (store-style) =====
    Edit descriptions, durations and curricula here. Titles must
    match the course names in the apply form's dropdown exactly. */
-const COURSES={
-  photography:{
-    title:'Photography', price:250000,
-    tag:'6 weeks · In-studio', level:'Beginner → Pro',
-    img:'Images/course-photography.jpg',
-    desc:'From camera fundamentals to studio lighting, posing and delivery — shoot with confidence. Small cohorts inside a working Lagos studio, with real sets and real client work from week one.',
-    includes:['Camera & exposure','Studio lighting','Posing & direction','Editing basics','Certificate of completion']
-  },
-  cinema:{
-    title:'Cinematography & Video', price:350000,
-    tag:'8 weeks · In-studio', level:'Beginner → Pro',
-    img:'Images/course-cinematography.jpg',
-    desc:'Learn to shoot cinematic film — camera movement, lighting, directing and on-set sound. You leave with finished, graded work on your reel, shot on real productions.',
-    includes:['Camera movement','Cine lighting','Directing','Sound on set','Reel-ready projects']
-  },
-  photoedit:{
-    title:'Photo Editing & Retouching', price:150000,
-    tag:'4 weeks · Hybrid', level:'All levels',
-    img:'Images/course-photo-editing.jpg',
-    desc:'Master Lightroom and Photoshop — colour grading and clean, natural retouching. Hybrid format: in-studio sessions plus guided practice you complete from home.',
-    includes:['Lightroom','Photoshop','Colour grading','Skin retouching']
-  },
-  videoedit:{
-    title:'Video Editing & Post', price:200000,
-    tag:'6 weeks · Hybrid', level:'All levels',
-    img:'Images/course-video-editing.jpg',
-    desc:'Edit like a pro — Premiere Pro or DaVinci Resolve, grading, sound design and client delivery specs. Cut real footage from our productions, not stock clips.',
-    includes:['Premiere / Resolve','Grading','Sound design','Delivery specs']
-  }
-};
+let COURSES_LIST=[
+  {id:'photography',title:'Photography',price:250000,tag:'6 weeks · In-studio',level:'Beginner → Pro',img:'Images/course-photography.jpg',
+   desc:'From camera fundamentals to studio lighting, posing and delivery — shoot with confidence. Small cohorts inside a working Lagos studio, with real sets and real client work from week one.',
+   includes:['Camera & exposure','Studio lighting','Posing & direction','Editing basics','Certificate of completion']},
+  {id:'cinema',title:'Cinematography & Video',price:350000,tag:'8 weeks · In-studio',level:'Beginner → Pro',img:'Images/course-cinematography.jpg',
+   desc:'Learn to shoot cinematic film — camera movement, lighting, directing and on-set sound. You leave with finished, graded work on your reel, shot on real productions.',
+   includes:['Camera movement','Cine lighting','Directing','Sound on set','Reel-ready projects']},
+  {id:'photoedit',title:'Photo Editing & Retouching',price:150000,tag:'4 weeks · Hybrid',level:'All levels',img:'Images/course-photo-editing.jpg',
+   desc:'Master Lightroom and Photoshop — colour grading and clean, natural retouching. Hybrid format: in-studio sessions plus guided practice you complete from home.',
+   includes:['Lightroom','Photoshop','Colour grading','Skin retouching']},
+  {id:'videoedit',title:'Video Editing & Post',price:200000,tag:'6 weeks · Hybrid',level:'All levels',img:'Images/course-video-editing.jpg',
+   desc:'Edit like a pro — Premiere Pro or DaVinci Resolve, grading, sound design and client delivery specs. Cut real footage from our productions, not stock clips.',
+   includes:['Premiere / Resolve','Grading','Sound design','Delivery specs']}
+];
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+function renderClasses(){
+  document.getElementById('classGrid').innerHTML=COURSES_LIST.map(c=>
+    '<div class="prod-card">'+
+      '<button class="prod-media" onclick="openCourse(\''+c.id+'\')" aria-label="View '+esc(c.title)+' course">'+
+        '<img src="'+c.img+'" alt="'+esc(c.title)+'" loading="lazy">'+
+        '<span class="prod-tag">'+esc(c.tag)+'</span>'+
+      '</button>'+
+      '<div class="prod-info">'+
+        '<h3 class="prod-name">'+esc(c.title)+'</h3>'+
+        '<button class="prod-btn" onclick="openCourse(\''+c.id+'\')">View Details</button>'+
+      '</div>'+
+    '</div>').join('');
+}
+renderClasses();
+async function loadData(path,fb){try{const r=await fetch(path,{cache:'no-store'});if(r.ok)return await r.json();}catch(e){}return fb;}
+loadData('data/courses.json',null).then(d=>{
+  if(d && Array.isArray(d.courses) && d.courses.length){COURSES_LIST=d.courses;renderClasses();}
+});
+loadData('data/settings.json',null).then(s=>{
+  if(!s)return;
+  if(s.whatsapp)document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>{
+    const q=a.href.split('?')[1];a.href='https://wa.me/'+s.whatsapp+(q?'?'+q:'');});
+  if(s.academy_intro_video){INTRO_VIDEO_ID=s.academy_intro_video;initIntroVideo();}
+});
 let curCourse=null;
 function openCourse(id){
-  curCourse=COURSES[id]; if(!curCourse)return;
+  curCourse=COURSES_LIST.find(c=>c.id===id); if(!curCourse)return;
   document.getElementById('cd_img').src=curCourse.img;
   document.getElementById('cd_img').alt=curCourse.title;
   document.getElementById('cd_tag').textContent=curCourse.tag;

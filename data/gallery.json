@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "img": "Images/ta-09.jpg",
+      "cap": "Beauty · Studio",
+      "tags": [
+        "beauty"
+      ]
+    },
+    {
+      "img": "Images/ta-03.jpg",
+      "cap": "Fashion Editorial",
+      "tags": [
+        "fashion"
+      ]
+    },
+    {
+      "img": "Images/ta-05.jpg",
+      "cap": "Studio Portrait",
+      "tags": [
+        "studio",
+        "portrait"
+      ]
+    },
+    {
+      "img": "Images/ta-04.jpg",
+      "cap": "Editorial",
+      "tags": [
+        "editorial"
+      ]
+    },
+    {
+      "img": "Images/ta-10.jpg",
+      "cap": "Beauty",
+      "tags": [
+        "beauty"
+      ]
+    },
+    {
+      "img": "Images/ta-08.jpg",
+      "cap": "Personal Branding",
+      "tags": [
+        "branding"
+      ]
+    },
+    {
+      "img": "Images/ta-01.jpg",
+      "cap": "Boudoir",
+      "tags": [
+        "boudoir"
+      ]
+    },
+    {
+      "img": "Images/ta-06.jpg",
+      "cap": "Studio Portrait",
+      "tags": [
+        "studio",
+        "portrait"
+      ]
+    },
+    {
+      "img": "Images/ta-02.jpg",
+      "cap": "Boudoir",
+      "tags": [
+        "boudoir"
+      ]
+    },
+    {
+      "img": "Images/ta-07.jpg",
+      "cap": "Personal Branding",
+      "tags": [
+        "branding"
+      ]
+    }
+  ]
+}

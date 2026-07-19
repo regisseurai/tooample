@@ -1,0 +1,134 @@
+# TooAmple CMS configuration (Sveltia CMS)
+# ------------------------------------------------------------
+# FILL IN THESE TWO LINES (see CMS-SETUP.md):
+#   repo:     your GitHub username/repo for this site
+#   base_url: your OAuth worker URL — the SAME one regxvisuals.com/admin uses
+# ------------------------------------------------------------
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME   # e.g. dayo/tooample-site
+  branch: main
+  base_url: https://YOUR-AUTH-WORKER.workers.dev
+
+site_url: https://tooample.com
+media_folder: "Images"
+public_folder: "Images"
+
+collections:
+  - name: store
+    label: "🛒 Store Products"
+    files:
+      - name: products
+        label: "Products"
+        file: "data/products.json"
+        fields:
+          - name: products
+            label: "Products"
+            label_singular: "Product"
+            widget: list
+            summary: "{{fields.title}} — ₦{{fields.price}}"
+            fields:
+              - {name: id, label: "ID (unique, no spaces)", widget: string}
+              - name: cat
+                label: Category
+                widget: select
+                options:
+                  - {label: "Online Course", value: course}
+                  - {label: "Presets", value: preset}
+                  - {label: "Grade Pack", value: grade}
+                  - {label: "Guide", value: guide}
+                  - {label: "Template", value: template}
+              - {name: title, label: Title, widget: string}
+              - {name: price, label: "Price (₦)", widget: number, value_type: int}
+              - {name: oldPrice, label: "Old price (strikethrough, optional)", widget: number, value_type: int, required: false}
+              - {name: img, label: "Cover image", widget: image}
+              - {name: desc, label: Description, widget: text}
+              - {name: includes, label: "What's included", widget: list, field: {name: item, label: Item, widget: string}}
+              - {name: file, label: "Download link (optional — Drive/R2 URL)", widget: string, required: false}
+
+  - name: academy
+    label: "🎓 Physical Classes"
+    files:
+      - name: courses
+        label: "Courses"
+        file: "data/courses.json"
+        fields:
+          - name: courses
+            label: "Courses"
+            label_singular: "Course"
+            widget: list
+            summary: "{{fields.title}} — ₦{{fields.price}}"
+            fields:
+              - {name: id, label: "ID (unique, no spaces)", widget: string}
+              - {name: title, label: "Title (must match the apply form dropdown)", widget: string}
+              - {name: price, label: "Tuition (₦)", widget: number, value_type: int}
+              - {name: tag, label: "Tag (e.g. 6 weeks · In-studio)", widget: string}
+              - {name: level, label: "Level (e.g. Beginner → Pro)", widget: string}
+              - {name: img, label: "Cover image", widget: image}
+              - {name: desc, label: Description, widget: text}
+              - {name: includes, label: "Curriculum chips", widget: list, field: {name: item, label: Item, widget: string}}
+
+  - name: videos
+    label: "🎬 Videos"
+    files:
+      - name: videos
+        label: "Video links"
+        file: "data/videos.json"
+        fields:
+          - name: portfolio
+            label: "Portfolio — Videography tab"
+            label_singular: "Video"
+            widget: list
+            summary: "{{fields.label}} ({{fields.yt}})"
+            fields:
+              - {name: yt, label: "YouTube ID (the part after watch?v= or youtu.be/)", widget: string}
+              - name: tag
+                label: Category
+                widget: select
+                options:
+                  - {label: Showreel, value: showreel}
+                  - {label: Wedding, value: wedding}
+                  - {label: "Music Video", value: music}
+              - {name: label, label: "Label on card", widget: string}
+          - name: home
+            label: "Home page video cards"
+            label_singular: "Video"
+            widget: list
+            summary: "{{fields.label}} ({{fields.yt}})"
+            fields:
+              - {name: yt, label: "YouTube ID", widget: string}
+              - {name: label, label: "Label on card", widget: string}
+
+  - name: gallery
+    label: "📸 Portfolio Gallery"
+    files:
+      - name: gallery
+        label: "Photos"
+        file: "data/gallery.json"
+        fields:
+          - name: photos
+            label: "Photos"
+            label_singular: "Photo"
+            widget: list
+            summary: "{{fields.cap}}"
+            fields:
+              - {name: img, label: Image, widget: image}
+              - {name: cap, label: Caption, widget: string}
+              - name: tags
+                label: "Tags (beauty, fashion, editorial, portrait, studio, branding, boudoir)"
+                widget: list
+                field: {name: tag, label: Tag, widget: string}
+
+  - name: settings
+    label: "⚙️ Site Settings"
+    files:
+      - name: settings
+        label: "Settings"
+        file: "data/settings.json"
+        fields:
+          - {name: whatsapp, label: "WhatsApp number (digits only, with country code)", widget: string}
+          - {name: email, label: "Email", widget: string}
+          - {name: instagram_studio, label: "Instagram — studio account URL", widget: string}
+          - {name: instagram_films, label: "Instagram — films account URL", widget: string}
+          - {name: academy_intro_video, label: "Academy intro video — YouTube ID (blank = photo only)", widget: string, required: false}
+          - {name: reel_id, label: "Home showreel — YouTube ID", widget: string}

@@ -188,11 +188,7 @@
     </div><!-- /work-photo -->
 
     <div class="work-pane" id="work-video" style="display:none">
-      <div class="video-grid" id="videoGrid">
-        <div class="vcard" data-yt="mRAsGrjC_C0"><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Music Video</span></div>
-        <div class="vcard" data-yt="0bDZeD8MZGs"><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Music Video</span></div>
-        <div class="vcard" data-yt="_xIONES1FVU"><div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="vtag">Wedding Film</span></div>
-      </div>
+      <div class="video-grid" id="videoGrid"></div>
       <p class="pane-note">Send your YouTube links and these fill in automatically.</p>
     </div>
 
@@ -323,7 +319,27 @@ function initVideoCard(card,id){
   const ph=card.querySelector('.vph'); if(ph) ph.remove();
   card.addEventListener('click',()=>openReel(id)); // popup player
 }
-document.querySelectorAll('#videoGrid .vcard').forEach(c=>{if(c.dataset.yt) initVideoCard(c,c.dataset.yt);});
+/* ---- CMS-driven home videos (data/videos.json) ---- */
+let HOME_VIDEOS=[
+ {yt:'mRAsGrjC_C0',label:'Music Video'},
+ {yt:'0bDZeD8MZGs',label:'Music Video'},
+ {yt:'_xIONES1FVU',label:'Wedding Film'}
+];
+const escV=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+function renderHomeVideos(){
+  document.getElementById('videoGrid').innerHTML=HOME_VIDEOS.map(v=>
+    '<div class="vcard" data-yt="'+escV(v.yt||'')+'">'+
+    '<div class="vplay"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>'+
+    '<span class="vtag">'+escV(v.label||'')+'</span></div>').join('');
+  document.querySelectorAll('#videoGrid .vcard').forEach(c=>{if(c.dataset.yt) initVideoCard(c,c.dataset.yt);});
+}
+renderHomeVideos();
+async function loadData(path,fb){try{const r=await fetch(path,{cache:'no-store'});if(r.ok)return await r.json();}catch(e){}return fb;}
+loadData('data/videos.json',null).then(d=>{if(d&&Array.isArray(d.home)&&d.home.length){HOME_VIDEOS=d.home;renderHomeVideos();}});
+loadData('data/settings.json',null).then(s=>{
+  if(s&&s.whatsapp)document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>{
+    const q=a.href.split('?')[1];a.href='https://wa.me/'+s.whatsapp+(q?'?'+q:'');});
+});
 
 /* ============================================================
    PASTE YOUR YOUTUBE VIDEO ID BELOW (just the id, e.g. dQw4w9WgXcQ
