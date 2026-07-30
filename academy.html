@@ -467,7 +467,7 @@ function closeApplyModal(){document.getElementById('applyModal').classList.remov
 (function(){const m=document.getElementById('applyModal');m.addEventListener('click',e=>{if(e.target===m)closeApplyModal();});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))closeApplyModal();});})();
 
 /* ===== Paystack — swap pk_test_ for your pk_live_ key to accept real payments ===== */
-const PAYSTACK_KEY='pk_test_124845fbf4c94de263205dce95caf2e6b001dd91';
+const PAYSTACK_KEY='pk_live_15c5b1b68ba4ee388942887758ce10801e2c2319';
 let aAmount=0,aCourse='';
 function startApply(){
   const name=document.getElementById('a_name').value.trim();
