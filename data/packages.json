@@ -1,0 +1,16 @@
+{
+  "packages": [
+    {"group":"Studio Session","name":"Studio Session — Single Look","price":100000,"note":"1 outfit · 5 edited copies"},
+    {"group":"Studio Session","name":"Studio Session — Double Look","price":180000,"note":"2 outfits · 10 edited copies"},
+    {"group":"Studio Session","name":"Studio Session — Triple Look","price":280000,"note":"3 outfits · 15 edited copies"},
+    {"group":"Pre-Wedding","name":"Pre-Wedding — Single Look","price":300000,"note":"20 edited images"},
+    {"group":"Pre-Wedding","name":"Pre-Wedding — Double Look","price":450000,"note":"40 edited images"},
+    {"group":"Pre-Wedding","name":"Pre-Wedding — Triple Look","price":650000,"note":"60 edited images"},
+    {"group":"Location / Event","name":"Location / Event — Single Look","price":150000,"note":"5 edited copies"},
+    {"group":"Location / Event","name":"Location / Event — Double Look","price":250000,"note":"15 edited copies"},
+    {"group":"Location / Event","name":"Location / Event — Triple Look","price":380000,"note":"15 edited copies"},
+    {"group":"Wedding","name":"Wedding Coverage — Bronze","price":800000,"note":"Photo + Video"},
+    {"group":"Wedding","name":"Wedding Coverage — Silver","price":1000000,"note":"Photo + Video"},
+    {"group":"Wedding","name":"Wedding Coverage — Gold","price":1500000,"note":"Photo + Video"}
+  ]
+}
