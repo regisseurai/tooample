@@ -144,7 +144,7 @@ collections:
           - {name: academy_intro_video, label: "Academy intro video — YouTube ID (blank = photo only)", widget: string, required: false}
           - {name: reel_id, label: "Home showreel — YouTube ID", widget: string}
 
-        - name: packages
+  - name: packages
     label: "💳 Packages & Prices"
     files:
       - name: packages
