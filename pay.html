@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Secure Payment — TooAmple Studios</title>
+<meta name="description" content="Secure payment to TooAmple Studios.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="Images/tooample-badge.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0B0D">
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<style>
+:root{
+  --bg:#0A0B0D;--bg-2:#101316;--bg-3:#161A1E;
+  --line:rgba(243,238,228,0.10);--line-soft:rgba(243,238,228,0.06);
+  --ink:#F3EEE4;--muted:#9097A0;--muted-2:#5C636B;
+  --gold:#D9A24B;--gold-soft:#E8C887;
+  --serif:"Fraunces",Georgia,serif;--sans:"Manrope",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 18px;
+  background-image:radial-gradient(1200px 600px at 50% -10%,rgba(217,162,75,.08),transparent 60%)}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:var(--gold);text-decoration:none}
+.brandbar{display:flex;justify-content:center;margin-bottom:22px}
+.brandbar img{height:22px;opacity:.95}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--gold);opacity:.6}
+
+/* invoice card */
+.card{width:100%;max-width:460px;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 40px 100px -30px rgba(0,0,0,.8);overflow:hidden}
+.card-top{padding:30px 30px 26px;border-bottom:1px solid var(--line-soft)}
+.card-body{padding:26px 30px 30px}
+.inv-item{font-family:var(--serif);font-size:27px;line-height:1.12;margin:14px 0 6px}
+.inv-note{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6}
+.amount-box{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  margin:22px 0 0;padding:18px 20px;border:1px solid rgba(217,162,75,.35);border-radius:10px;
+  background:linear-gradient(180deg,rgba(217,162,75,.08),transparent)}
+.amount-box .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.amount-box .amt{font-family:var(--serif);font-size:34px;color:var(--gold-soft);white-space:nowrap}
+.incl{list-style:none;margin:20px 0 0;display:flex;flex-direction:column;gap:9px}
+.incl li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:13.5px;font-weight:300;line-height:1.5}
+.incl svg{width:16px;height:16px;color:var(--gold);flex:none;margin-top:1px}
+.terms{display:flex;gap:11px;align-items:flex-start;margin:22px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:9px;background:var(--bg-3)}
+.terms.err{border-color:#c0603f}
+.terms input{width:19px;height:19px;flex:none;margin-top:1px;accent-color:var(--gold);cursor:pointer}
+.terms label{font-size:13px;color:var(--muted);line-height:1.5;cursor:pointer}
+.paybtn{width:100%;margin-top:20px;background:var(--gold);color:#13110B;font-family:var(--mono);font-size:12.5px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:17px 20px;border-radius:9px;transition:.25s;
+  display:flex;align-items:center;justify-content:center;gap:9px}
+.paybtn:hover{background:var(--gold-soft)}
+.paybtn:disabled{opacity:.55;cursor:not-allowed}
+.secure{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-family:var(--mono);
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+.secure svg{width:13px;height:13px}
+.chan{text-align:center;margin-top:8px;font-size:12px;color:var(--muted-2)}
+
+/* confirmation */
+.done{text-align:center;padding:8px 4px}
+.done .ring{width:60px;height:60px;border-radius:50%;border:1px solid rgba(217,162,75,.4);display:grid;place-items:center;margin:0 auto 18px}
+.done h2{font-family:var(--serif);font-size:25px;margin-bottom:10px}
+.done p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6;max-width:34ch;margin:0 auto}
+.done .ref{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted-2)}
+
+.foot{margin-top:24px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.foot a{color:var(--muted-2)}
+
+/* empty / error state */
+.hint{max-width:460px;text-align:center;color:var(--muted);font-size:14px;line-height:1.7;font-weight:300}
+.hidden{display:none!important}
+
+/* ---- generator (only shows on pay.html?admin=1) ---- */
+.gen{width:100%;max-width:560px;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-top:8px}
+.gen h3{font-family:var(--serif);font-size:22px;margin-bottom:4px}
+.gen p.sub{color:var(--muted);font-size:13px;font-weight:300;margin-bottom:20px}
+.gen label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:14px 0 7px}
+.gen select,.gen input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:13px 14px;font-family:inherit;font-size:14px}
+.gen .row{display:flex;gap:12px}
+.gen .row>div{flex:1}
+.gen-out{margin-top:20px;padding:14px;border:1px dashed rgba(217,162,75,.4);border-radius:9px;background:var(--bg-3);word-break:break-all;font-family:var(--mono);font-size:12px;color:var(--gold-soft);line-height:1.5}
+.gen-btns{display:flex;gap:10px;margin-top:14px}
+.gen-btns button{flex:1;padding:13px;border-radius:8px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.gen-copy{background:var(--gold);color:#13110B;font-weight:600}
+.gen-wa{background:var(--bg-3);border:1px solid var(--line);color:var(--ink)}
+.gen-copy.ok{background:#5ba36f;color:#fff}
+</style>
+</head>
+<body>
+
+<!-- ============ INVOICE VIEW ============ -->
+<div id="invoiceView" class="hidden">
+  <div class="card">
+    <div class="card-top">
+      <div class="brandbar"><img src="Images/ta-wordmark.png" alt="TooAmple" onerror="this.style.display='none'"></div>
+      <span class="eyebrow">Payment Request</span>
+      <h1 class="inv-item" id="invItem">—</h1>
+      <p class="inv-note" id="invNote"></p>
+      <div class="amount-box">
+        <span class="lbl">Amount due</span>
+        <span class="amt" id="invAmt">₦0</span>
+      </div>
+      <ul class="incl" id="invIncl"></ul>
+    </div>
+    <div class="card-body">
+      <div class="terms" id="termsWrap">
+        <input type="checkbox" id="agree">
+        <label for="agree">I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</label>
+      </div>
+      <button class="paybtn" id="payBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        <span id="payLabel">Pay Now</span>
+      </button>
+      <div class="secure">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        Secured by Paystack
+      </div>
+      <div class="chan">Card · Bank transfer · USSD</div>
+    </div>
+  </div>
+  <div class="foot">TooAmple Studios · Lagos · <a href="terms.html">Terms</a></div>
+</div>
+
+<!-- ============ CONFIRMATION VIEW ============ -->
+<div id="doneView" class="hidden">
+  <div class="card">
+    <div class="card-body">
+      <div class="done">
+        <div class="ring"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D9A24B" stroke-width="1.6"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h2>Payment received</h2>
+        <p id="doneMsg">Thank you. Your payment to TooAmple Studios was successful — a receipt has been sent to your email.</p>
+        <div class="ref" id="doneRef"></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">TooAmple Studios · Lagos</div>
+</div>
+
+<!-- ============ EMPTY STATE ============ -->
+<div id="emptyView" class="hidden">
+  <div class="brandbar"><img src="Images/ta-wordmark.png" alt="TooAmple" onerror="this.style.display='none'"></div>
+  <p class="hint">This is a secure payment link. Please use the full link sent to you by TooAmple Studios,<br>or <a href="index.html">visit our website</a>.</p>
+</div>
+
+<!-- ============ LINK GENERATOR (pay.html?admin=1) ============ -->
+<div id="genView" class="hidden">
+  <div class="gen">
+    <h3>Create a payment link</h3>
+    <p class="sub">Pick a package or enter a custom amount, then copy the link and send it to your client.</p>
+
+    <label>Package</label>
+    <select id="genPkg" onchange="genFromSelect()"></select>
+
+    <div class="row">
+      <div>
+        <label>Item name</label>
+        <input id="genName" type="text" placeholder="e.g. Studio Photography" oninput="buildLink()">
+      </div>
+      <div>
+        <label>Amount (₦)</label>
+        <input id="genPrice" type="number" placeholder="150000" oninput="buildLink()">
+      </div>
+    </div>
+
+    <label>Note to client (optional)</label>
+    <input id="genNote" type="text" placeholder="e.g. 50% deposit for your wedding shoot" oninput="buildLink()">
+
+    <div class="gen-out" id="genOut">—</div>
+    <div class="gen-btns">
+      <button class="gen-copy" id="genCopy" onclick="copyLink()">Copy link</button>
+      <button class="gen-wa" onclick="waLink()">Send on WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const PAYSTACK_PUBLIC_KEY = 'pk_live_15c5b1b68ba4ee388942887758ce10801e2c2319';
+const FORMSPREE_ID = 'xvzeoden'; // sends you a sale notification on success
+const WHATSAPP = '2348069025479';
+
+/* Packages pulled from the TooAmple site pricing. Edit here anytime. */
+const PACKAGES = [
+  {group:'Studio Session',   name:'Studio Session — Single Look',  price:100000, note:'1 outfit · 5 edited copies'},
+  {group:'Studio Session',   name:'Studio Session — Double Look',  price:180000, note:'2 outfits · 10 edited copies'},
+  {group:'Studio Session',   name:'Studio Session — Triple Look',  price:280000, note:'3 outfits · 15 edited copies'},
+  {group:'Pre-Wedding',      name:'Pre-Wedding — Single Look',     price:300000, note:'20 edited images'},
+  {group:'Pre-Wedding',      name:'Pre-Wedding — Double Look',     price:450000, note:'40 edited images'},
+  {group:'Pre-Wedding',      name:'Pre-Wedding — Triple Look',     price:650000, note:'60 edited images'},
+  {group:'Location / Event', name:'Location / Event — Single Look',price:150000, note:'5 edited copies'},
+  {group:'Location / Event', name:'Location / Event — Double Look',price:250000, note:'15 edited copies'},
+  {group:'Location / Event', name:'Location / Event — Triple Look',price:380000, note:'15 edited copies'},
+  {group:'Wedding',          name:'Wedding Coverage — Bronze',     price:800000, note:'Photo + Video'},
+  {group:'Wedding',          name:'Wedding Coverage — Silver',     price:1000000,note:'Photo + Video'},
+  {group:'Wedding',          name:'Wedding Coverage — Gold',       price:1500000,note:'Photo + Video'}
+];
+
+const fmt = n => '\u20a6' + Number(n).toLocaleString();
+const qs  = new URLSearchParams(location.search);
+const show = id => document.getElementById(id).classList.remove('hidden');
+
+/* ================= INVOICE MODE ================= */
+const item  = qs.get('item');
+const price = parseInt(qs.get('price')||'0',10);
+const note  = qs.get('note')||'';
+
+if (qs.get('admin')==='1') {
+  initGenerator();
+} else if (item && price>0) {
+  renderInvoice(item, price, note);
+} else {
+  show('emptyView');
+}
+
+function renderInvoice(item, price, note){
+  document.getElementById('invItem').textContent = item;
+  document.getElementById('invAmt').textContent  = fmt(price);
+  const noteEl=document.getElementById('invNote');
+  if(note){noteEl.textContent=note;}else{noteEl.style.display='none';}
+  // if this item matches a known package, show its inclusions line
+  const pk=PACKAGES.find(p=>p.name===item);
+  const incl=document.getElementById('invIncl');
+  if(pk){
+    incl.innerHTML='<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>'+pk.note+'</li>';
+  } else { incl.style.display='none'; }
+  document.title = item + ' — TooAmple Studios';
+  show('invoiceView');
+
+  const btn=document.getElementById('payBtn');
+  const agree=document.getElementById('agree');
+  btn.addEventListener('click', ()=>{
+    if(!agree.checked){
+      document.getElementById('termsWrap').classList.add('err');
+      agree.focus(); return;
+    }
+    payNow(item, price);
+  });
+  agree.addEventListener('change',()=>document.getElementById('termsWrap').classList.remove('err'));
+}
+
+function payNow(item, price){
+  const btn=document.getElementById('payBtn');
+  btn.disabled=true;
+  const handler=PaystackPop.setup({
+    key:PAYSTACK_PUBLIC_KEY,
+    email:'client@tooample.com',        // Paystack asks the payer for their own receipt email in the popup
+    amount:price*100,
+    currency:'NGN',
+    ref:'TA-INV-'+Date.now(),
+    channels:['card','bank_transfer','ussd'],
+    metadata:{custom_fields:[
+      {display_name:'Invoice item',variable_name:'item',value:item},
+      {display_name:'Amount',variable_name:'amount',value:fmt(price)}
+    ]},
+    callback:function(res){
+      notify(item, price, res.reference);
+      document.getElementById('doneRef').textContent='Reference: '+res.reference;
+      document.getElementById('invoiceView').classList.add('hidden');
+      show('doneView');
+    },
+    onClose:function(){ btn.disabled=false; }
+  });
+  handler.openIframe();
+}
+
+function notify(item, price, ref){
+  if(!FORMSPREE_ID) return;
+  fetch('https://formspree.io/f/'+FORMSPREE_ID,{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({_subject:'INVOICE PAID — '+item+' — '+fmt(price),
+      type:'INVOICE PAYMENT (paid via pay.html)',item:item,amount:fmt(price),reference:ref})
+  }).catch(()=>{});
+}
+
+/* ================= LINK GENERATOR ================= */
+function initGenerator(){
+  show('genView');
+  const sel=document.getElementById('genPkg');
+  sel.innerHTML='<option value="">— Custom (type below) —</option>'+
+    PACKAGES.map((p,i)=>'<option value="'+i+'">'+p.group+' · '+p.name.split('— ')[1]+' — '+fmt(p.price)+'</option>').join('');
+  buildLink();
+}
+function genFromSelect(){
+  const i=document.getElementById('genPkg').value;
+  if(i===''){buildLink();return;}
+  const p=PACKAGES[i];
+  document.getElementById('genName').value=p.name;
+  document.getElementById('genPrice').value=p.price;
+  document.getElementById('genNote').value='';
+  buildLink();
+}
+function currentLink(){
+  const name=document.getElementById('genName').value.trim();
+  const price=parseInt(document.getElementById('genPrice').value||'0',10);
+  const note=document.getElementById('genNote').value.trim();
+  if(!name||!price) return '';
+  const base=location.origin+location.pathname;
+  let url=base+'?item='+encodeURIComponent(name)+'&price='+price;
+  if(note) url+='&note='+encodeURIComponent(note);
+  return url;
+}
+function buildLink(){
+  const url=currentLink();
+  document.getElementById('genOut').textContent = url || 'Fill in an item name and amount…';
+}
+function copyLink(){
+  const url=currentLink(); if(!url)return;
+  const btn=document.getElementById('genCopy');
+  const done=()=>{btn.textContent='Copied ✓';btn.classList.add('ok');setTimeout(()=>{btn.textContent='Copy link';btn.classList.remove('ok');},1800);};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(url).then(done).catch(fallback);}else{fallback();}
+  function fallback(){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(t);}
+}
+function waLink(){
+  const url=currentLink(); if(!url)return;
+  const name=document.getElementById('genName').value.trim();
+  const msg='Hi! Here is your secure payment link for '+name+' — '+url;
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+</script>
+</body>
+</html>
