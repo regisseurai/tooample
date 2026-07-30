@@ -75,6 +75,47 @@ a{color:var(--gold);text-decoration:none}
 .done p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6;max-width:34ch;margin:0 auto}
 .done .ref{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted-2)}
 
+/* primary bank transfer */
+.pay-primary{margin-top:20px}
+.pp-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.pp-step{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#13110B;background:var(--gold);padding:4px 8px;border-radius:3px;font-weight:600}
+.pp-title{font-family:var(--sans);font-size:14px;color:var(--ink);font-weight:500}
+.bank{border:1px solid var(--line);border-radius:11px;background:var(--bg-3);overflow:hidden}
+.bank-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px;border-bottom:1px solid var(--line-soft)}
+.bank-row:last-child{border-bottom:none}
+.bk{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bv{font-family:var(--sans);font-size:15px;color:var(--ink);font-weight:500;text-align:right}
+.bv.gold{color:var(--gold-soft);font-family:var(--serif);font-size:18px}
+.bv.acct{display:inline-flex;align-items:center;gap:9px;background:none;border:none;cursor:pointer;position:relative;padding:6px 8px;border-radius:6px;transition:.2s}
+.bv.acct:hover{background:rgba(217,162,75,.1)}
+.acct-no{font-family:var(--mono);font-size:16px;letter-spacing:.04em;color:var(--ink)}
+.bv.acct .cp{width:15px;height:15px;color:var(--gold)}
+.bv.acct .cp-ok{display:none;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:#5ba36f;text-transform:uppercase}
+.bv.acct.ok .acct-no,.bv.acct.ok .cp{display:none}
+.bv.acct.ok .cp-ok{display:inline}
+.paybtn svg{width:18px;height:18px;flex:none}
+
+/* secondary card */
+.alt{margin-top:22px}
+.alt-div{display:flex;align-items:center;gap:12px;color:var(--muted-2);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.alt-div::before,.alt-div::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.altbtn{width:100%;background:var(--bg-3);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding:14px 18px;border-radius:9px;display:flex;align-items:center;justify-content:center;gap:9px;transition:.25s}
+.altbtn:hover{border-color:var(--gold);color:var(--gold)}
+.altbtn svg{width:17px;height:17px;flex:none}
+.altbtn:disabled{opacity:.55;cursor:not-allowed}
+
+/* waiting state */
+.wait{text-align:center;padding:6px 4px}
+.spin{width:46px;height:46px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--gold);margin:0 auto 16px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wtimer{font-family:var(--mono);font-size:26px;letter-spacing:.06em;color:var(--gold-soft);margin-bottom:14px}
+.wait h2{font-family:var(--serif);font-size:22px;margin-bottom:10px;line-height:1.2}
+.wait p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.6;max-width:36ch;margin:0 auto 18px}
+.wabtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:#062616;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:15px 18px;border-radius:9px;transition:.25s}
+.wabtn:hover{background:#20bd5a}
+.wabtn svg{width:19px;height:19px;flex:none}
+.wnote{font-size:12px!important;color:var(--muted-2)!important;margin-top:16px!important}
+
 .foot{margin-top:24px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
 .foot a{color:var(--muted-2)}
 
@@ -123,18 +164,76 @@ a{color:var(--gold);text-decoration:none}
         <input type="checkbox" id="agree">
         <label for="agree">I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</label>
       </div>
-      <button class="paybtn" id="payBtn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-        <span id="payLabel">Pay Now</span>
-      </button>
-      <div class="secure">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
-        Secured by Paystack
+
+      <!-- PRIMARY: bank transfer -->
+      <div class="pay-primary">
+        <div class="pp-head">
+          <span class="pp-step">Step 1</span>
+          <span class="pp-title">Transfer to the account below</span>
+        </div>
+        <div class="bank">
+          <div class="bank-row">
+            <span class="bk">Bank</span>
+            <span class="bv">Moniepoint</span>
+          </div>
+          <div class="bank-row">
+            <span class="bk">Account number</span>
+            <button class="bv acct" id="acctBtn" onclick="copyAcct()" title="Tap to copy">
+              <span class="acct-no">8069025479</span>
+              <svg class="cp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h8"/></svg>
+              <span class="cp-ok">Copied ✓</span>
+            </button>
+          </div>
+          <div class="bank-row">
+            <span class="bk">Account name</span>
+            <span class="bv">TOOAMPLE LIMITED</span>
+          </div>
+          <div class="bank-row">
+            <span class="bk">Amount</span>
+            <span class="bv gold" id="bankAmt">₦0</span>
+          </div>
+        </div>
+        <button class="paybtn" id="sentBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+          <span>I've sent the transfer</span>
+        </button>
       </div>
-      <div class="chan">Card · Bank transfer · USSD</div>
+
+      <!-- SECONDARY: card via Paystack -->
+      <div class="alt">
+        <div class="alt-div"><span>or pay with card / USSD</span></div>
+        <button class="altbtn" id="payBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          <span>Pay with card (Paystack)</span>
+        </button>
+        <div class="secure">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+          Card · USSD secured by Paystack
+        </div>
+      </div>
     </div>
   </div>
   <div class="foot">TooAmple Studios · Lagos · <a href="terms.html">Terms</a></div>
+</div>
+
+<!-- ============ WAITING FOR PAYMENT ============ -->
+<div id="waitView" class="hidden">
+  <div class="card">
+    <div class="card-body">
+      <div class="wait">
+        <div class="spin"></div>
+        <div class="wtimer" id="wTimer">00:00</div>
+        <h2>Waiting for payment to be received</h2>
+        <p>Thank you. Please share your transfer receipt on WhatsApp so we can confirm your payment and lock in your booking.</p>
+        <a class="wabtn" id="waBtn" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.5c-.2.2-.3.4-.1.6.6 1 1.3 1.6 2.2 2.1.2.1.4.1.5-.1l.6-.8c.2-.2.3-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.2.1.7-.1 1.3z"/></svg>
+          Share receipt on WhatsApp
+        </a>
+        <p class="wnote">Your booking is confirmed once we verify the transfer — usually within a few hours during business time.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot">TooAmple Studios · Lagos</div>
 </div>
 
 <!-- ============ CONFIRMATION VIEW ============ -->
@@ -267,19 +366,50 @@ function renderInvoice(item, price, note, was, copies){
   if(inclText){
     incl.innerHTML='<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>'+inclText.replace(/</g,'&lt;')+'</li>';
   } else { incl.style.display='none'; }
+  document.getElementById('bankAmt').textContent = fmt(price);
   document.title = item + ' — TooAmple Studios';
   show('invoiceView');
 
-  const btn=document.getElementById('payBtn');
   const agree=document.getElementById('agree');
-  btn.addEventListener('click', ()=>{
-    if(!agree.checked){
-      document.getElementById('termsWrap').classList.add('err');
-      agree.focus(); return;
-    }
+  const requireTerms=()=>{
+    if(!agree.checked){document.getElementById('termsWrap').classList.add('err');if(agree.scrollIntoView)agree.scrollIntoView({behavior:'smooth',block:'center'});agree.focus();return false;}
+    return true;
+  };
+  agree.addEventListener('change',()=>document.getElementById('termsWrap').classList.remove('err'));
+
+  // PRIMARY — I've sent the transfer → waiting view
+  document.getElementById('sentBtn').addEventListener('click', ()=>{
+    if(!requireTerms()) return;
+    notify(item, price, 'BANK TRANSFER — awaiting confirmation');
+    startWaiting(item, price);
+  });
+
+  // SECONDARY — card via Paystack
+  document.getElementById('payBtn').addEventListener('click', ()=>{
+    if(!requireTerms()) return;
     payNow(item, price);
   });
-  agree.addEventListener('change',()=>document.getElementById('termsWrap').classList.remove('err'));
+}
+
+/* copy account number */
+function copyAcct(){
+  const num='8069025479';
+  const btn=document.getElementById('acctBtn');
+  const done=()=>{btn.classList.add('ok');setTimeout(()=>btn.classList.remove('ok'),1600);};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(num).then(done).catch(fb);}else{fb();}
+  function fb(){const t=document.createElement('textarea');t.value=num;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(t);}
+}
+
+/* waiting-for-payment view + countdown + WhatsApp receipt */
+function startWaiting(item, price){
+  const msg='Hi TooAmple! I have made a bank transfer of '+fmt(price)+' for "'+item+'". Here is my payment receipt:';
+  document.getElementById('waBtn').href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg);
+  document.getElementById('invoiceView').classList.add('hidden');
+  show('waitView');
+  let s=0;
+  const el=document.getElementById('wTimer');
+  const tick=()=>{s++;const m=String(Math.floor(s/60)).padStart(2,'0');const ss=String(s%60).padStart(2,'0');el.textContent=m+':'+ss;};
+  setInterval(tick,1000);
 }
 
 function payNow(item, price){
