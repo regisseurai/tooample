@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masterclass — TooAmple Academy</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#0d0d0d;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+
+  .hdr{position:sticky;top:0;z-index:20;background:#0d0d0d;border-bottom:1px solid #1f1f1f;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .hdr .mark{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#c9a227}
+  .hdr .who{font-size:13px;color:#8a8a8a;display:flex;align-items:center;gap:14px}
+  .hdr button{background:none;border:1px solid #2e2e2e;border-radius:3px;color:#8a8a8a;font-size:12.5px;font-family:inherit;padding:6px 11px;cursor:pointer}
+  .hdr button:hover{border-color:#444;color:#ddd}
+
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px}
+  .intro h1{font-size:30px;margin:0 0 10px;letter-spacing:-.02em;line-height:1.2}
+  .intro p{font-size:15px;color:#9a9a9a;margin:0;line-height:1.6;max-width:62ch}
+  .progress{margin:26px 0 38px;display:flex;align-items:center;gap:12px;font-size:13px;color:#8a8a8a}
+  .bar{flex:1;height:3px;background:#1f1f1f;border-radius:2px;overflow:hidden;max-width:280px}
+  .bar i{display:block;height:100%;background:#c9a227;width:0}
+
+  .mod{border:1px solid #1f1f1f;border-radius:4px;margin-bottom:14px;background:#121212;overflow:hidden}
+  .mod.locked{opacity:.55}
+  .mod-head{display:flex;align-items:flex-start;gap:16px;padding:20px 22px;cursor:pointer}
+  .mod.locked .mod-head{cursor:default}
+  .mod-n{flex:none;width:30px;height:30px;border:1px solid #2e2e2e;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#8a8a8a;margin-top:2px}
+  .mod.open .mod-n{border-color:#c9a227;color:#c9a227}
+  .mod-txt{flex:1;min-width:0}
+  .mod-txt h3{margin:0 0 5px;font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+  .mod-txt p{margin:0;font-size:13.5px;color:#8a8a8a;line-height:1.55}
+  .mod-meta{flex:none;font-size:12px;color:#6e6e6e;text-align:right;margin-top:4px;white-space:nowrap}
+  .pill{display:inline-block;border:1px solid #2e2e2e;border-radius:3px;padding:3px 8px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#8a8a8a}
+
+  .mod-body{display:none;padding:0 22px 22px}
+  .mod.open .mod-body{display:block}
+  .player{position:relative;padding-top:56.25%;background:#000;border-radius:3px;overflow:hidden;margin-bottom:16px}
+  .player iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+  .files{border-top:1px solid #1f1f1f;padding-top:14px}
+  .files h4{margin:0 0 10px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#6e6e6e;font-weight:600}
+  .files a{display:inline-flex;align-items:center;gap:7px;border:1px solid #2e2e2e;border-radius:3px;padding:8px 12px;font-size:13px;text-decoration:none;color:#ddd;margin:0 8px 8px 0}
+  .files a:hover{border-color:#c9a227;color:#c9a227}
+
+  .ghost{padding:60px 0;text-align:center;color:#6e6e6e;font-size:14px}
+  .help{margin-top:44px;border-top:1px solid #1f1f1f;padding-top:22px;font-size:13.5px;color:#8a8a8a;line-height:1.65}
+  .help a{color:#c9a227;text-decoration:none}
+
+  @media(max-width:640px){
+    .wrap{padding:28px 18px 60px}
+    .intro h1{font-size:24px}
+    .mod-head{padding:17px 16px;gap:13px}
+    .mod-body{padding:0 16px 18px}
+    .mod-meta{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="mark">TooAmple Academy</div>
+  <div class="who">
+    <span id="who"></span>
+    <button id="out">Sign out</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="intro">
+    <h1>Complete Video Production Masterclass</h1>
+    <p>Ten modules covering the full pipeline — planning, camera, lighting, movement, editing, colour and AI-assisted post. Work through them in order; each builds on the last.</p>
+  </div>
+
+  <div class="progress">
+    <div class="bar"><i id="barFill"></i></div>
+    <span id="progressTxt">—</span>
+  </div>
+
+  <div id="list"><div class="ghost">Loading your course…</div></div>
+
+  <div class="help">
+    Questions as you work through a module? Email <a href="mailto:tooample@gmail.com">tooample@gmail.com</a> — include the module number and I'll come back to you.
+  </div>
+</div>
+
+<script>
+const list = document.getElementById('list');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+  {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
+));
+
+function fmtDate(iso){
+  if(!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  if(isNaN(d)) return '';
+  return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+}
+
+function render(data){
+  document.getElementById('who').textContent = data.name || '';
+
+  const open = data.modules.filter(m => m.unlocked).length;
+  document.getElementById('barFill').style.width =
+    Math.round((open / data.modules.length) * 100) + '%';
+  document.getElementById('progressTxt').textContent =
+    open + ' of ' + data.modules.length + ' modules available';
+
+  list.innerHTML = data.modules.map(m => {
+    const meta = m.unlocked
+      ? esc(m.duration || '')
+      : (m.releases ? 'Releases ' + esc(fmtDate(m.releases)) : '<span class="pill">Soon</span>');
+
+    const body = m.unlocked ? `
+      <div class="mod-body">
+        <div class="player">
+          <iframe
+            src="https://customer-${esc(data.streamCustomer)}.cloudflarestream.com/${esc(m.video)}/iframe?preload=metadata"
+            loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+            allowfullscreen></iframe>
+        </div>
+        ${m.files && m.files.length ? `
+        <div class="files">
+          <h4>Project files</h4>
+          ${m.files.map(f => `<a href="${esc(f.url)}" download>${esc(f.label)}</a>`).join('')}
+        </div>` : ''}
+      </div>` : '';
+
+    return `
+      <div class="mod ${m.unlocked ? '' : 'locked'}" data-id="${esc(m.id)}">
+        <div class="mod-head">
+          <div class="mod-n">${m.n}</div>
+          <div class="mod-txt">
+            <h3>${esc(m.title)}</h3>
+            <p>${esc(m.blurb)}</p>
+          </div>
+          <div class="mod-meta">${meta}</div>
+        </div>
+        ${body}
+      </div>`;
+  }).join('');
+
+  list.querySelectorAll('.mod:not(.locked) .mod-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const card = head.parentElement;
+      const wasOpen = card.classList.contains('open');
+      list.querySelectorAll('.mod.open').forEach(c => c.classList.remove('open'));
+      if(!wasOpen) card.classList.add('open');
+    });
+  });
+
+  const first = list.querySelector('.mod:not(.locked)');
+  if(first) first.classList.add('open');
+}
+
+fetch('/api/course-me')
+  .then(r => { if(r.status === 401){ window.location.href = '/course-login.html'; throw new Error('out'); } return r.json(); })
+  .then(render)
+  .catch(e => { if(e.message !== 'out') list.innerHTML = '<div class="ghost">Could not load the course. Please refresh.</div>'; });
+
+document.getElementById('out').addEventListener('click', async () => {
+  await fetch('/api/course-logout', { method: 'POST' });
+  window.location.href = '/course-login.html';
+});
+</script>
+</body>
+</html>
